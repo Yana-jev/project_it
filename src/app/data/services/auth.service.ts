@@ -10,6 +10,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
+  signUp(credentials: { email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.baseApiUrl}signup`, credentials, { withCredentials: true });
+  }
+
   login(credentials: { email: string; password: string }): Observable<any> {
     return this.http.post(`${this.baseApiUrl}login`, credentials, { withCredentials: true });
   }
@@ -17,6 +21,7 @@ export class AuthService {
   logout() {
     return this.http.post(`${this.baseApiUrl}logout`, {}, { withCredentials: true });
   }
-  
+
+
 
 }
