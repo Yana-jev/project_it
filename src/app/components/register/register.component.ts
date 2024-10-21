@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { AuthService } from '../../auth/auth.service';
+import { AuthService } from '../../data/services/auth.service';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -33,7 +33,7 @@ export class RegisterComponent {
       });
     }
   }
-  
+
 
   passwordsMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const password = control.get('password');
