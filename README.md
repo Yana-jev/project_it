@@ -1,6 +1,4 @@
 Do Alella Eventos & Tienda
-
-
 Esta es una aplicación web construida con Angular que muestra los eventos de Do Alella e incluye una tienda en línea. La aplicación está diseñada para proporcionar a los usuarios la información más reciente sobre los eventos organizados por Do Alella, y al mismo tiempo, ofrece una experiencia de compra fluida para adquirir productos relacionados.
 
 Funcionalidades
@@ -10,10 +8,10 @@ Tienda en Línea: Funcionalidad de comercio electrónico integrada donde los usu
 Búsqueda y Filtros: Los usuarios pueden buscar eventos o productos específicos y filtrarlos por categoría o fecha.
 Diseño Responsivo: Optimizado para dispositivos de escritorio y móviles.
 Tecnologías
-Frontend: Angular v.18
-Estilos:  Tailwind
-
-
+Frontend: Angular v18
+Estilos: Tailwind CSS
+Instalación
+Para ejecutar la aplicación localmente, sigue estos pasos:
 Instalación
 Para ejecutar la aplicación localmente, sigue estos pasos:
 
