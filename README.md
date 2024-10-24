@@ -1,4 +1,5 @@
-Do Alella Eventos & Tienda
+**Do Alella Eventos & Tienda**
+
 Esta es una aplicación web construida con Angular que muestra los eventos de Do Alella e incluye una tienda en línea. La aplicación está diseñada para proporcionar a los usuarios la información más reciente sobre los eventos organizados por Do Alella, y al mismo tiempo, ofrece una experiencia de compra fluida para adquirir productos relacionados.
 
 Funcionalidades
@@ -7,36 +8,35 @@ Detalles del Evento: Permite a los usuarios ver información detallada sobre cad
 Tienda en Línea: Funcionalidad de comercio electrónico integrada donde los usuarios pueden explorar y comprar productos relacionados con los eventos de Do Alella.
 Búsqueda y Filtros: Los usuarios pueden buscar eventos o productos específicos y filtrarlos por categoría o fecha.
 Diseño Responsivo: Optimizado para dispositivos de escritorio y móviles.
-Tecnologías
+Tecnologías:
 Frontend: Angular v18
 Estilos: Tailwind CSS
-Instalación
-Para ejecutar la aplicación localmente, sigue estos pasos:
+
+
 Instalación
 Para ejecutar la aplicación localmente, sigue estos pasos:
 
 Clona el repositorio:
 
 bash
-git clone https://github.com/tuusuario/do-alella-events-shop.git
+*git clone https://github.com/tuusuario/do-alella-events-shop.git*
 
 Navega al directorio del proyecto:
 
 bash
-cd do-alella-events-shop
+*cd do-alella-events-shop*
 
 Instala las dependencias:
 
 bash
-npm install
+*npm install*
 Ejecuta el servidor de desarrollo:
 
 bash
-Копировать код
-ng serve
-Abre el navegador y navega a:
+*ng serve*
 
-arduino
+
+Abre el navegador y navega a:
 http://localhost:4200
 
 Uso
