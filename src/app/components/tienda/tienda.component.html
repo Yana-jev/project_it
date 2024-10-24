@@ -1,0 +1,84 @@
+<div class="container mx-auto px-4 py-6">
+<div class="flex">
+
+   <aside class="w-1/4 bg-gray-100 p-4 rounded-lg shadow-md">
+      <h3 class="text-lg font-semibold mb-4">Filtros</h3>
+
+      <div class="mb-4">
+      <label for="search" class="block mb-1">Buscar por nombre:</label>
+      <input type="text" id="search" [(ngModel)]="searchTerm" (input)="applyFilters()" class="w-full p-2 border border-gray-300 rounded" placeholder="Escriba el nombre..." />
+      </div>
+
+
+      <div class="mb-4">
+      <label for="productor" class="block mb-1">Productor:</label>
+      <select id="productor" [(ngModel)]="selectedProductor" (change)="applyFilters()" class="w-full p-2 border border-gray-300 rounded">
+         <option value="">Todos</option>
+         <option *ngFor="let productor of uniqueProductors" [value]="productor">{{ productor }}</option>
+      </select>
+      </div>
+
+
+      <div class="mb-4">
+      <label for="year" class="block mb-1">Año:</label>
+      <select id="year" [(ngModel)]="selectedYear" (change)="applyFilters()" class="w-full p-2 border border-gray-300 rounded">
+         <option value="">Todos</option>
+         <option *ngFor="let year of uniqueYears" [value]="year">{{ year }}</option>
+      </select>
+      </div>
+
+
+      <div class="mb-4">
+      <label for="color" class="block mb-1">Color:</label>
+      <select id="color" [(ngModel)]="selectedColor" (change)="applyFilters()" class="w-full p-2 border border-gray-300 rounded">
+         <option value="">Todos</option>
+         <option value="Tinto">Tinto</option>
+         <option value="Blanco">Blanco</option>
+         <option value="Rosado">Rosado</option>
+      </select>
+      </div>
+
+
+      <div class="mb-4">
+      <label for="type" class="block mb-1">Tipo:</label>
+      <select id="type" [(ngModel)]="selectedType" (change)="applyFilters()" class="w-full p-2 border border-gray-300 rounded">
+         <option value="">Todos</option>
+         <option value="Espumoso">Espumoso</option>
+         <option value="Tranquilo">Tranquilo</option>
+      </select>
+      </div>
+
+
+      <div class="mb-4">
+      <label for="price" class="block mb-1">Precio hasta:</label>
+      <input type="range" id="price" min="0" max="500" [(ngModel)]="selectedPrice" (change)="applyFilters()" class="w-full" />
+      <span class="block mt-1">{{ selectedPrice | currency:'EUR' }}</span>
+      </div>
+   </aside>
+
+
+<section class="w-3/4 ml-4">
+   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for(wine of filteredWines; track $index){
+
+         <div class="product-card">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="w-full h-96 bg-gray-100">
+               <img [src]="wine.image" [alt]="wine.name" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-4">
+               <h4 class="text-xl font-bold mb-2">{{ wine.name }}</h4>
+               <p class="text-lg text-green-600 mb-4">{{ wine.price | currency:'EUR' }}</p>
+               <button (click)="addToCart(wine)" class="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition duration-200">
+                  Añadir al carrito
+               </button>
+            </div>
+            </div>
+         </div>
+      }
+   </div>
+   </section>
+   
+   
+</div>
+</div>

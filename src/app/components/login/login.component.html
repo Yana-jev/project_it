@@ -1,16 +1,42 @@
 
-<form class="login-form max-w-sm mx-auto" [formGroup]="form" (ngSubmit)="onSubmit()">
-   <h1 class="m-5">Login</h1>
-   <div class="mb-5">
-      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-      <input formControlName = "email" type="email" id="email" placeholder="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"   />
-   </div>
-   <div class="mb-5">
-      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-      <input type="password" formControlName = "password" placeholder="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  />
-   </div>
-   <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-   </form>
-   
+<div class="flex items-center justify-center min-h-screen">
+<form class="login-form max-w-sm w-full" [formGroup]="form" (ngSubmit)="onSubmit()">
+   <img src="assets/img/logo.svg" alt="logo" class="mx-auto mb-5" width="100" />
+   <h1 class="text-center text-3xl font-bold text-wine mb-5">Iniciar sesión en la bodega</h1>
 
-<img src="assets/img/logo.svg" alt="logo">
+   <div class="mb-5">
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Correo electrónico</label>
+      <input formControlName="email" type="email" id="email" placeholder="Ingrese su correo"
+      class="bg-white border border-wine-light text-gray-900 text-sm rounded-lg focus:ring-wine focus:border-wine block w-full p-2.5" />
+      @if(form.get('email')?.touched && form.get('email')?.invalid){
+         <div class="text-red-500 text-sm mt-1">
+         El correo es obligatorio.
+         </div>
+
+      }
+   </div>
+
+   <div class="mb-5">
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
+      <input formControlName="password" type="password" id="password" placeholder="Ingrese su contraseña"
+      class="bg-white border border-wine-light text-gray-900 text-sm rounded-lg focus:ring-wine focus:border-wine block w-full p-2.5" />
+
+      @if(form.get('password')?.touched && form.get('email')?.invalid){
+         
+         <div class="text-red-500 text-sm mt-1">
+         La contraseña es obligatoria.
+         </div>
+      }
+</div>
+
+   <button type="submit"
+      class="text-white bg-wine hover:bg-wine-dark focus:ring-4 focus:outline-none focus:ring-wine-light font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">
+      Iniciar sesión
+   </button>
+
+   <div class="mt-5 text-center">
+      <span class="text-sm">¿No tienes una cuenta? </span>
+      <a routerLink="/register" class="text-wine font-bold hover:underline login-link">Crear una cuenta</a>
+   </div>
+</form>
+</div>

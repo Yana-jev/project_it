@@ -1,20 +1,63 @@
-:host{
-   display: grid;
-   grid-template-columns: 1fr 1fr ;
-   height: 100dvh;
-   align-items: center;
-   margin: 0 5%;
+
+
+$greencolor: #036400;
+$lightgreen: #0609;
+
+
+
+html, body {
+height: 100%;
+margin: 0;
 }
 
-h1{
-   font-size: 48px;
-   line-height: 56px;
-   font-weight: 800;
-
+.min-h-screen {
+min-height: 100vh;
 }
 
-img{
-   width: 20%;
-
+.flex {
+display: flex;
 }
 
+.items-center {
+align-items: center;
+}
+
+.justify-center {
+justify-content: center;
+}
+
+
+.text-wine {
+color: $greencolor; 
+}
+
+.bg-wine {
+background-color: $greencolor;
+}
+
+.bg-wine-dark {
+background-color: $greencolor;
+}
+
+.border-wine-light {
+border-color: $lightgreen; 
+}
+
+.focus\:ring-wine, .focus\:border-wine {
+--tw-ring-color: $greencolor; 
+}
+
+.text-red-500 {
+color: red; 
+}
+
+.mt-1 {
+margin-top: 0.25rem;
+}
+
+.mb-5 {
+margin-bottom: 1.25rem;
+}
+.login-link {
+   cursor: pointer;
+}

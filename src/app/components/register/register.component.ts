@@ -1,17 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../data/services/auth.service';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'register',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterOutlet],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
   
-  authService = inject(AuthService)
+  authService = inject(AuthService);
+  router = inject(Router); 
   
   form: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
@@ -23,9 +25,10 @@ export class RegisterComponent {
     if (this.form.valid) {
       const { email, password } = this.form.value;
       this.authService.signUp({ email, password }).subscribe({
-        next: (response: any) => { // Указываем тип данных для ответа
+        next: (response: any) => { 
           console.log('Registration successful', response);
-          // Перенаправить пользователя или вывести сообщение об успехе
+          this.router.navigate(['/home']); 
+
         },
         error: (error: any) => {
           console.log('Registration failed', error);

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +15,29 @@ export class AuthService {
   }
 
   login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post(`${this.baseApiUrl}login`, credentials, { withCredentials: true });
+    return this.http.post(`${this.baseApiUrl}login`, credentials, { withCredentials: true }).pipe(
+      tap(() => {
+
+        localStorage.setItem('isAuthenticated', 'true');
+      })
+    );
   }
 
-  logout() {
-    return this.http.post(`${this.baseApiUrl}logout`, {}, { withCredentials: true });
+  logout(): Observable<any> {
+    return this.http.post(`${this.baseApiUrl}logout`, {}, { withCredentials: true }).pipe(
+      tap(() => {
+
+        localStorage.removeItem('isAuthenticated');
+      })
+    );
   }
 
 
-
+  isAuthenticated(): boolean {
+    return localStorage.getItem('isAuthenticated') === 'true';
+  }
 }
+
+
+
+
