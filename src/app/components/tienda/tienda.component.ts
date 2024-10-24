@@ -102,7 +102,7 @@ import { FormsModule } from '@angular/forms';
         cantidad: 5,
         aroma: 'Aroma B',
         maridaje: 'Maridaje B',
-        price: 20,
+        price: 200,
         color: 'Blanco',
         type: 'Espumoso',
         sugar: 'Dulce',
@@ -147,15 +147,15 @@ import { FormsModule } from '@angular/forms';
 
     getUniqueYears(): string[] {
       return Array.from(new Set(this.wines
-        .map(wine => wine.year) // Получаем массив годов
+        .map(wine => wine.year) 
         .filter((year): year is string => year !== undefined) 
       ));
     }
   
 
     addToCart(wine: Wine) {
-      // Логика добавления вина в корзину (например, обновление сервиса корзины)
+
       console.log(`${wine.name} ha sido añadido al carrito.`);
-      // Здесь можно вызвать сервис для добавления товара в корзину
+
     }
 }

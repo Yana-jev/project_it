@@ -24,9 +24,8 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post(`${this.baseApiUrl}logout`, {}, { withCredentials: true }).pipe(
+    return this.http.get(`${this.baseApiUrl}logout`, { withCredentials: true }).pipe(
       tap(() => {
-
         localStorage.removeItem('isAuthenticated');
       })
     );
