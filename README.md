@@ -1,27 +1,47 @@
-# ProjectIt
+**Do Alella Eventos & Tienda**
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
+Esta es una aplicación web construida con Angular que muestra los eventos de Do Alella e incluye una tienda en línea. La aplicación está diseñada para proporcionar a los usuarios la información más reciente sobre los eventos organizados por Do Alella, y al mismo tiempo, ofrece una experiencia de compra fluida para adquirir productos relacionados.
 
-## Development server
+Funcionalidades
+Listado de Eventos: Muestra eventos futuros y pasados organizados por Do Alella con descripciones detalladas, fechas y ubicaciones.
+Detalles del Evento: Permite a los usuarios ver información detallada sobre cada evento, incluyendo horarios, ponentes, y más.
+Tienda en Línea: Funcionalidad de comercio electrónico integrada donde los usuarios pueden explorar y comprar productos relacionados con los eventos de Do Alella.
+Búsqueda y Filtros: Los usuarios pueden buscar eventos o productos específicos y filtrarlos por categoría o fecha.
+Diseño Responsivo: Optimizado para dispositivos de escritorio y móviles.
+Tecnologías:
+Frontend: Angular v18
+Estilos: Tailwind CSS
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Instalación
+Para ejecutar la aplicación localmente, sigue estos pasos:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Clona el repositorio:
 
-## Build
+bash
+*git clone https://github.com/tuusuario/do-alella-events-shop.git*
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Navega al directorio del proyecto:
 
-## Running unit tests
+bash
+*cd do-alella-events-shop*
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Instala las dependencias:
 
-## Running end-to-end tests
+bash
+*npm install*
+Ejecuta el servidor de desarrollo:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+bash
+*ng serve*
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Abre el navegador y navega a:
+http://localhost:4200
+
+Uso
+Una vez que la aplicación esté en funcionamiento:
+
+Navega por el listado de eventos para descubrir los próximos y los pasados eventos de Do Alella.
+Explora la tienda en línea para comprar productos relacionados con los eventos.
+Usa las funciones de búsqueda y filtrado para encontrar rápidamente eventos o productos específicos.
