@@ -5,6 +5,7 @@ import { EventsComponent } from './components/events/events.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 
 
@@ -13,7 +14,8 @@ export const routes: Routes = [
 
       { path: 'home', component: HomeComponent},
       { path: 'events', component: EventsComponent},
-      { path: 'tienda', component: TiendaComponent}
+      { path: 'tienda', component: TiendaComponent},
+      { path: 'quiz', component: QuizComponent },
    ]
 },
 
