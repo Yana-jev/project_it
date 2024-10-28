@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component} from '@angular/core';
 import { Wine } from '../../data/services/interfaces/wine';
 import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'tienda',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatDialogModule],
   templateUrl: './tienda.component.html',
   styleUrl: './tienda.component.scss'
 })
