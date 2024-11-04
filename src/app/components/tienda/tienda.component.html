@@ -57,20 +57,28 @@
       <input type="range" id="price" min="0" max="500" [(ngModel)]="selectedPrice" (change)="applyFilters()" class="w-full" />
       <span class="block mt-1">{{ selectedPrice | currency:'EUR' }}</span>
       </div>
+
+
+      <button [routerLink]="['/quiz']" routerLinkActive="router-link-active"  class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+         <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+            Encuentra tu vino ideal
+         </span>
+         </button>
+
    </aside>
 
 
 <section class="w-3/4 ml-4">
    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      @for(wine of filteredWines; track $index){
+      @for(wine of wines; track $index){
 
          <div class="product-card">
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="w-full h-96 bg-gray-100">
-               <img [src]="wine.image" [alt]="wine.name" class="w-full h-full object-cover" />
+               <img [src]="wine.image_url" [alt]="wine.wine_name" class="w-full h-full object-cover" />
             </div>
             <div class="p-4">
-               <h4 class="text-xl font-bold mb-2">{{ wine.name }}</h4>
+               <h4 class="text-xl font-bold mb-2">{{ wine.wine_name }}</h4>
                <p class="text-lg text-green-600 mb-4">{{ wine.price | currency:'EUR' }}</p>
                <button (click)="addToCart(wine)" class="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition duration-200">
                   Añadir al carrito
@@ -85,3 +93,10 @@
    
 </div>
 </div>
+
+
+
+
+
+
+ 

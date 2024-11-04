@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { EventService } from '../../data/services/event.service';
 import { JsonPipe } from '@angular/common';
+import { iEvent } from '../../data/services/interfaces/ievents';
 
 @Component({
   selector: 'events',
@@ -12,11 +13,12 @@ import { JsonPipe } from '@angular/common';
 export class EventsComponent {
 
   eventService = inject(EventService)
-  events:any = []
+  events: iEvent[] = []
 
   constructor(){
     this.eventService.getTestEvent()
     .subscribe(val =>{
+      console.log('Received events:', val);
       this.events = val
     })
   }

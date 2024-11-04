@@ -1,6 +1,6 @@
 export interface  Wine {
-   name: string;
-   productor?: string,
+   wine_name: string;
+   bodega_name?: string,
    variedad?: string,
    year?: string,
    cantidad?: number,
@@ -10,7 +10,7 @@ export interface  Wine {
    color: string;
    type: string;
    sugar: string;
-   image: string;
+   image_url: string;
    description: string,
    volumen?: string,
 

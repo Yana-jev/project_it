@@ -5,10 +5,11 @@ answer: string;
 score: number;  
 }
 
-// Интерфейс для вопроса
+
 export interface QuizQuestion {
 question: string;            
-options: QuizOption[];       
+options: QuizOption[];    
+image: string; 
 }
 
 

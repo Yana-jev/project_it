@@ -1,1 +1,18 @@
-<p>quiz works!</p>
+<div class="quiz-container" *ngIf="currentQuestionIndex < questions.length">
+<h2>{{ questions[currentQuestionIndex].question }}</h2>
+
+<img [src]="questions[currentQuestionIndex].image" alt="Image for question" class="question-image" />
+
+<div class="options">
+   <button 
+      *ngFor="let option of questions[currentQuestionIndex].options" 
+      (click)="selectAnswer(option.score)">
+      {{ option.answer }}
+   </button>
+</div>
+</div>
+
+<div *ngIf="currentQuestionIndex >= questions.length">
+<h2>Te recomendamos:</h2>
+
+</div>
