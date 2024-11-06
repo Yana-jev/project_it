@@ -17,60 +17,55 @@ import { WineService } from '../../data/services/wine.service';
   export class TiendaComponent {
 
     wines: Wine[] = [];
-    wineService = inject(WineService)
-  
-    filteredWines: Wine[] = [...this.wines]; 
-    uniqueProductors: string[] = this.getUniqueProductors(); 
-    uniqueYears: string[] = this.getUniqueYears(); 
+    filteredWines: Wine[] = [];
+    uniqueProductors: string[] = [];
     selectedColor: string = '';
     selectedType: string = '';
     selectedProductor: string = '';
-    selectedYear: string = '';
-    selectedPrice: number = 500; 
+    selectedPrice: number = 200; 
     searchTerm: string = '';
+    wineService = inject(WineService);
   
-
+    constructor() {
+      this.wineService.getWine()
+        .subscribe(val => {
+          console.log('Received wines:', val);
+          this.wines = val;
+          this.filteredWines = [...this.wines];
+          this.uniqueProductors = this.getUniqueProductors();
+          this.applyFilters();
+        });
+    }
+  
     applyFilters() {
+      
       this.filteredWines = this.wines.filter(wine => {
+        
         const matchesColor = this.selectedColor ? wine.color === this.selectedColor : true;
         const matchesType = this.selectedType ? wine.type === this.selectedType : true;
         const matchesProductor = this.selectedProductor ? wine.bodega_name === this.selectedProductor : true;
-        const matchesYear = this.selectedYear ? wine.year === this.selectedYear : true;
         const matchesPrice = wine.price <= this.selectedPrice;
         const matchesSearchTerm = wine.wine_name.toLowerCase().includes(this.searchTerm.toLowerCase());
   
-        return matchesColor && matchesType && matchesProductor && matchesYear && matchesPrice && matchesSearchTerm;
+        return matchesColor && matchesType && matchesProductor && matchesPrice && matchesSearchTerm;
       });
+
     }
   
-
     getUniqueProductors(): string[] {
       return Array.from(new Set(this.wines
-        .map(wine => wine.bodega_name) 
+        .map(wine => wine.bodega_name)
         .filter((productor): productor is string => productor !== undefined)
       ));
     }
   
 
-    getUniqueYears(): string[] {
-      return Array.from(new Set(this.wines
-        .map(wine => wine.year) 
-        .filter((year): year is string => year !== undefined) 
-      ));
-    }
   
-
     addToCart(wine: Wine) {
-
       console.log(`${wine.wine_name} ha sido añadido al carrito.`);
-
     }
 
-    constructor(){
-      this.wineService.getWine()
-      .subscribe(val =>{
-        console.log('Received events:', val);
-        this.wines = val
-      })
-    }
+    
 }
+
+

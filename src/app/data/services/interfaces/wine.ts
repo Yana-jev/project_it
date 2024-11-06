@@ -2,7 +2,7 @@ export interface  Wine {
    wine_name: string;
    bodega_name?: string,
    variedad?: string,
-   year?: string,
+   year?: number,
    cantidad?: number,
    aroma?: string,
    maridaje?: string,
