@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { WineService } from '../../data/services/wine.service';
+import { CartService } from '../../data/services/cart.service';
+import { CartItemService } from '../../data/services/cart-item.service';
+
 
 @Component({
   selector: 'tienda',
@@ -17,6 +20,7 @@ import { WineService } from '../../data/services/wine.service';
   export class TiendaComponent {
 
     wines: Wine[] = [];
+    selectedWine: Wine | null = null;
     filteredWines: Wine[] = [];
     uniqueProductors: string[] = [];
     selectedColor: string = '';
@@ -25,8 +29,9 @@ import { WineService } from '../../data/services/wine.service';
     selectedPrice: number = 200; 
     searchTerm: string = '';
     wineService = inject(WineService);
-  
-    constructor() {
+
+    constructor( private cartItemService: CartItemService,
+      ) {
       this.wineService.getWine()
         .subscribe(val => {
           console.log('Received wines:', val);
@@ -60,9 +65,36 @@ import { WineService } from '../../data/services/wine.service';
     }
   
 
+    addToCart(wine: Wine): void {
+      if (!wine) {
+        console.error('No wine selected!');
+        return;
+      }
   
-    addToCart(wine: Wine) {
-      console.log(`${wine.wine_name} ha sido añadido al carrito.`);
+
+      const cartId = 1;
+  
+      const cartItem = {
+        
+        cart_id: cartId, 
+        wine_id: wine.id_wine, 
+        quantity: 1, 
+        price_at_purchase: wine.price, 
+        created_at: new Date().toISOString(), 
+        updated_at: new Date().toISOString()
+      };
+  
+
+      this.cartItemService.addCartItem(cartId, cartItem).subscribe(
+        response => {
+          console.log('Product added to cart:', response);
+          alert('Product added to cart successfully!');
+        },
+        error => {
+          console.error('Error adding product to cart:', error);
+          alert('There was an error adding the product to the cart.');
+        }
+      );
     }
 
     

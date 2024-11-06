@@ -1,4 +1,5 @@
 export interface  Wine {
+   id_wine: number,
    wine_name: string;
    bodega_name?: string,
    variedad?: string,

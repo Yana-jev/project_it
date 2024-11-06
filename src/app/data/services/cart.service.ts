@@ -1,30 +1,38 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Wine } from '../../data/services/interfaces/wine'; 
+import {  Observable } from 'rxjs';
+
+import { HttpClient } from '@angular/common/http';
+import { Cart} from './interfaces/icart';
 
 @Injectable({
 providedIn: 'root'
 })
+
 export class CartService {
-private cartItems = new BehaviorSubject<Wine[]>([]);
+   private baseApiUrl = 'http://localhost:3000/carts'; // URL для работы с корзинами
 
+constructor(private http: HttpClient) {}
 
-cartItems$ = this.cartItems.asObservable();
-
-
-addToCart(item: Wine) {
-   const currentItems = this.cartItems.getValue();
-   this.cartItems.next([...currentItems, item]);
+getCarts(): Observable<Cart[]> {
+   return this.http.get<Cart[]>(`${this.baseApiUrl}`);
 }
 
 
-removeFromCart(item: Wine) {
-   const updatedItems = this.cartItems.getValue().filter(i => i !== item);
-   this.cartItems.next(updatedItems);
+getCartById(cartId: number): Observable<Cart> {
+   return this.http.get<Cart>(`${this.baseApiUrl}/${cartId}`);
 }
 
 
-clearCart() {
-   this.cartItems.next([]);
+addCart(cartData: Cart): Observable<Cart> {
+   return this.http.post<Cart>(this.baseApiUrl, cartData);
+}
+
+
+updateCart(cartId: number, cartData: Cart): Observable<Cart> {
+   return this.http.patch<Cart>(`${this.baseApiUrl}/${cartId}`, cartData);
+}
+
+deleteCart(cartId: number): Observable<void> {
+   return this.http.delete<void>(`${this.baseApiUrl}/${cartId}`);
 }
 }

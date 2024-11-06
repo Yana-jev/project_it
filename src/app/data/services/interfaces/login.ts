@@ -8,3 +8,4 @@ export interface iSignUp {
    email: string,
    password: string
 }
+
