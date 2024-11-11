@@ -1,25 +1,49 @@
-@for(event of events; track $index){
 
-   <div class="event-card container mx-auto p-6 grid grid-cols-1 md:grid-cols-5 items-center gap-4">
+<div class="container mx-auto flex flex-col items-center p-6 space-y-6">
+
+<div class="flex items-center space-x-3">
+   <label for="start-date" class="text-lg font-semibold text-gray-700">От:</label>
+   <input 
+      id="start-date"
+      type="date" 
+      class="border border-gray-300 rounded-lg p-2 text-gray-600 focus:ring-2 focus:ring-[#A67B7B] focus:outline-none"
+      [(ngModel)]="startDate" (change)="filterEvents()"> 
+
+   <label for="end-date" class="text-lg font-semibold text-gray-700">До:</label>
+   <input 
+      id="end-date"
+      type="date" 
+      class="border border-gray-300 rounded-lg p-2 text-gray-600 focus:ring-2 focus:ring-[#A67B7B] focus:outline-none"
+      [(ngModel)]="endDate" (change)="filterEvents()"> 
+</div>
+
+
+<div *ngFor="let event of filteredEvents; let i = index">
+   <div class="bg-white shadow-lg rounded-lg p-5 flex items-start space-x-6 max-w-5xl">
+      <!-- Image Section -->
+      <img 
+      [src]="'http://localhost:3000/' + event.image_url" 
+      alt="{{ event.event_name }}" 
+      class="w-64 h-40 object-cover rounded-md shadow-md"
+      >
+
+      <div class="flex flex-col justify-between flex-1 space-y-2">
+      <div>
+         <h3 class="text-2xl font-bold text-gray-800">{{ event.event_name }}</h3>
+         <p class="text-gray-600">{{ event.bodega_name }}</p>
+         <p class="text-gray-700 mt-2">{{ event.description }}</p>
+      </div>
+      </div>
    
-      <div class="img-name flex gap-5 items-center col-span-1">
-         <img src="assets/img/event.jpg" alt="image" class="event-image w-16 h-16 rounded-full">
-         <div class="event-card-name flex flex-col gap-2">
-            <strong> {{event.event_name}} </strong>
-            <span> {{event.bodega_name}} </span>
-         </div>
-      </div>
-      <div class="event-description col-span-3 md:col-span-2">
-      {{event.description}}
-      </div>
-      <div class="card-tags flex gap-2 col-span-2 md:col-span-1 items-center px-8 py-4">
-         {{event.date}}
-      </div>
-      <div class="card-action justify-end md:justify-end items-center col-span-1">
-         <button class="btn bg-[#380101] text-azure px-5 py-2 font-bold text-sm">añadir</button>
-      </div>
-   </div> 
-}
 
+      <div class="flex flex-col items-end space-y-3">
+      <p class="text-gray-500 text-sm">{{ event.date.split('T')[0] }}</p> <!-- Показать только дату без времени -->
+      <button 
+         class="bg-[#A67B7B] text-white font-semibold py-2 px-6 rounded-lg hover:bg-[#B88989] transition duration-200">
+         añadir
+      </button>
+      </div>
+   </div>
+</div>
 
-
+</div>
