@@ -8,4 +8,7 @@ export interface iEvent {
    "updated_at": string,
    "user_id": number,
    "image_url": string; 
+   "location": string;
+   "latitude": number;  // Широта
+  "longitude": number; // Долгота
 }

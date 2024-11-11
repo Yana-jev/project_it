@@ -12,30 +12,18 @@
 <section class="py-12 bg-gray-50">
    <h2 class="text-3xl font-bold mb-6 text-center">Próximos Eventos</h2>
    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="event-card bg-white p-4 rounded-lg shadow-md">
-      <img src="assets/img/event1.jpg" alt="Evento 1" class="w-full h-40 object-cover rounded-lg mb-4">
-      <h3 class="text-xl font-semibold mb-2">Tour de Cata de Vinos</h3>
-      <p class="text-gray-600 mb-4">Únete a una cata especial en una de las mejores bodegas de Alella.</p>
-      <a href="#" class="text-blue-600 hover:text-blue-800">Más información &rarr;</a>
-      </div>
-      <div class="event-card bg-white p-4 rounded-lg shadow-md">
-      <img src="assets/img/event2.jpg" alt="Evento 2" class="w-full h-40 object-cover rounded-lg mb-4">
-      <h3 class="text-xl font-semibold mb-2">Feria Exclusiva de Vinos</h3>
-      <p class="text-gray-600 mb-4">No te pierdas la feria anual de vinos de DO Alella con vinos exclusivos.</p>
-      <a href="#" class="text-blue-600 hover:text-blue-800">Más información &rarr;</a>
-      </div>
-      <div class="event-card bg-white p-4 rounded-lg shadow-md">
-      <img src="assets/img/event3.jpg" alt="Evento 3" class="w-full h-40 object-cover rounded-lg mb-4">
-      <h3 class="text-xl font-semibold mb-2">Picnic en el Viñedo</h3>
-      <p class="text-gray-600 mb-4">Disfruta de un picnic relajante con vino en uno de nuestros viñedos.</p>
-      <a href="#" class="text-blue-600 hover:text-blue-800">Más información &rarr;</a>
+
+      <div *ngFor="let event of limitedEvents" class="event-card bg-white p-4 rounded-lg shadow-md">
+         <img [src]="'http://localhost:3000/' + event.image_url" alt="{{ event.event_name }}" class="w-full h-40 object-cover rounded-lg mb-4">
+         <h3 class="text-xl font-semibold mb-2">{{ event.event_name }}</h3>
+         <p class="text-gray-600 mb-4">{{ event.description }}</p>
+         <a (click)="goToEventDetail(event.id_event)" class="text-blue-600 hover:text-blue-800 cursor-pointer">Más información &rarr;</a>
       </div>
    </div>
    <div class="text-center mt-8">
       <a href="/eventos" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700">Mostrar todos los eventos</a>
    </div>
 </section>
-
 
 <section class="py-12">
    <h2 class="text-3xl font-bold mb-6 text-center">Nuestras Bodegas</h2>
