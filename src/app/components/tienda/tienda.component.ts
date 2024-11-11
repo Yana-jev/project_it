@@ -2,17 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, inject} from '@angular/core';
 import { Wine } from '../../data/services/interfaces/wine';
 import { FormsModule } from '@angular/forms';
-import { MatDialogModule } from '@angular/material/dialog';
-import { RouterLink, RouterOutlet } from '@angular/router';
 import { WineService } from '../../data/services/wine.service';
 import { CartService } from '../../data/services/cart.service';
-import { CartItemService } from '../../data/services/cart-item.service';
 
 
 @Component({
   selector: 'tienda',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatDialogModule, RouterOutlet, RouterLink],
+  imports: [CommonModule, FormsModule],
   templateUrl: './tienda.component.html',
   styleUrl: './tienda.component.scss'
 })
@@ -29,9 +26,9 @@ import { CartItemService } from '../../data/services/cart-item.service';
     selectedPrice: number = 200; 
     searchTerm: string = '';
     wineService = inject(WineService);
+    cartService = inject(CartService)
 
-    constructor( private cartItemService: CartItemService,
-      ) {
+    constructor() {
       this.wineService.getWine()
         .subscribe(val => {
           console.log('Received wines:', val);
@@ -63,41 +60,21 @@ import { CartItemService } from '../../data/services/cart-item.service';
         .filter((productor): productor is string => productor !== undefined)
       ));
     }
-  
 
-    addToCart(wine: Wine): void {
-      if (!wine) {
-        console.error('No wine selected!');
-        return;
-      }
-  
 
-      const cartId = 1;
-  
-      const cartItem = {
-        
-        cart_id: cartId, 
-        wine_id: wine.id_wine, 
-        quantity: 1, 
-        price_at_purchase: wine.price, 
-        created_at: new Date().toISOString(), 
-        updated_at: new Date().toISOString()
-      };
-  
-
-      this.cartItemService.addCartItem(cartId, cartItem).subscribe(
-        response => {
-          console.log('Product added to cart:', response);
-          alert('Product added to cart successfully!');
+    addToCart(wine: Wine, quantity: number = 1): void {
+      // Вызываем сервис для добавления товара в корзину
+      this.cartService.addItemToCart(wine.id_wine, quantity).subscribe({
+        next: (response) => {
+          console.log('Товар добавлен в корзину:', response);
+          // Тут можно добавить логику для уведомлений или обновлений UI
         },
-        error => {
-          console.error('Error adding product to cart:', error);
-          alert('There was an error adding the product to the cart.');
+        error: (err) => {
+          console.error('Ошибка при добавлении товара в корзину:', err);
         }
-      );
+      });
     }
-
-    
+  
 }
 
 

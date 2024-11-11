@@ -69,7 +69,7 @@
                <span>{{ wine.bodega_name }}</span>
                <p class="text-lg text-green-600 mb-4">{{ wine.price | currency:'EUR' }}</p>
                <button 
-               (click)="addToCart(wine)" 
+               (click)="addToCart(wine, 1)" 
                class="w-full bg-[#A67B7B] text-white font-semibold py-2 rounded hover:bg-[#B88989] transition duration-200">
                Añadir al carrito
                </button>
