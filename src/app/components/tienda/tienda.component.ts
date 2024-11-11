@@ -63,11 +63,9 @@ import { CartService } from '../../data/services/cart.service';
 
 
     addToCart(wine: Wine, quantity: number = 1): void {
-      // Вызываем сервис для добавления товара в корзину
       this.cartService.addItemToCart(wine.id_wine, quantity).subscribe({
         next: (response) => {
           console.log('Товар добавлен в корзину:', response);
-          // Тут можно добавить логику для уведомлений или обновлений UI
         },
         error: (err) => {
           console.error('Ошибка при добавлении товара в корзину:', err);

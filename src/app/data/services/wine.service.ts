@@ -13,7 +13,9 @@ baseApiUrl = 'http://localhost:3000/wine'
 
 http: HttpClient = inject(HttpClient);
 
-
+getWinesByCriteria(criteria: { type: string; sugar: string }) {
+   return this.http.get<Wine[]>(`${this.baseApiUrl}?type=${criteria.type}&sugar=${criteria.sugar}`, { withCredentials: true }).toPromise();
+ }
 
 getWine(): Observable<Wine[]>{
    return this.http.get<Wine[]>(`${this.baseApiUrl}`, { withCredentials: true }) 

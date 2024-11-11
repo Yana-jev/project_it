@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../data/services/auth.service';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'register',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterOutlet],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })

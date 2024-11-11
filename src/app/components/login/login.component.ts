@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../data/services/auth.service';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterOutlet],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

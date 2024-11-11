@@ -16,3 +16,4 @@ image: string;
 export interface QuizResult {
 wines: Wine[];  
 }
+

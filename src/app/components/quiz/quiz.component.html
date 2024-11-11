@@ -1,18 +1,37 @@
+
 <div class="quiz-container" *ngIf="currentQuestionIndex < questions.length">
 <h2>{{ questions[currentQuestionIndex].question }}</h2>
-
 <img [src]="questions[currentQuestionIndex].image" alt="Image for question" class="question-image" />
-
 <div class="options">
-   <button 
-      *ngFor="let option of questions[currentQuestionIndex].options" 
-      (click)="selectAnswer(option.score)">
-      {{ option.answer }}
-   </button>
+<button *ngFor="let option of questions[currentQuestionIndex].options" (click)="selectAnswer(option.score)">
+   {{ option.answer }}
+</button>
 </div>
 </div>
 
-<div *ngIf="currentQuestionIndex >= questions.length">
-<h2>Te recomendamos:</h2>
 
+<div *ngIf="recommendedWines && recommendedWines.length > 0" class="flex justify-center items-center bg-gray-100">
+<div class="w-full max-w-screen-lg px-4">
+   <h2 class="text-center text-2xl font-semibold mb-6">Te recomendamos:</h2>
+   <div class="wine-card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
+      <div *ngFor="let wine of recommendedWines" class="wine-card bg-white shadow-lg rounded-lg w-full h-[450px] overflow-hidden flex flex-col">
+
+      <div class="w-full h-64 overflow-hidden">
+         <img [src]="'http://localhost:3000/' + wine.image_url" alt="{{ wine.wine_name }}" class="w-full h-full object-contain" />
+      </div>
+      <div class="wine-info p-4 flex-grow">
+         <h3 class="font-semibold text-xl text-gray-800 truncate">{{ wine.wine_name }}</h3>
+         <p class="text-sm text-gray-500">{{ wine.bodega_name }}</p>
+         <p class="text-gray-700 text-sm mt-2">{{ wine.description }}</p>
+         <p class="text-green-600 font-semibold mt-2">{{ wine.price }}€</p>
+         <button (click)="addToCart(wine)" class="w-full bg-[#d5a6bd] text-white font-semibold py-2 rounded hover:bg-[#c57ca7] transition duration-200">
+            añadir
+         </button>
+      </div>
+      </div>
+   </div>
 </div>
+</div>
+
+
+
