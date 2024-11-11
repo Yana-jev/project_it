@@ -3,6 +3,7 @@ import { EventService } from '../../data/services/event.service';
 import { CommonModule} from '@angular/common';
 import { iEvent } from '../../data/services/interfaces/ievents';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'events',
@@ -19,14 +20,15 @@ export class EventsComponent {
   filteredEvents: iEvent[] = []; 
   startDate: string = ''; 
   endDate: string = ''; 
+  
 
-  constructor() {
+  constructor(private router: Router) {
 
     this.eventService.getTestEvent()
       .subscribe(val => {
         console.log('Received events:', val);
         this.events = val;
-        this.filteredEvents = val; 
+        this.filteredEvents = val;
       });
   }
 
@@ -48,6 +50,10 @@ export class EventsComponent {
     console.log('Filtered Events:', this.filteredEvents);
   }
 
+  goToEventDetail(eventId: number) {
+
+    this.router.navigate([`/event-detail/${eventId}`]);  
+  }
 }
 
 

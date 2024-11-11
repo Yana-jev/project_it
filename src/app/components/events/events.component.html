@@ -1,49 +1,61 @@
-
 <div class="container mx-auto flex flex-col items-center p-6 space-y-6">
-
-<div class="flex items-center space-x-3">
-   <label for="start-date" class="text-lg font-semibold text-gray-700">От:</label>
-   <input 
-      id="start-date"
-      type="date" 
-      class="border border-gray-300 rounded-lg p-2 text-gray-600 focus:ring-2 focus:ring-[#A67B7B] focus:outline-none"
-      [(ngModel)]="startDate" (change)="filterEvents()"> 
-
-   <label for="end-date" class="text-lg font-semibold text-gray-700">До:</label>
-   <input 
-      id="end-date"
-      type="date" 
-      class="border border-gray-300 rounded-lg p-2 text-gray-600 focus:ring-2 focus:ring-[#A67B7B] focus:outline-none"
-      [(ngModel)]="endDate" (change)="filterEvents()"> 
-</div>
-
-
-<div *ngFor="let event of filteredEvents; let i = index">
-   <div class="bg-white shadow-lg rounded-lg p-5 flex items-start space-x-6 max-w-5xl">
-      <!-- Image Section -->
-      <img 
-      [src]="'http://localhost:3000/' + event.image_url" 
-      alt="{{ event.event_name }}" 
-      class="w-64 h-40 object-cover rounded-md shadow-md"
-      >
-
-      <div class="flex flex-col justify-between flex-1 space-y-2">
-      <div>
-         <h3 class="text-2xl font-bold text-gray-800">{{ event.event_name }}</h3>
-         <p class="text-gray-600">{{ event.bodega_name }}</p>
-         <p class="text-gray-700 mt-2">{{ event.description }}</p>
-      </div>
-      </div>
-   
-
-      <div class="flex flex-col items-end space-y-3">
-      <p class="text-gray-500 text-sm">{{ event.date.split('T')[0] }}</p> <!-- Показать только дату без времени -->
-      <button 
-         class="bg-[#A67B7B] text-white font-semibold py-2 px-6 rounded-lg hover:bg-[#B88989] transition duration-200">
-         añadir
-      </button>
+   <!-- Welcome Banner -->
+   <div class="w-full h-64 bg-cover bg-center rounded-lg mb-6" style="background-image: url('http://localhost:3000/path_to_your_image.jpg');">
+      <div class="flex justify-center items-center h-full bg-black bg-opacity-50 text-white text-3xl font-semibold">
+         ¡Bienvenidos a nuestros eventos! Únete a nosotros para disfrutar de experiencias únicas.
       </div>
    </div>
-</div>
 
+   <!-- Date Filter -->
+   <div class="flex items-center space-x-3 mb-6">
+      <label for="start-date" class="text-lg font-semibold text-gray-700">Filtrar por fechas:</label>
+      <input 
+         id="start-date"
+         type="date" 
+         class="border border-gray-300 rounded-lg p-2 text-gray-600 focus:ring-2 focus:ring-[#A67B7B] focus:outline-none"
+         [(ngModel)]="startDate" (change)="filterEvents()"> 
+
+      <input 
+         id="end-date"
+         type="date" 
+         class="border border-gray-300 rounded-lg p-2 text-gray-600 focus:ring-2 focus:ring-[#A67B7B] focus:outline-none"
+         [(ngModel)]="endDate" (change)="filterEvents()">
+   </div>
+
+   <!-- Event Cards -->
+   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div *ngFor="let event of filteredEvents; let i = index" 
+           class="bg-white shadow-lg rounded-lg p-5 flex flex-col items-stretch h-[400px] cursor-pointer" 
+           (click)="goToEventDetail(event.id_event)">
+
+         <!-- Event Image -->
+         <img 
+            [src]="'http://localhost:3000/' + event.image_url" 
+            alt="{{ event.event_name }}" 
+            class="w-full h-48 object-cover rounded-md shadow-md mb-4"
+         >
+
+         <!-- Event Title and Details -->
+         <div class="flex flex-col flex-1 space-y-2">
+            <!-- Event Title with fixed height to allow for 2 lines -->
+            <h3 class="text-2xl font-bold text-gray-800" style="min-height: 3rem; line-height: 1.5rem;">
+               {{ event.event_name }}
+            </h3>
+
+            <!-- Bodega Name with spacing to align uniformly across cards -->
+            <p class="text-gray-600 mt-2">{{ event.bodega_name }}</p>
+
+            <!-- Event Date -->
+            <p class="text-gray-600 mt-4">Cuando: {{ event.date.split('T')[0] }}</p>
+         </div>
+
+         <!-- Add Button -->
+         <div class="flex items-end mt-auto">
+            <button 
+               class="bg-[#A67B7B] text-white font-semibold py-1 px-5 rounded-lg hover:bg-[#B88989] transition duration-200">
+               añadir
+            </button>
+         </div>
+      </div>
+   </div>
 </div>
