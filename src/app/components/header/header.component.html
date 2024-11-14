@@ -38,6 +38,11 @@
       <li>
         <a href="/cart" class="flex  py-2 px-3 text-gray-900 hover:text-blue-700">
           <i class="fas fa-shopping-cart"></i>
+          @if(itemCount() > 0){
+            <span class="ml-2 text-sm bg-blue-500 text-white rounded-full px-2 py-1">
+              {{ itemCount() }}
+            </span>
+          }
         </a></li>
     </ul>
   </div>

@@ -15,9 +15,13 @@
 
             <!-- 2 Часть: Добавить/Уменьшить количество -->
             <div class="flex items-center justify-center w-1/4 space-x-2">
-               <button (click)="updateQuantity(item, item.quantity - 1)" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-xl rounded-full hover:bg-gray-300">-</button>
+               <button (click)="updateQuantity(item, item.quantity - 1)" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-xl rounded-full hover:bg-gray-300">
+                  <i class="fa fa-minus"></i> <!-- Используем иконку Font Awesome для минуса -->
+               </button>
                <span class="text-lg">{{ item.quantity }}</span>
-               <button (click)="updateQuantity(item, item.quantity + 1)" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-xl rounded-full hover:bg-gray-300">+</button>
+               <button (click)="updateQuantity(item, item.quantity + 1)" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-xl rounded-full hover:bg-gray-300">
+                  <i class="fa fa-plus"></i> <!-- Используем иконку Font Awesome для плюса -->
+               </button>
             </div>
 
             <!-- 3 Часть: Общая стоимость товара -->
@@ -27,8 +31,8 @@
 
             <!-- 4 Часть: Кнопка удаления -->
             <div class="flex items-center justify-center w-1/4">
-               <button (click)="removeItemFromCart(item)" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">
-                  Eliminar
+               <button (click)="removeItemFromCart(item)" class="w-10 h-10 flex items-center justify-center rounded-full bg-red-500 text-white hover:bg-red-600">
+                  <i class="fa fa-times"></i> <!-- Используем иконку Font Awesome для X -->
                </button>
             </div>
          </div>

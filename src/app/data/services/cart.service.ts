@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { CartItem } from './interfaces/icartitem'; 
 
 @Injectable({
@@ -25,6 +25,12 @@ export class CartService {
       });
    }
    
+   getTotalItems(): Observable<number> {
+      return this.http.get<{totalItems: number}>(`${this.apiUrl}/total`, {withCredentials: true,
+
+      }).pipe(map(response=>response.totalItems));
+   }
+
 
    addItemToCart(wineId: number, quantity: number): Observable<CartItem> {
       return this.http.post<CartItem>(`${this.apiUrl}/add`, { wineId, quantity }, {
