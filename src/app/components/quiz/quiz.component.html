@@ -1,5 +1,5 @@
 
-<div class="quiz-container" *ngIf="currentQuestionIndex < questions.length">
+<div class="quiz-container" class="container mx-auto mt-10 px-4" *ngIf="currentQuestionIndex < questions.length">
 <h2>{{ questions[currentQuestionIndex].question }}</h2>
 <img [src]="questions[currentQuestionIndex].image" alt="Image for question" class="question-image" />
 <div class="options">

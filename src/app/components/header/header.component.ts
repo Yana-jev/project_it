@@ -16,7 +16,15 @@ export class HeaderComponent {
   itemCount = signal(0);
 
   constructor(private cartService: CartService) {
+    this.updateItemCount();
 
+    this.cartService.cartUpdates$.subscribe(() => {
+      this.updateItemCount(); 
+    });
+  }
+
+
+  private updateItemCount(): void {
     this.cartService.getTotalItems().subscribe((totalItems) => {
       this.itemCount.set(totalItems);
     });

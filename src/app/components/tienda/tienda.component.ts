@@ -4,6 +4,7 @@ import { Wine } from '../../data/services/interfaces/wine';
 import { FormsModule } from '@angular/forms';
 import { WineService } from '../../data/services/wine.service';
 import { CartService } from '../../data/services/cart.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,9 +27,10 @@ import { CartService } from '../../data/services/cart.service';
     selectedPrice: number = 200; 
     searchTerm: string = '';
     wineService = inject(WineService);
-    cartService = inject(CartService)
+    cartService = inject(CartService);
+    
 
-    constructor() {
+    constructor(private router: Router) {
       this.wineService.getWine()
         .subscribe(val => {
           console.log('Received wines:', val);
@@ -72,7 +74,9 @@ import { CartService } from '../../data/services/cart.service';
         }
       });
     }
-  
+    goToWineDetail(wineId: number){
+      this.router.navigate([`/wine/${wineId}`]);  
+    }
 }
 
 

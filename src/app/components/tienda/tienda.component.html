@@ -1,4 +1,4 @@
-<div class="container mx-auto px-4 py-6">
+<div class="container mx-auto px-4 py-4">
 <div class="flex">
 
    <aside class="w-1/4 bg-gray-100 p-4 rounded-lg shadow-md">
@@ -55,9 +55,9 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
    @for(wine of filteredWines; track $index){
 
-      <div class="product-card w-[361.5px]">
-         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div class="h-[553px] bg-gray-100 flex items-center justify-center">
+      <div class="product-card w-[361.5px] cursor-pointer">
+         <div class="bg-white rounded-lg shadow-lg overflow-hidden" >
+            <div class="h-[553px] bg-gray-100 flex items-center justify-center" >
                <img 
                [src]="'http://localhost:3000/' + wine.image_url" 
                [alt]="wine.wine_name" 

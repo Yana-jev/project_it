@@ -8,6 +8,7 @@ import { TiendaComponent } from './components/tienda/tienda.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { CartComponent } from './components/cart/cart.component';
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
+import { WineDetailComponent } from './components/wine-detail/wine-detail.component';
 
 
 
@@ -15,13 +16,13 @@ import { EventDetailComponent } from './components/event-detail/event-detail.com
 export const routes: Routes = [
    {path: '',  component: HeaderComponent, children:[
       { path: '', component: HomeComponent},
-
       { path: 'home', component: HomeComponent},
       { path: 'events', component: EventsComponent},
       { path: 'tienda', component: TiendaComponent},
       { path: 'cart', component: CartComponent },
       { path: 'quiz', component: QuizComponent },
-      { path: 'event-detail/:id', component: EventDetailComponent }
+      { path: 'event-detail/:id', component: EventDetailComponent },
+      { path: 'wine/:id', component: WineDetailComponent}
 
    ]
 },
