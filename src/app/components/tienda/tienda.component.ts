@@ -26,6 +26,7 @@ import { Router } from '@angular/router';
     selectedProductor: string = '';
     selectedPrice: number = 200; 
     searchTerm: string = '';
+    priceSortOrder: string = '';
     wineService = inject(WineService);
     cartService = inject(CartService);
     
@@ -42,19 +43,26 @@ import { Router } from '@angular/router';
     }
   
     applyFilters() {
-      
-      this.filteredWines = this.wines.filter(wine => {
-        
-        const matchesColor = this.selectedColor ? wine.color === this.selectedColor : true;
-        const matchesType = this.selectedType ? wine.type === this.selectedType : true;
-        const matchesProductor = this.selectedProductor ? wine.bodega_name === this.selectedProductor : true;
-        const matchesPrice = wine.price <= this.selectedPrice;
-        const matchesSearchTerm = wine.wine_name.toLowerCase().includes(this.searchTerm.toLowerCase());
-  
-        return matchesColor && matchesType && matchesProductor && matchesPrice && matchesSearchTerm;
-      });
-
+      this.filteredWines = this.wines
+        .filter((wine: Wine) => {
+          const matchesColor = this.selectedColor ? wine.color === this.selectedColor : true;
+          const matchesType = this.selectedType ? wine.type === this.selectedType : true;
+          const matchesProductor = this.selectedProductor ? wine.bodega_name === this.selectedProductor : true;
+          const matchesPrice = wine.price <= this.selectedPrice;
+          const matchesSearchTerm = wine.wine_name.toLowerCase().includes(this.searchTerm.toLowerCase());
+    
+          return matchesColor && matchesType && matchesProductor && matchesPrice && matchesSearchTerm;
+        })
+        .sort((a: Wine, b: Wine) => {
+          if (this.priceSortOrder === 'asc') {
+            return a.price - b.price; // Сортировка по возрастанию
+          } else if (this.priceSortOrder === 'desc') {
+            return b.price - a.price; // Сортировка по убыванию
+          }
+          return 0; // Без сортировки
+        });
     }
+    
   
     getUniqueProductors(): string[] {
       return Array.from(new Set(this.wines

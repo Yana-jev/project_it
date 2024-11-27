@@ -4,11 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { iEvent } from '../../data/services/interfaces/ievents';
 import mapboxgl from 'mapbox-gl';
 import { CommonModule } from '@angular/common';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'event-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FooterComponent],
   templateUrl: './event-detail.component.html',
   styleUrl: './event-detail.component.scss'
 })

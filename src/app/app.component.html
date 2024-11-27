@@ -1,2 +1,13 @@
-
-<router-outlet></router-outlet>
+<div class="flex flex-col min-h-screen">
+   <!-- Шапка (header) -->
+   <header></header>
+ 
+   <!-- Основное содержимое -->
+   <main class="flex-grow">
+     <router-outlet></router-outlet>
+   </main>
+ 
+   <!-- Футер -->
+   <app-footer></app-footer>
+ </div>
+ 

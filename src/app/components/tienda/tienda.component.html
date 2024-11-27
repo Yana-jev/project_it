@@ -48,6 +48,16 @@
       <span class="block mt-1">{{ selectedPrice | currency:'EUR' }}</span>
       </div>
 
+   <div class="mb-4">
+      <label for="sortPrice" class="block mb-1">Ordenar por precio:</label>
+      <select id="sortPrice" [(ngModel)]="priceSortOrder" (change)="applyFilters()" class="w-full p-2 border border-gray-300 rounded">
+         <option value="">Sin orden</option>
+         <option value="asc">De menor a mayor</option>
+         <option value="desc">De mayor a menor</option>
+      </select>
+      </div>
+      
+
    </aside>
 
 
@@ -62,6 +72,7 @@
                [src]="'http://localhost:3000/' + wine.image_url" 
                [alt]="wine.wine_name" 
                class="object-contain w-[361.5px] h-[553px]" 
+               (click)="goToWineDetail(wine.id_wine)"
                />
             </div>
             <div class="p-4">
@@ -90,4 +101,3 @@
 
 
 
- 

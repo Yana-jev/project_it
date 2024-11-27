@@ -1,0 +1,36 @@
+$beige: #EFECEC;
+$brown: #5C4033;
+$button: #944a56;
+$grey: #333;
+.popup-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.5);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 1000;
+}
+
+.popup-content {
+color: $grey;
+background: $beige;
+padding: 16px;
+border-radius: 5px;
+text-align: center;
+width: 300px;
+}
+
+button {
+background-color: $button;
+color: #fff;
+padding: 0.8em 1.5em;
+margin: 1em 1.5em;
+border: none;
+font-size: 1em;
+cursor: pointer;
+transition: background-color 0.3s;
+}
