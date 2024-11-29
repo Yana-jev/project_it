@@ -16,3 +16,11 @@ export interface  Wine {
    volumen?: string,
 
 }
+export interface WineFilterCriteria {
+   color?: string;
+   type?: string;
+   maridaje?: string;
+   aroma?: string;
+   price?: string;
+ }
+ 

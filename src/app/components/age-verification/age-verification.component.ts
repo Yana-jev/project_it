@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'age-verification',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './age-verification.component.html',
   styleUrl: './age-verification.component.scss'
 })

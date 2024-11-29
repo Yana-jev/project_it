@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams} from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Wine } from './interfaces/wine';
+import { Wine, WineFilterCriteria} from './interfaces/wine';
+
 
 
 @Injectable({
@@ -13,9 +14,24 @@ baseApiUrl = 'http://localhost:3000/wine'
 
 http: HttpClient = inject(HttpClient);
 
-getWinesByCriteria(criteria: { type: string; sugar: string }) {
-   return this.http.get<Wine[]>(`${this.baseApiUrl}?type=${criteria.type}&sugar=${criteria.sugar}`, { withCredentials: true }).toPromise();
-}
+
+filterWines(params: any): Observable<Wine[]> {
+   const queryParams = new URLSearchParams();
+ 
+   Object.keys(params).forEach((key) => {
+     if (Array.isArray(params[key])) {
+       // Если параметр — массив (например, ароматы), преобразуем в строку
+       queryParams.append(key, params[key].join(','));
+     } else if (params[key]) {
+       queryParams.append(key, params[key]);
+     }
+   });
+ 
+   return this.http.get<Wine[]>(`${this.baseApiUrl}/filter?${queryParams.toString()}`, {
+     withCredentials: true,
+   });
+ }
+ 
 
 getWine(): Observable<Wine[]>{
    return this.http.get<Wine[]>(`${this.baseApiUrl}`, { withCredentials: true }) 
@@ -36,5 +52,6 @@ getWineById(id: string):Observable<Wine>{
 deleteWine(id: number): Observable<any> {
    return this.http.delete(`${this.baseApiUrl}/${id}`, { withCredentials: true });
 }
+
 constructor() { }
 }

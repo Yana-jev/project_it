@@ -4,14 +4,14 @@ import { WineService } from '../../data/services/wine.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../data/services/cart.service';
-import { FooterComponent } from "../footer/footer.component";
+
 
 
 
 @Component({
   selector: 'wine-detail',
   standalone: true,
-  imports: [CommonModule, FooterComponent],
+  imports: [CommonModule],
   templateUrl: './wine-detail.component.html',
   styleUrl: './wine-detail.component.scss'
 })

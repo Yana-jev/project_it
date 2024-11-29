@@ -55,11 +55,11 @@ import { Router } from '@angular/router';
         })
         .sort((a: Wine, b: Wine) => {
           if (this.priceSortOrder === 'asc') {
-            return a.price - b.price; // Сортировка по возрастанию
+            return a.price - b.price;
           } else if (this.priceSortOrder === 'desc') {
-            return b.price - a.price; // Сортировка по убыванию
+            return b.price - a.price;
           }
-          return 0; // Без сортировки
+          return 0; 
         });
     }
     

@@ -58,7 +58,7 @@ export class QuizComponent {
       criteria = { type: 'Espumoso', sugar: 'sweet' };
     }
 
-    this.recommendedWines = await this.wineService.getWinesByCriteria(criteria);
+    // this.recommendedWines = await this.wineService.getWinesByCriteria(criteria);
 
     this.recommendedWines = this.getRandomWines(this.recommendedWines!, 3);
 

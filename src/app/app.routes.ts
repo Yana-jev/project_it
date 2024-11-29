@@ -9,6 +9,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { CartComponent } from './components/cart/cart.component';
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
 import { WineDetailComponent } from './components/wine-detail/wine-detail.component';
+import { QuiizComponent } from './components/quiiiz/quiiiz.component';
 
 
 
@@ -22,7 +23,8 @@ export const routes: Routes = [
       { path: 'cart', component: CartComponent },
       { path: 'quiz', component: QuizComponent },
       { path: 'event-detail/:id', component: EventDetailComponent },
-      { path: 'wine/:id', component: WineDetailComponent}
+      { path: 'wine/:id', component: WineDetailComponent},
+      {path: 'quiiz', component: QuiizComponent}
 
    ]
 },
