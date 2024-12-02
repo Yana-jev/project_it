@@ -9,7 +9,7 @@ import { FooterComponent } from "../footer/footer.component";
 @Component({
   selector: 'event-detail',
   standalone: true,
-  imports: [CommonModule, FooterComponent],
+  imports: [CommonModule],
   templateUrl: './event-detail.component.html',
   styleUrl: './event-detail.component.scss'
 })

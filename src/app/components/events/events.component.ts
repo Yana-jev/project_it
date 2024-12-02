@@ -4,12 +4,12 @@ import { CommonModule} from '@angular/common';
 import { iEvent } from '../../data/services/interfaces/ievents';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FooterComponent } from "../footer/footer.component";
+
 
 @Component({
   selector: 'events',
   standalone: true,
-  imports: [CommonModule, FormsModule, FooterComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss',
 

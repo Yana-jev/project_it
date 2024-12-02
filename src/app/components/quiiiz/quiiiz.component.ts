@@ -21,21 +21,25 @@ export class QuiizComponent {
       question: '¿Qué tipo de vino prefieres?',
       options: ['Tinto', 'Blanco', 'Espumoso'],
       key: 'colorOrType',
+      imageUrl: 'assets/img/v1.jpg'
     },
     {
       question: '¿Con qué plato vas a acompañar el vino?',
       options: [],
       key: 'maridaje',
+      imageUrl: 'assets/img/v10.jpg'
     },
     {
       question: '¿Qué aromas te gustan?',
       options: [],
       key: 'aroma',
+      imageUrl: 'assets/img/v7.jpg'
     },
     {
       question: '¿En qué rango de precio estás buscando el vino?',
       options: ['menos de 15 euros', '15-20 euros', 'más de 20 euros'],
       key: 'price',
+      imageUrl: 'assets/img/v8.jpg'
     },
   ];
   
@@ -50,7 +54,7 @@ export class QuiizComponent {
     const currentQuestion = this.questions[this.currentQuestionIndex];
     this.userAnswers[currentQuestion.key] = option;
   
-    // Устанавливаем следующие вопросы в зависимости от ответа
+
     if (currentQuestion.key === 'colorOrType') {
       if (option === 'Tinto') {
         this.userAnswers.color = 'tinto';
@@ -73,28 +77,37 @@ export class QuiizComponent {
   
     this.currentQuestionIndex++;
   
-    // Проверяем, завершена ли викторина
+
     if (this.currentQuestionIndex === this.questions.length) {
       this.fetchResults();
     }
   }
   
   fetchResults() {
-    const queryParams = {
+    const queryParams: any = {
       color: this.userAnswers.color,
       type: this.userAnswers.type,
       maridaje: this.userAnswers.maridaje,
       aroma: this.userAnswers.aroma,
-      price: this.userAnswers.price,
-      
     };
-    console.log('Параметры запроса:', queryParams);
-
-    if (this.userAnswers.color && this.userAnswers.type) {
-      if (this.userAnswers.color === 'blanco' || this.userAnswers.color === 'tinto') {
+  
+    // Преобразуем price для корректного запроса
+    if (this.userAnswers.price === 'menos de 15 euros') {
+      queryParams.price = '0-15';
+    } else if (this.userAnswers.price === '15-20 euros') {
+      queryParams.price = '15-20';
+    } else if (this.userAnswers.price === 'más de 20 euros') {
+      queryParams.price = '20-';
+    }
+  
+    // Удаляем ненужные поля
+    if (queryParams.color && queryParams.type) {
+      if (queryParams.color === 'blanco' || queryParams.color === 'tinto') {
         delete queryParams.type;
       }
     }
+  
+    console.log('Параметры запроса:', queryParams);
   
     this.quizService.filterWines(queryParams).subscribe(
       (data: Wine[]) => {

@@ -34,7 +34,8 @@
             ],
             "styles": [
               "node_modules/font-awesome/css/font-awesome.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/mapbox-gl/dist/mapbox-gl.css"
             ],
             "scripts": []
           },
