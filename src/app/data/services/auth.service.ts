@@ -16,15 +16,6 @@ export class AuthService {
     return this.http.post(`${this.baseApiUrl}register`, credentials, { withCredentials: true });
   }
 
-  // login(credentials: { email: string; password: string }): Observable<any> {
-  //   return this.http.post(`${this.baseApiUrl}login`, credentials, { withCredentials: true }).pipe(
-  //     tap(() => {
-
-  //       localStorage.setItem('isAuthenticated', 'true');
-  //     })
-  //   );
-  // }
-
   login(credentials: { email: string; password: string }): Observable<User> {
     return this.http.post<User>(`${this.baseApiUrl}login`, credentials, { withCredentials: true }).pipe(
       tap((user) => {
@@ -48,13 +39,6 @@ export class AuthService {
     const user = localStorage.getItem('user');
     return user ? JSON.parse(user) : null;
   }
-  // logout(): Observable<any> {
-  //   return this.http.get(`${this.baseApiUrl}logout`, { withCredentials: true }).pipe(
-  //     tap(() => {
-  //       localStorage.removeItem('isAuthenticated');
-  //     })
-  //   );
-  // }
 
 
   isAuthenticated(): boolean {

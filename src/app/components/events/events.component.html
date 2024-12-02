@@ -22,7 +22,6 @@
       [(ngModel)]="endDate" (change)="filterEvents()">
 </div>
 
-
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
    <div *ngFor="let event of filteredEvents; let i = index" 
          class="bg-white shadow-lg rounded-lg p-5 flex flex-col items-stretch h-[400px] cursor-pointer" 
@@ -41,10 +40,6 @@
          <p class="text-gray-600 mt-4">fecha: {{ event.date.split('T')[0] }}</p>
       </div>
       <div class="flex items-end mt-auto">
-         <!-- <button 
-            class="bg-[#A67B7B] text-white font-semibold py-1 px-5 rounded-lg hover:bg-[#B88989] transition duration-200">
-            añadir
-         </button> -->
       </div>
    </div>
 </div>

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { EventService } from '../../data/services/event.service';
 import { ActivatedRoute } from '@angular/router';
 import { iEvent } from '../../data/services/interfaces/ievents';
 import mapboxgl from 'mapbox-gl';
 import { CommonModule } from '@angular/common';
-import { FooterComponent } from "../footer/footer.component";
+import { iBodega } from '../../data/services/interfaces/ibodega';
+
 
 @Component({
   selector: 'event-detail',
@@ -14,49 +15,63 @@ import { FooterComponent } from "../footer/footer.component";
   styleUrl: './event-detail.component.scss'
 })
 
-export class EventDetailComponent implements OnInit {
+export class EventDetailComponent implements AfterViewChecked, OnDestroy {
+  bodegaId: number | null = null;
+  bodega: iBodega | undefined;
+  @ViewChild('mapDiv') mapDivElement!: ElementRef;
 
+  private map: mapboxgl.Map | undefined;
+  private mapInitialized = false;
   event: iEvent | undefined;
-  map: any;
-  lng: number = 0;  
-  lat: number = 0;  
+
 
   constructor(
     private eventService: EventService,
     private route: ActivatedRoute
-  ) {}
-
-  ngOnInit(): void {
-    const eventId = Number(this.route.snapshot.paramMap.get('id')); 
-
-    // Загружаем данные события по id
+  ) {const eventId = Number(this.route.snapshot.paramMap.get('id')); 
     this.eventService.getTestEvent().subscribe(events => {
-      // Ищем нужное событие по id
       this.event = events.find(e => e.id_event === eventId);
 
-      if (this.event) {
-        if (this.event.location) {
-          this.lat = this.event.latitude;
-          this.lng = this.event.longitude;
-          this.initMap();
-        }
+    });}
+    ngAfterViewChecked(): void {
+      if (this.bodega && !this.mapInitialized && this.mapDivElement) {
+        this.initializeMap();
+        this.mapInitialized = true; 
       }
-    });
-  }
+    }
+  
+    private initializeMap(): void {
+      if (!this.mapDivElement) {
+        console.error('Map container is not available.');
+        return;
+      }
+    
+      mapboxgl.accessToken = 'pk.eyJ1IjoieWFuYS1qcyIsImEiOiJjbTQ2eGducjUxNjgzMnFyNHJ4Y3Vxd29mIn0.sKUheGxgdU-PXpQ5392pyw';
+    
+      const latitude = parseFloat(this.bodega?.latitud || '0'); 
+      const longitude = parseFloat(this.bodega?.longitud || '0'); 
+    
+      this.map = new mapboxgl.Map({
+        container: this.mapDivElement.nativeElement, 
+        style: 'mapbox://styles/mapbox/streets-v12', 
+        center: [longitude, latitude], 
+        zoom: 10, 
+      });
+    
 
-  initMap() {
+      new mapboxgl.Marker()
+        .setLngLat([longitude, latitude]) 
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 }) 
+            .setText(this.bodega?.bodega_name || 'No name provided')
+        )
+        .addTo(this.map);
+    }
+  
+    ngOnDestroy(): void {
+      if (this.map) {
+        this.map.remove();
+      }
+    }
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoieWFuYS1qcyIsImEiOiJjbTB3bmkxczkwMzEwMnNzNmR6YzN5dXY5In0.NOogDdPx-b1-wkMBw89YNg'; 
-    this.map = new mapboxgl.Map({
-      container: 'map',  // Элемент, в котором будет отображаться карта
-      style: 'mapbox://styles/mapbox/streets-v11',  // Стиль карты
-      center: [this.lng, this.lat],  // Центр карты (долгота, широта)
-      zoom: 12  // Уровень приближения
-    });
-
-    // Добавление маркера на карту
-    new mapboxgl.Marker()
-      .setLngLat([this.lng, this.lat])
-      .addTo(this.map);
-  }
 }

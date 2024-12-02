@@ -1,54 +1,76 @@
 
-<nav class="bg-white border-gray-200 dark:bg-gray-900 py-4">
+<nav class="bg-white  dark:bg-gray-900 py-4">
   <div class="container flex flex-wrap items-center justify-between mx-auto mt-10 px-4">
-  <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="assets/img/logo.png" class="h-8" alt="logo" />
       <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Alella D.O</span>
-  </a>
+    </a>
 
-  <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-    <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-      <li>
-        <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Home</a>
-      </li>
-      <li>
-        <a href="/events" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Eventos</a>
-      </li>
-      <li>
-        <a href="/bodegas" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Bodegas</a>
-      </li>
-      <li>
-        <a href="/tienda" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Tienda</a>
-      </li>
-      <li>
-        <a href="/quiiz" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Encuentra tu vino ideal</a>
-      </li>
-      
-      <li>
-        @if(!authService.isAuthenticated()) {
-          <div class="flex space-x-3"> 
-            <a href="/login" class="text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 px-3 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Login</a>
-            <a href="/register" class="text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 px-3 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Sign Up</a>
+    <button
+      class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      type="button"
+      aria-controls="navbar-user"
+      aria-expanded="false"
+      (click)="isMenuOpen = !isMenuOpen">
+      <span class="sr-only">Open main menu</span>
+      <svg
+        class="w-6 h-6"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+    </button>
+
+    <div [class.hidden]="!isMenuOpen" class="items-center justify-between w-full md:flex md:w-auto md:order-1" id="navbar-user">
+      <ul class="flex flex-col md:flex-row md:space-x-8 p-4 md:p-0 mt-4  bg-gray-50 rtl:space-x-reverse md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        
+
+        <li class="flex items-center">
+          <a href="#" class="font-semibold block py-2 px-3 text-gray-900 rounded hover:text-[#A67B7B] md:hover:text-[#A67B7B] md:p-0 dark:text-white md:dark:hover:text-[#A67B7B] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">Home</a>
+        </li>
+        <li class="flex items-center">
+          <a href="/events" class="font-semibold block py-2 px-3 text-gray-900 rounded hover:text-[#A67B7B] md:hover:text-[#A67B7B] md:p-0 dark:text-white md:dark:hover:text-[#A67B7B] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Eventos</a>
+        </li>
+        <li class="flex items-center">
+          <a href="/bodegas" class="font-semibold block py-2 px-3 text-gray-900 rounded hover:text-[#A67B7B] md:hover:text-[#A67B7B] md:p-0 dark:text-white md:dark:hover:text-[#A67B7B] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Bodegas</a>
+        </li>
+        <li class="flex items-center">
+          <a href="/tienda" class="font-semibold block py-2 px-3 text-gray-900 rounded hover:text-[#A67B7B] md:hover:text-[#A67B7B] md:p-0 dark:text-white md:dark:hover:text-[#A67B7B] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Tienda</a>
+        </li>
+        
+
+        <li class="flex items-center">
+          <a 
+            href="/quiiz" 
+            class="font-semibold block py-2 px-4 text-[#A43535] border border-[#A43535] rounded-lg transition-all duration-300 hover:text-white hover:bg-[#A67B7B] focus:ring-2 focus:ring-[#A67B7B] focus:outline-none"
+            aria-current="page">
+            Encuentra tu vino ideal
+          </a>
+        </li>
+        <li *ngIf="!authService.isAuthenticated()" class="flex items-center">
+          <div class="flex items-center">
+            <a href="/login" class="font-semibold text-gray-900 rounded hover:text-[#A67B7B] md:hover:text-[#A67B7B] px-3 dark:text-white md:dark:hover:text-[#A67B7B] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Login</a>
+            <a href="/register" class="font-semibold text-gray-900 rounded hover:text-[#A67B7B] md:hover:text-[#A67B7B] px-3 dark:text-white md:dark:hover:text-[#A67B7B] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Sign Up</a>
           </div>
-        }  @if(authService.isAuthenticated()) {
-  
-          <a (click)="onLogout()" class="block py-1 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 cursor-pointer">Logout</a>
-
-      } 
-      <li>
-        <a href="/cart" class="flex  py-2 px-3 text-gray-900 hover:text-blue-700">
-          <i class="fas fa-shopping-cart"></i>
-          @if(itemCount() > 0){
-            <span class="ml-2 text-sm bg-[#A67B7B] text-white rounded-full px-2 py-1">
+        </li>
+        <li *ngIf="authService.isAuthenticated()" class="flex items-center">
+          <a (click)="onLogout()" class="font-semibold block py-1 px-1 text-gray-900 rounded hover:text-[#A67B7B] md:hover:text-[#A67B7B] md:p-0 dark:text-white md:dark:hover:text-[#A67B7B] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 cursor-pointer">Logout</a>
+        </li>
+        <li>
+          <a href="/cart" class="flex items-center py-2 px-3 text-gray-900 hover:text-[#A67B7B]">
+            <i class="fas fa-shopping-cart"></i>
+            <span *ngIf="itemCount() > 0" class="ml-2 text-sm bg-[#A67B7B] text-white rounded-full px-2 py-1">
               {{ itemCount() }}
             </span>
-          }
-        </a></li>
-    </ul>
-  </div>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
 
+
 <router-outlet></router-outlet>
-
-

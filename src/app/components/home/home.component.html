@@ -21,46 +21,25 @@
       </div>
    </div>
    <div class="text-center mt-8">
-      <a href="/events" class="bg-[#A67B7B] text-white px-6 py-3 rounded-lg hover:bg-green-700">Mostrar todos los eventos</a>
+      <a href="/events" class="bg-[#A67B7B] text-white px-6 py-3 rounded-lg hover:bg-[#A6B78B]">Mostrar todos los eventos</a>
    </div>
 </section>
-
-<section class="py-12">
-   <h2 class="text-3xl font-bold mb-6 text-center">Nuestras Bodegas</h2>
-   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="winery-card bg-white p-4 rounded-lg shadow-md">
-      <img src="assets/img/winery1.jpg" alt="Bodega 1" class="w-full h-40 object-cover rounded-lg mb-4">
-      <h3 class="text-xl font-semibold mb-2">Bodega Alella Vinícola</h3>
-      <p class="text-gray-600 mb-4">Una de las bodegas más famosas de la región.</p>
-      <a href="#" class="text-blue-600 hover:text-blue-800">Más información &rarr;</a>
-      
-      </div>
-      <div class="winery-card bg-white p-4 rounded-lg shadow-md">
-      <img src="assets/img/winery2.jpg" alt="Bodega 2" class="w-full h-40 object-cover rounded-lg mb-4">
-      <h3 class="text-xl font-semibold mb-2">Alta Alella</h3>
-      <p class="text-gray-600 mb-4">Innovación en la elaboración de vinos al máximo nivel.</p>
-      <a href="#" class="text-blue-600 hover:text-blue-800">Más información &rarr;</a>
-      
-      </div>
-      <div class="winery-card bg-white p-4 rounded-lg shadow-md">
-      <img src="assets/img/winery3.jpg" alt="Bodega 3" class="w-full h-40 object-cover rounded-lg mb-4">
-      <h3 class="text-xl font-semibold mb-2">Quim Batlle</h3>
-      <p class="text-gray-600 mb-4">Una bodega familiar con una selección única de vinos.</p>
-      <a href="#" class="text-blue-600 hover:text-blue-800">Más información &rarr;</a>
-      
-      </div>
-   </div>
-</section>
-
 
 <section class="py-12 bg-gray-50">
-   <h2 class="text-3xl font-bold mb-6 text-center">Ubicación de las Bodegas</h2>
-   <div class="map-container bg-gray-200 h-96 rounded-lg shadow-lg">
+   <h2 class="text-3xl font-bold mb-6 text-center">Nuestras Bodegas</h2>
+   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      <p class="text-center text-lg pt-40">Mapa interactivo próximamente...</p>
+      <div *ngFor="let bodega of limitedBodegas" class="event-card bg-white p-4 rounded-lg shadow-md">
+         <img [src]="'http://localhost:3000/' + bodega.image_url" alt="{{ bodega.bodega_name }}" class="w-full h-40 object-cover rounded-lg mb-4">
+         <h3 class="text-xl font-semibold mb-2">{{ bodega.bodega_name }}</h3>
+         <p class="text-gray-600 mb-4">{{ bodega.bodega_description }}</p>
+         <a (click)="goToBodegaDetail(bodega.id_bodega)" class="text-blue-600 hover:text-blue-800 cursor-pointer">Más información &rarr;</a>
+      </div>
+   </div>
+   <div class="text-center mt-8">
+      <a href="/bodegas" class="bg-[#A67B7B] text-white px-6 py-3 rounded-lg hover:bg-[#A6B78B]">Mostrar todas las bodegas</a>
    </div>
 </section>
-
 
 <section class="py-12">
    <h2 class="text-3xl font-bold mb-6 text-center">Opiniones de Nuestros Clientes</h2>

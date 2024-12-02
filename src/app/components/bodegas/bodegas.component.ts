@@ -28,9 +28,6 @@ export class BodegasComponent {
       });
   }
 
-
-
-
   goToBodegaDetail(bodegaId: number) {
 
     this.router.navigate([`/bodega-detail/${bodegaId}`]);  

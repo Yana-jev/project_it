@@ -22,5 +22,4 @@ export interface WineFilterCriteria {
    maridaje?: string;
    aroma?: string;
    price?: string;
- }
- 
+}

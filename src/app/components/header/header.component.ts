@@ -2,11 +2,12 @@ import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../data/services/auth.service';
 import { CartService } from '../../data/services/cart.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'header',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -14,6 +15,7 @@ export class HeaderComponent {
   authService = inject(AuthService);
   router = inject(Router);
   itemCount = signal(0);
+  isMenuOpen = false;
 
   constructor(private cartService: CartService) {
     this.updateItemCount();

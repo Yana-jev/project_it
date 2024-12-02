@@ -17,7 +17,7 @@ import { CartService } from '../../data/services/cart.service';
 })
 export class WineDetailComponent {
   wines: Wine[] = [];
-  wine: Wine | null = null; // Данные выбранного вина
+  wine: Wine | null = null; 
   wineService = inject(WineService);
   route = inject(ActivatedRoute);
   bgPosition = 'center'; 
@@ -29,15 +29,15 @@ export class WineDetailComponent {
 
 
   private loadWine(): void {
-    const wineId = this.route.snapshot.paramMap.get('id'); // Получаем ID из маршрута
+    const wineId = this.route.snapshot.paramMap.get('id'); 
     if (wineId) {
       this.wineService.getWineById(wineId).subscribe({
         next: (response: any) => {
-          // Извлекаем данные из поля `data`
-          this.wine = response.data; // Устанавливаем данные в переменную
+
+          this.wine = response.data; 
         },
         error: (err) => {
-          console.error('Ошибка загрузки вина:', err); // Логируем ошибку
+          console.error('Ошибка загрузки вина:', err);
         }
       });
     }

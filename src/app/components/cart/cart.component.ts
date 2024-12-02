@@ -54,7 +54,6 @@ calculateTotalCost(): number{
 
 }
 
-
 removeItemFromCart(item: CartItem): void {
   this.cartService.removeItemFromCart(item.wineId).subscribe(() => {
 

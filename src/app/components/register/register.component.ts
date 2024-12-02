@@ -24,14 +24,27 @@ export class RegisterComponent {
   onSubmit() {
     if (this.form.valid) {
       const { email, password } = this.form.value;
+      
+
       this.authService.signUp({ email, password }).subscribe({
-        next: (response: any) => { 
+        next: (response: any) => {
           console.log('Registration successful', response);
-          this.router.navigate(['/home']); 
+
+
+          this.authService.login({ email, password }).subscribe({
+            next: (loginResponse: any) => {
+              console.log('Login successful', loginResponse);
+
+              this.router.navigate(['/home']);
+            },
+            error: (loginError: any) => {
+              console.log('Login failed', loginError);
+            }
+          });
 
         },
-        error: (error: any) => {
-          console.log('Registration failed', error);
+        error: (registrationError: any) => {
+          console.log('Registration failed', registrationError);
         }
       });
     }
