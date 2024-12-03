@@ -91,7 +91,7 @@ export class QuiizComponent {
       aroma: this.userAnswers.aroma,
     };
   
-    // Преобразуем price для корректного запроса
+
     if (this.userAnswers.price === 'menos de 15 euros') {
       queryParams.price = '0-15';
     } else if (this.userAnswers.price === '15-20 euros') {
@@ -100,14 +100,14 @@ export class QuiizComponent {
       queryParams.price = '20-';
     }
   
-    // Удаляем ненужные поля
+
     if (queryParams.color && queryParams.type) {
       if (queryParams.color === 'blanco' || queryParams.color === 'tinto') {
         delete queryParams.type;
       }
     }
   
-    console.log('Параметры запроса:', queryParams);
+
   
     this.quizService.filterWines(queryParams).subscribe(
       (data: Wine[]) => {
@@ -132,5 +132,6 @@ export class QuiizComponent {
   goToWineDetail(wineId: number){
     this.router.navigate([`/wine/${wineId}`]);  
   }
+
 
 }

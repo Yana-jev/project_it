@@ -11,6 +11,7 @@ import { WineDetailComponent } from './components/wine-detail/wine-detail.compon
 import { QuiizComponent } from './components/quiiiz/quiiiz.component';
 import { BodegasComponent } from './components/bodegas/bodegas.component';
 import { BodegaDetailComponent } from './components/bodega-detail/bodega-detail.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 
 
@@ -26,7 +27,8 @@ export const routes: Routes = [
       { path: 'wine/:id', component: WineDetailComponent},
       { path: 'bodegas', component: BodegasComponent},
       { path: 'bodega-detail/:id', component: BodegaDetailComponent },
-      {path: 'quiiz', component: QuiizComponent}
+      {path: 'quiiz', component: QuiizComponent},
+      {path: 'privacy', component: PrivacyPolicyComponent}
 
    ]
 },
