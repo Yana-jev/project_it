@@ -5,7 +5,6 @@ import { EventsComponent } from './components/events/events.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
-import { QuizComponent } from './components/quiz/quiz.component';
 import { CartComponent } from './components/cart/cart.component';
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
 import { WineDetailComponent } from './components/wine-detail/wine-detail.component';
@@ -23,12 +22,10 @@ export const routes: Routes = [
       { path: 'events', component: EventsComponent},
       { path: 'tienda', component: TiendaComponent},
       { path: 'cart', component: CartComponent },
-      { path: 'quiz', component: QuizComponent },
       { path: 'event-detail/:id', component: EventDetailComponent },
       { path: 'wine/:id', component: WineDetailComponent},
       { path: 'bodegas', component: BodegasComponent},
       { path: 'bodega-detail/:id', component: BodegaDetailComponent },
-
       {path: 'quiiz', component: QuiizComponent}
 
    ]

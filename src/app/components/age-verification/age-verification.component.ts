@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'age-verification',
@@ -8,20 +9,37 @@ import { Component } from '@angular/core';
   templateUrl: './age-verification.component.html',
   styleUrl: './age-verification.component.scss'
 })
-export class AgeVerificationComponent {
-  showPopup: boolean = true;
+export class AgePopupComponent {
+  router = inject(Router);
 
-  ngOnInit(): void {
-
-    const isOfAge = localStorage.getItem('isOfAge');
-    if (isOfAge) {
-      this.showPopup = false;
-    }
+  constructor() {
+    this.checkAge();
   }
 
-  confirmAge(): void {
+  checkAge() {
+    // Проверка, если пользователь уже подтвердил возраст
+    const isAgeVerified = localStorage.getItem('ageVerified');
+    if (isAgeVerified) {
+      return;
+    }
 
-    localStorage.setItem('isOfAge', 'true');
-    this.showPopup = false;
+    // Если возраст не подтвержден, показываем попап
+    document.getElementById('age-popup')!.style.display = 'flex';
+  }
+
+  verifyAge() {
+    // Сохраняем информацию о том, что пользователь подтвердил возраст
+    localStorage.setItem('ageVerified', 'true');
+    this.closePopup();
+  }
+
+  denyAge() {
+    // Логика на случай, если пользователь не подтверждает возраст
+    // Например, можно перенаправить на другую страницу
+    this.router.navigate(['/']);
+  }
+
+  closePopup() {
+    document.getElementById('age-popup')!.style.display = 'none';
   }
 }
