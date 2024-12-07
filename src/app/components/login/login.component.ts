@@ -14,12 +14,18 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   authService = inject(AuthService)
   router = inject(Router); 
-
+  
   form: FormGroup = new FormGroup({
     email: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required)
-
+    
   })
+  
+  passwordVisible = false;
+
+  togglePasswordVisibility(): void {
+    this.passwordVisible = !this.passwordVisible;
+  }
 
   onSubmit() {
     if (this.form.valid) {

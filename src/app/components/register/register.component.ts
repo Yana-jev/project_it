@@ -20,7 +20,11 @@ export class RegisterComponent {
     password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
     confirmPassword: new FormControl(null, Validators.required)
   }, { validators: this.passwordsMatchValidator });
+  passwordVisible = false;
 
+  togglePasswordVisibility(): void {
+    this.passwordVisible = !this.passwordVisible;
+  }
   onSubmit() {
     if (this.form.valid) {
       const { email, password } = this.form.value;
