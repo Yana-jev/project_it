@@ -1,9 +1,15 @@
 <div *ngIf="currentQuestionIndex < questions.length; else resultsTemplate" class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
 
+  <button
+  *ngIf="currentQuestionIndex > 0"
+  (click)="goBack()"
+  class="bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded hover:bg-gray-300 transition duration-200"
+  >
+  ← Atrás
+  </button>
 <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
   {{ questions[currentQuestionIndex].question }}
 </h2>
-
 <div class="mb-6">
   <img [src]="questions[currentQuestionIndex].imageUrl" alt="Ilustración de pregunta"
         class="w-auto max-w-2xl object-cover rounded-lg shadow-md" />
@@ -12,12 +18,14 @@
 
 <div class="flex space-x-4">
   <button
-    *ngFor="let option of questions[currentQuestionIndex].options"
-    (click)="handleOptionSelect(option)"
-    class="bg-[#A67B7B] text-white font-semibold py-2 px-4 rounded hover:bg-[#B88989] transition duration-200"
+  *ngFor="let option of questions[currentQuestionIndex].options"
+  (click)="handleOptionSelect(option)"
+  class="bg-[#A67B7B] text-white font-semibold py-2 px-4 rounded hover:bg-[#B88989] transition duration-200"
   >
-    {{ option }}
-  </button>
+  {{ option }}
+
+</button>
+
 </div>
 </div>
 

@@ -132,6 +132,15 @@ export class QuiizComponent {
   goToWineDetail(wineId: number){
     this.router.navigate([`/wine/${wineId}`]);  
   }
-
+  goBack() {
+    if (this.currentQuestionIndex > 0) {
+      this.currentQuestionIndex--;
+      if (this.currentQuestionIndex === 0) {
+        this.questions[0].options = ['Tinto', 'Blanco', 'Espumoso'];
+      }
+    }
+  }
+  
+  
 
 }

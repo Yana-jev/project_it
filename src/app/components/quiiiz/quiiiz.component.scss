@@ -1,29 +1,28 @@
 h2 {
-   font-size: 1.5rem;
-   margin-bottom: 1rem;
- }
- 
- .options {
-   display: flex;
-   flex-direction: column;
-   gap: 10px;
- }
- 
- .option-btn {
-   padding: 10px 20px;
-   font-size: 1rem;
-   cursor: pointer;
-   border: 1px solid #ccc;
-   border-radius: 5px;
-   background-color: #f9f9f9;
-   transition: background-color 0.2s;
- }
- 
- .option-btn:hover {
-   background-color: #e0e0e0;
- }
- 
- .results {
-   margin-top: 20px;
- }
- 
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  transition: background-color 0.2s;
+}
+
+.option-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.results {
+  margin-top: 20px;
+}
