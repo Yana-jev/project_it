@@ -1,6 +1,6 @@
-# Do Alella Events & Online Store
+# # Ideal Wine from DO Alella & Online Store
 
-This is a web application built with Angular that showcases Do Alella's events and includes an online store. The application is designed to provide users with the latest information about Do Alella's events while offering a seamless shopping experience for related products.
+If you don’t know how to choose the perfect wine and usually go for the one with the most beautiful label, this app is for you! It features a fun quiz to help you select the ideal wine from DO Alella. Additionally, the project integrates an online store, information about events taking place at the wineries, and details about one of the most picturesque DOs in Catalonia.
 
 ---
 
