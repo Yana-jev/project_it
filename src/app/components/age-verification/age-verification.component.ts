@@ -23,7 +23,7 @@ export class AgePopupComponent implements AfterViewInit {
     this.checkAge();
   }
 
-  // Проверка соглашения на куки
+
   checkCookieConsent() {
     const cookiesAccepted = localStorage.getItem('cookiesAccepted');
     console.log('Cookies Accepted:', cookiesAccepted);
@@ -33,7 +33,7 @@ export class AgePopupComponent implements AfterViewInit {
     }
   }
 
-  // Принятие соглашения на куки
+ 
   acceptCookies() {
     localStorage.setItem('cookiesAccepted', 'true');
     this.closeCookiePopup();
@@ -45,7 +45,7 @@ export class AgePopupComponent implements AfterViewInit {
     }
   }
 
-  // Проверка возраста
+
   checkAge() {
     const isAgeVerified = localStorage.getItem('ageVerified');
     console.log('Age Verified:', isAgeVerified);
@@ -55,20 +55,20 @@ export class AgePopupComponent implements AfterViewInit {
     }
   }
 
-  // Подтверждение возраста
+
   verifyAge() {
     localStorage.setItem('ageVerified', 'true');
     this.closeAgePopup();
   }
 
-  // Закрытие попапа с возрастом
+
   closeAgePopup() {
     if (this.agePopup) {
       this.agePopup.nativeElement.classList.add('hidden');
     }
   }
 
-  // Отказ от возраста
+
   denyAge() {
     this.router.navigate(['/']);
   }

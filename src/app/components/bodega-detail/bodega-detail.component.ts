@@ -60,9 +60,9 @@ export class BodegaDetailComponent implements AfterViewChecked, OnDestroy {
   
     // Добавляем маркер
     new mapboxgl.Marker()
-      .setLngLat([longitude, latitude]) // Устанавливаем координаты маркера
+      .setLngLat([longitude, latitude]) 
       .setPopup(
-        new mapboxgl.Popup({ offset: 25 }) // Добавляем всплывающее окно
+        new mapboxgl.Popup({ offset: 25 }) 
           .setText(this.bodega?.bodega_name || 'No name provided')
       )
       .addTo(this.map);

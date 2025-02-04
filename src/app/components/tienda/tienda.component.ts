@@ -29,6 +29,8 @@ import { Router } from '@angular/router';
     priceSortOrder: string = '';
     wineService = inject(WineService);
     cartService = inject(CartService);
+    showPopup: boolean = false;
+    popupMessage: string = '';
     
 
     constructor(private router: Router) {
@@ -76,6 +78,7 @@ import { Router } from '@angular/router';
       this.cartService.addItemToCart(wine.id_wine, quantity).subscribe({
         next: (response) => {
           console.log('Added to cart:', response);
+          this.showSuccessPopup('Producto agregado exitosamente');
         },
         error: (err) => {
           console.error('Error of adding to cart:', err);
@@ -85,6 +88,17 @@ import { Router } from '@angular/router';
     goToWineDetail(wineId: number){
       this.router.navigate([`/wine/${wineId}`]);  
     }
+
+
+    showSuccessPopup(message: string): void {
+      this.popupMessage = message;
+      this.showPopup = true;
+
+  
+      setTimeout(() => {
+          this.showPopup = false;
+      }, 2000);
+  }
 }
 
 
