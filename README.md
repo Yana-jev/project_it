@@ -27,7 +27,7 @@ To run the application locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/do-alella-events-shop.git
+   git clone https://github.com/Yana-jev/project_it.git
 2. 
    ```bash
    npm install
@@ -78,7 +78,7 @@ Para ejecutar la aplicación localmente, sigue estos pasos:
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/yourusername/do-alella-events-shop.git
+   git clone https://github.com/Yana-jev/project_it.git
 
 2. 
    ```bash
