@@ -2,3 +2,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+font-family: 'Lexend';
+src: url('/assets/fonts/Lexend/Lexend-VariableFont_wght.ttf') format('truetype');
+font-weight: 200 900;
+font-style: normal;
+}
+
+@font-face {
+   font-family: 'PlayWrite';
+   src: url('/assets/fonts/Playwrite_IT_Moderna/PlaywriteITModerna-VariableFont_wght.ttf') format('truetype');
+   font-weight: 200 900;
+   font-style: italic;
+}
+@font-face {
+   font-family: 'SourceSans';
+   src: url('/assets/fonts/Source_Sans_3/SourceSans3-VariableFont_wght.ttf') format('truetype');
+   font-weight: 200 900;
+   font-style: italic;
+}
+
+body {
+   font-family: 'SourceSans';
+   }
