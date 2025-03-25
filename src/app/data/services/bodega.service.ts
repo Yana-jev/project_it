@@ -9,7 +9,7 @@ import { iBodega } from './interfaces/ibodega';
 })
 export class BodegaService {
 
-  baseApiUrl = 'http://62.57.204.128:8881/api/wineries/ru/all'
+  baseApiUrl = 'http://4200/api/wineries/ru/all'
 
   http: HttpClient = inject(HttpClient);
 
