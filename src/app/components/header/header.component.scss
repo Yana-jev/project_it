@@ -3,7 +3,7 @@ $black: 0, 0, 0, 0.799;
 
 a {
    color: $black;
-   font-size: 1.2rem;
+   font-size: 1.1rem;
    text-transform: uppercase;
    font-weight: 500;
    position: relative;
@@ -34,13 +34,13 @@ a:hover::after {
 
 
 button {
-   font-size: 1.2rem;
+   font-size: 1.1rem;
    text-transform: uppercase;
    font-weight: 500;
    background-color: $green;
    color: white;
    border: 2px solid $green; 
-   padding: 12px 24px;
+   padding: 10px 12px;
    border-radius: 8px;
    cursor: pointer;
    position: relative;
