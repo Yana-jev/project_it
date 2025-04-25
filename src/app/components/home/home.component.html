@@ -1,64 +1,59 @@
-<div class="container mx-auto px-4">
-
-<section class="relative">
-   <img src="assets/img/principal.jpg" alt="Vista de Alella" class="w-full h-96 object-cover rounded-lg shadow-lg">
-   <div class="absolute inset-0 bg-black bg-opacity-50 rounded flex flex-col justify-center items-center">
-      <h1 class="text-4xl font-bold text-white mb-4">Bienvenidos a la DO Alella</h1>
-      <p class="text-xl text-gray-200">Descubre los mejores vinos y bodegas de la región</p>
-   </div>
-</section>
-
-
-<section class="py-12 bg-gray-50">
-   <h2 class="text-3xl font-bold mb-6 text-center">Próximos Eventos</h2>
-   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <div *ngFor="let event of limitedEvents" class="event-card bg-white p-4 rounded-lg shadow-md">
-         <img [src]="'http://localhost:3000/' + event.image_url" alt="{{ event.event_name }}" class="w-full h-40 object-cover rounded-lg mb-4">
-         <h3 class="text-xl font-semibold mb-2">{{ event.event_name }}</h3>
-         <p class="text-gray-600 mb-4">{{ event.description }}</p>
-         <a (click)="goToEventDetail(event.id_event)" class="text-blue-600 hover:text-blue-800 cursor-pointer">Más información &rarr;</a>
-      </div>
-   </div>
-   <div class="text-center mt-8">
-      <a href="/events" class="bg-[#A67B7B] text-white px-6 py-2 rounded-lg hover:bg-[#B88989] transition duration-200">Mostrar todos los eventos</a>
-   </div>
-</section>
-
-<section class="py-12 bg-gray-50">
-   <h2 class="text-3xl font-bold mb-6 text-center">Nuestras Bodegas</h2>
-   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <div *ngFor="let bodega of limitedBodegas" class="event-card bg-white p-4 rounded-lg shadow-md">
-         
-         <h3 class="text-xl font-semibold mb-2">{{ bodega.name }}</h3>
-         <p class="text-gray-600 mb-4">{{ bodega.description }}</p>
-         
-      </div>
-   </div>
-   <div class="text-center mt-8">
-      <a href="/bodegas" class="bg-[#A67B7B] text-white px-6 py-2 rounded-lg hover:bg-[#B88989] transition duration-200">Mostrar todas las bodegas</a>
-   </div>
-</section>
-
-<section class="py-12">
-   <h2 class="text-3xl font-bold mb-6 text-center">Opiniones de Nuestros Clientes</h2>
-   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="review-card bg-white p-4 rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold mb-2">Ana Gómez</h3>
-      <p class="text-gray-600 mb-4">"La experiencia en la bodega Alta Alella fue inolvidable. Los vinos son extraordinarios y el personal muy amable."</p>
-      <div class="text-yellow-400">★★★★★</div>
-      </div>
-      <div class="review-card bg-white p-4 rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold mb-2">Carlos Fernández</h3>
-      <p class="text-gray-600 mb-4">"Quim Batlle es una bodega increíble con vinos únicos. Definitivamente regresaré."</p>
-      <div class="text-yellow-400">★★★★☆</div>
-      </div>
-      <div class="review-card bg-white p-4 rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold mb-2">Lucía Martínez</h3>
-      <p class="text-gray-600 mb-4">"Disfrutamos mucho el tour de cata en Alella Vinícola. Los paisajes y vinos son espectaculares."</p>
-      <div class="text-yellow-400">★★★★★</div>
-      </div>
-   </div>
-</section>
-</div>
+<div class="container mx-auto px-6">
+   <section class="relative">
+     <img src="assets/img/principal.jpg" alt="Vista de Alella" class="w-full h-[500px] object-cover rounded-xl">
+     <div class="absolute inset-0 flex flex-col justify-center items-center">
+       <h1>Bienvenidos a la DO Alella</h1>
+       <p>Descubre los mejores vinos y bodegas de la región</p>
+     </div>
+   </section>
+ 
+   <section>
+     <h2>Próximos Eventos</h2>
+     <div>
+       <div *ngFor="let event of limitedEvents">
+         <img [src]="'http://localhost:3000/' + event.image_url" alt="{{ event.event_name }}">
+         <h3>{{ event.event_name }}</h3>
+         <p>{{ event.description }}</p>
+         <a (click)="goToEventDetail(event.id_event)">Más información &rarr;</a>
+       </div>
+     </div>
+     <div>
+       <a href="/events">Mostrar todos los eventos</a>
+     </div>
+   </section>
+ 
+   <section>
+     <h2>Nuestras Bodegas</h2>
+     <div>
+       <div *ngFor="let bodega of limitedBodegas">
+         <h3>{{ bodega.name }}</h3>
+         <p>{{ bodega.description }}</p>
+       </div>
+     </div>
+     <div>
+       <a href="/bodegas">Mostrar todas las bodegas</a>
+     </div>
+   </section>
+ 
+   <section>
+     <h2>Opiniones de Nuestros Clientes</h2>
+     <div>
+       <div>
+         <h3>Ana Gómez</h3>
+         <p>"La experiencia en la bodega Alta Alella fue inolvidable. Los vinos son extraordinarios y el personal muy amable."</p>
+         <div>★★★★★</div>
+       </div>
+       <div>
+         <h3>Carlos Fernández</h3>
+         <p>"Quim Batlle es una bodega increíble con vinos únicos. Definitivamente regresaré."</p>
+         <div>★★★★☆</div>
+       </div>
+       <div>
+         <h3>Lucía Martínez</h3>
+         <p>"Disfrutamos mucho el tour de cata en Alella Vinícola. Los paisajes y vinos son espectaculares."</p>
+         <div>★★★★★</div>
+       </div>
+     </div>
+   </section>
+ </div>
+ 
