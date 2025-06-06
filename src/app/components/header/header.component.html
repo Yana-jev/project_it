@@ -28,26 +28,30 @@
         
 
         <li>
-          <a [routerLink]='["/home"]' aria-current="page">Home</a>
+          <a [routerLink]='["/home"]' aria-current="page"> {{ 'NAV.INICIO' | translate }} </a>
         </li>
         <li>
-          <a [routerLink]='["/tienda"]'>Vinos</a>
+          <a [routerLink]='["/tienda"]'> {{ 'NAV.VINOS' | translate }} </a>
         </li>
         <li>
-          <a [routerLink]='["/events"]'>Eventos</a>
+          <a [routerLink]='["/events"]'> {{ 'NAV.EVENTOS' | translate }} </a>
         </li>
         <li>
-          <a [routerLink]='["/bodegas"]'>Bodegas</a>
+          <a [routerLink]='["/bodegas"]'> {{ 'NAV.BODEGAS' | translate }} </a>
         </li>
         <li>
-          <a [routerLink]='["/bodegas"]'>Tiendas</a>
+          <a [routerLink]='["/bodegas"]'> {{ 'NAV.TIENDAS' | translate }} </a>
         </li>
 
         <button
         [routerLink]='["/quiiz"]'>
-        Encuentra tu vino ideal
+        {{ "NAV.ENCUENTRA TU VINO IDEAL" | translate }}
         </button>
-
+    <select (change)="switchLang($event)">
+      <option value="en">EN</option>
+      <option value="ru">RU</option>
+      <option value="es">ES</option>
+    </select>
 
 
       </ul>
