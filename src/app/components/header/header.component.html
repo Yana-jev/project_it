@@ -47,11 +47,14 @@
         [routerLink]='["/quiiz"]'>
         {{ "NAV.ENCUENTRA TU VINO IDEAL" | translate }}
         </button>
-    <select (change)="switchLang($event)">
-      <option value="en">EN</option>
-      <option value="ru">RU</option>
-      <option value="es">ES</option>
-    </select>
+ <div *ngIf="isLoaded">
+
+  <select (change)="switchLang($event)" [value]="currentLang">
+    <option value="es">Español</option>
+    <option value="en">English</option>
+    <option value="ru">Русский</option>
+  </select>
+</div>
 
 
       </ul>

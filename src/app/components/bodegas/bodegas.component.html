@@ -6,9 +6,6 @@
       </div>
    </section>
 
-<button [style.color]="color" (click)="changeColor('red')">Button</button>
-<p  [style.color]="color" (click)="changeColor('red')" >Paragraph</p>
-
 <input type="text" (input)="checkCurrentValue($event)" (keydown.shift)="this.color='pink'">
 
    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center items-center pb-4">

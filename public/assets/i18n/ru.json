@@ -1,10 +1,10 @@
 {
 "NAV":{
-   "INICIO": "О нас",
-   "VINOS": "Вина",
+   "INICIO": "Главная",
+   "VINOS": "Вино",
    "EVENTOS": "События",
-   "BODEGAS": "Бодеги",
+   "BODEGAS": "Винодельни",
    "TIENDAS": "Магазины",
-   "ENCUENTRA TU VINO IDEAL": "Найди своё идеальное вино"
+   "ENCUENTRA TU VINO IDEAL": "Подберите идеальное вино"
 }
 }
