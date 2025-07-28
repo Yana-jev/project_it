@@ -1,5 +1,9 @@
 export interface iBodega {
-  "id": number,
-  "name": string,
-  "description": string,
+  "id_bodega": number,
+  "bodega_name": string,
+  "bodega_description": string,
+  "latitud": string,
+  "longitud": string,
+  "image_url": string,
+
 }

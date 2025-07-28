@@ -1,14 +1,8 @@
 
 <nav class="bg-white  dark:bg-gray-900 py-2">
-<<<<<<< HEAD
   <div class="container flex flex-wrap items-center justify-between mx-auto mt-10 px-4">
     <div class="logo cursor-pointer" [routerLink]="['/home']">
         <img src="assets/img/logoA.png" class="h-36 w-auto" alt="logo"/>
-=======
-  <div class="container flex flex-wrap items-center justify-between mx-auto mt-1 px-4">
-    <div class="logo cursor-pointer" [routerLink]="['/home']">
-        <img src="assets/img/Logodev.png" class="h-36 w-auto" alt="logo"/>
->>>>>>> d858372bb4f57193c78c0afb53185d20408ce46d
     </div>
     
     <button
@@ -33,7 +27,6 @@
       <ul class="flex flex-col md:flex-row items-center md:space-x-8 p-4 md:p-0 mt-4  bg-gray-50 rtl:space-x-reverse md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
         
 
-<<<<<<< HEAD
         <li class="flex">
           <a href="#" class="font-semibold block py-2 px-3 text-gray-900 rounded hover:text-[#6dab00] md:hover:text-[#6dab00] md:p-0 dark:text-white md:dark:hover:text-[#6dab00] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">Home</a>
         </li>
@@ -72,38 +65,7 @@
               {{ itemCount() }}
             </span>
           </a>
-=======
-        <li>
-          <a [routerLink]='["/home"]' aria-current="page"> {{ 'NAV.INICIO' | translate }} </a>
         </li>
-        <li>
-          <a [routerLink]='["/tienda"]'> {{ 'NAV.VINOS' | translate }} </a>
->>>>>>> d858372bb4f57193c78c0afb53185d20408ce46d
-        </li>
-        <li>
-          <a [routerLink]='["/events"]'> {{ 'NAV.EVENTOS' | translate }} </a>
-        </li>
-        <li>
-          <a [routerLink]='["/bodegas"]'> {{ 'NAV.BODEGAS' | translate }} </a>
-        </li>
-        <li>
-          <a [routerLink]='["/bodegas"]'> {{ 'NAV.TIENDAS' | translate }} </a>
-        </li>
-
-        <button
-        [routerLink]='["/quiiz"]'>
-        {{ "NAV.ENCUENTRA TU VINO IDEAL" | translate }}
-        </button>
- <div *ngIf="isLoaded">
-
-  <select (change)="switchLang($event)" [value]="currentLang">
-    <option value="es">Español</option>
-    <option value="en">English</option>
-    <option value="ru">Русский</option>
-  </select>
-</div>
-
-
       </ul>
     </div>
   </div>

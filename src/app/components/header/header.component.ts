@@ -3,42 +3,47 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../data/services/auth.service';
 import { CartService } from '../../data/services/cart.service';
 import { CommonModule } from '@angular/common';
-import {TranslateService,TranslatePipe,TranslateDirective} from '@ngx-translate/core'
-
 
 @Component({
   selector: 'header',
   standalone: true,
-<<<<<<< HEAD
   imports: [RouterOutlet, CommonModule, RouterLink],
-=======
-  imports: [RouterOutlet, CommonModule, RouterLink, TranslatePipe],
->>>>>>> d858372bb4f57193c78c0afb53185d20408ce46d
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
- isMenuOpen = false;
-  currentLang = 'es';
-  isLoaded = false;
- constructor(private translate: TranslateService) {
-    translate.addLangs(['es', 'en', 'ru']);
-    const savedLang = localStorage.getItem('lang') || 'es';
-    this.currentLang = savedLang;
-    translate.setDefaultLang(savedLang);
-    translate.use(savedLang);
+  authService = inject(AuthService);
+  router = inject(Router);
+  itemCount = signal(0);
+  isMenuOpen = false;
 
-    // ⏳ Подписка на событие завершения загрузки языка
-    this.translate.onLangChange.subscribe(() => {
-      this.isLoaded = true;
+  constructor(private cartService: CartService) {
+    this.updateItemCount();
+
+    this.cartService.cartUpdates$.subscribe(() => {
+      this.updateItemCount(); 
     });
   }
 
-  switchLang(event: Event) {
-    const lang = (event.target as HTMLSelectElement).value;
-    this.isLoaded = false; // сбрасываем флаг, ждём загрузки
-    this.translate.use(lang);
-    localStorage.setItem('lang', lang);
-    this.currentLang = lang;
+
+  private updateItemCount(): void {
+    this.cartService.getTotalItems().subscribe((totalItems) => {
+      this.itemCount.set(totalItems);
+    });
+  }
+
+
+  onLogout() {
+    this.authService.logout().subscribe(
+      () => {
+        console.log('Logout successful');
+        this.router.navigate(['/login']);
+      },
+      (error) => {
+        console.error('Logout failed', error);
+        alert('Logout failed: ' + error.error.message || 'Unknown error');
+      }
+    );
   }
 }
+

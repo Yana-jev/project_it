@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { EventService } from '../../data/services/event.service';
 import { ActivatedRoute } from '@angular/router';
 import { iEvent } from '../../data/services/interfaces/ievents';
@@ -15,7 +15,7 @@ import { iBodega } from '../../data/services/interfaces/ibodega';
   styleUrl: './event-detail.component.scss'
 })
 
-export class EventDetailComponent implements AfterViewChecked {
+export class EventDetailComponent implements AfterViewChecked, OnDestroy {
   bodegaId: number | null = null;
   bodega: iBodega | undefined;
   @ViewChild('mapDiv') mapDivElement!: ElementRef;
@@ -48,31 +48,30 @@ export class EventDetailComponent implements AfterViewChecked {
     
       mapboxgl.accessToken = 'pk.eyJ1IjoieWFuYS1qcyIsImEiOiJjbTQ2eGducjUxNjgzMnFyNHJ4Y3Vxd29mIn0.sKUheGxgdU-PXpQ5392pyw';
     
-      // const latitude = parseFloat(this.bodega?.latitud || '0'); 
-      // const longitude = parseFloat(this.bodega?.longitud || '0'); 
+      const latitude = parseFloat(this.bodega?.latitud || '0'); 
+      const longitude = parseFloat(this.bodega?.longitud || '0'); 
     
-    //   this.map = new mapboxgl.Map({
-    //     container: this.mapDivElement.nativeElement, 
-    //     style: 'mapbox://styles/mapbox/streets-v12', 
-    //     center: [longitude, latitude], 
-    //     zoom: 10, 
-    //   });
+      this.map = new mapboxgl.Map({
+        container: this.mapDivElement.nativeElement, 
+        style: 'mapbox://styles/mapbox/streets-v12', 
+        center: [longitude, latitude], 
+        zoom: 10, 
+      });
     
 
-    //   new mapboxgl.Marker()
-    //     .setLngLat([longitude, latitude]) 
-    //     .setPopup(
-    //       new mapboxgl.Popup({ offset: 25 }) 
-    //         .setText(this.bodega?.name || 'No name provided')
-    //     )
-    //     .addTo(this.map);
-    // }
+      new mapboxgl.Marker()
+        .setLngLat([longitude, latitude]) 
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 }) 
+            .setText(this.bodega?.bodega_name || 'No name provided')
+        )
+        .addTo(this.map);
+    }
   
-    // ngOnDestroy(): void {
-    //   if (this.map) {
-    //     this.map.remove();
-    //   }
-    // }
+    ngOnDestroy(): void {
+      if (this.map) {
+        this.map.remove();
+      }
+    }
 
-}
 }
