@@ -4,20 +4,40 @@
 @tailwind utilities;
 
 @font-face {
+<<<<<<< HEAD
 font-family: 'Source Sans 3';
 src: url('/assets/fonts/Source_Sans_3/SourceSans3-VariableFont_wght.ttf') format('truetype');
+=======
+font-family: 'Lexend';
+src: url('/assets/fonts/Lexend/Lexend-VariableFont_wght.ttf') format('truetype');
+>>>>>>> d858372bb4f57193c78c0afb53185d20408ce46d
 font-weight: 200 900;
 font-style: normal;
 }
 
 @font-face {
+<<<<<<< HEAD
    font-family: 'Source Sans 3';
    src: url('/assets/fonts/Source_Sans_3/SourceSans3-Italic-VariableFont_wght.ttf') format('truetype');
+=======
+   font-family: 'PlayWrite';
+   src: url('/assets/fonts/Playwrite_IT_Moderna/PlaywriteITModerna-VariableFont_wght.ttf') format('truetype');
+   font-weight: 200 900;
+   font-style: italic;
+}
+@font-face {
+   font-family: 'SourceSans';
+   src: url('/assets/fonts/Source_Sans_3/SourceSans3-VariableFont_wght.ttf') format('truetype');
+>>>>>>> d858372bb4f57193c78c0afb53185d20408ce46d
    font-weight: 200 900;
    font-style: italic;
 }
 
 body {
+<<<<<<< HEAD
    font-family: 'Source Sans 3', sans-serif;
    font-weight: 200;
+=======
+   font-family: 'SourceSans';
+>>>>>>> d858372bb4f57193c78c0afb53185d20408ce46d
    }

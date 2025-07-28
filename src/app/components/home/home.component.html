@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container mx-auto mt-10 px-4">
 
 <!-- HERO -->
@@ -71,3 +72,64 @@
    </div>
 </section>
 </div>
+=======
+<div class="container mx-auto px-6">
+   <section class="relative">
+     <img src="assets/img/principal.jpg" alt="Vista de Alella" class="w-full h-[500px] object-cover rounded-xl">
+     <div class="absolute inset-0 flex flex-col justify-center items-center">
+       <h1>Bienvenidos a la DO Alella</h1>
+       <p>Descubre los mejores vinos y bodegas de la región</p>
+     </div>
+   </section>
+ 
+   <section>
+     <h2>Próximos Eventos</h2>
+     <div>
+       <div *ngFor="let event of limitedEvents">
+         <img [src]="'http://localhost:3000/' + event.image_url" alt="{{ event.event_name }}">
+         <h3>{{ event.event_name }}</h3>
+         <p>{{ event.description }}</p>
+         <a (click)="goToEventDetail(event.id_event)">Más información &rarr;</a>
+       </div>
+     </div>
+     <div>
+       <a href="/events">Mostrar todos los eventos</a>
+     </div>
+   </section>
+ 
+   <section>
+     <h2>Nuestras Bodegas</h2>
+     <div>
+       <div *ngFor="let bodega of limitedBodegas">
+         <h3>{{ bodega.name }}</h3>
+         <p>{{ bodega.description }}</p>
+       </div>
+     </div>
+     <div>
+       <a href="/bodegas">Mostrar todas las bodegas</a>
+     </div>
+   </section>
+ 
+   <section>
+     <h2>Opiniones de Nuestros Clientes</h2>
+     <div>
+       <div>
+         <h3>Ana Gómez</h3>
+         <p>"La experiencia en la bodega Alta Alella fue inolvidable. Los vinos son extraordinarios y el personal muy amable."</p>
+         <div>★★★★★</div>
+       </div>
+       <div>
+         <h3>Carlos Fernández</h3>
+         <p>"Quim Batlle es una bodega increíble con vinos únicos. Definitivamente regresaré."</p>
+         <div>★★★★☆</div>
+       </div>
+       <div>
+         <h3>Lucía Martínez</h3>
+         <p>"Disfrutamos mucho el tour de cata en Alella Vinícola. Los paisajes y vinos son espectaculares."</p>
+         <div>★★★★★</div>
+       </div>
+     </div>
+   </section>
+ </div>
+ 
+>>>>>>> d858372bb4f57193c78c0afb53185d20408ce46d
