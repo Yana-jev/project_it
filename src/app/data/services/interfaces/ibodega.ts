@@ -5,5 +5,6 @@ export interface iBodega {
   "latitud": string,
   "longitud": string,
   "image_url": string,
+  "direction": string
 
 }
