@@ -1,5 +1,196 @@
-.section-textured {
-   background-color: #f8f8f8;
-   background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, transparent 0);
-   background-size: 20px 20px;
+$green: #6dab00;
+
+.container {
+width: 100%;
+margin-left: auto;
+margin-right: auto;
+margin-top: 2.5rem; 
+padding: 1.5rem
+
+
+}
+
+.hero {
+position: relative;
+
+
+.hero-image-wrapper {
+position: relative;
+overflow: hidden;
+border-radius: 1rem;
+
+.hero-image {
+width: 100%;
+height: 24rem;
+object-fit: cover;
+display: block;
+transition: transform 0.5s ease;
+filter: brightness(70%);
+}
+
+&:hover .hero-image {
+transform: scale(1.05);
+}
+
+
+.hero-text {
+position: absolute;
+bottom: 2rem;
+left: 0; 
+color: white;
+z-index: 2;
+padding-left: 0;
+margin-left: 0;
+
+h1 {
+   font-size: 3.5rem; 
+   font-weight: 800;
+   margin-bottom: 0.25rem;
+   line-height: 1.1;
+}
+
+p {
+   font-size: 1.4rem;
+   font-weight: 600; 
+   color: rgba(255, 255, 255, 0.9);
+   margin: 0;
+}
+}
+
+.hero-overlay {
+position: absolute;
+inset: 0;
+background: rgba(0, 0, 0, 0.3);
+z-index: 1;
+}
+}
+}
+
+.section {
+padding: 2rem 0;
+
+.section-title {
+display: flex;
+align-items: center;
+gap: 1rem;
+margin-bottom: 3rem;
+
+h2 {
+   font-size: 2rem;
+   font-weight: 800;
+   color: $green;
+   margin: 0;
+   white-space: nowrap; 
+}
+
+.section-line {
+   flex-grow: 1;
+   height: 2px;
+   background-color: $green;
+}
+}
+
+}
+
+.grid {
+display: grid;
+gap: 2.5rem;
+
+@media (min-width: 768px) {
+grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 1024px) {
+grid-template-columns: repeat(3, 1fr);
+}
+}
+
+//стили карточки
+.card {
+cursor: pointer;
+background: white;
+padding: 0; 
+border-radius: 1rem;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+transition: box-shadow 0.3s ease, transform 0.3s ease;
+overflow: hidden; 
+
+img {
+   width: 100%;
+   height: 11rem;
+   object-fit: cover;
+   border-radius: 0; 
+   margin: 0; 
+   display: block;
+}
+//внутренние отступы контейнера
+h3,
+p,
+a {
+   cursor: pointer;
+   padding-left: 1.5rem;
+   padding-right: 1.5rem;
+}
+
+h3 {
+   font-size: 1.5rem;
+   font-weight: 600;
+   color: #333;
+   margin: 1rem 0 0.5rem;
+}
+
+p {
+   color: #666;
+   margin-bottom: 1rem;
+}
+
+a {
+   color: #b1795d;
+   font-weight: 600;
+   text-decoration: none;
+   transition: color 0.3s ease;
+   display: inline-block;
+   margin-bottom: 1.5rem;
+
+   &:hover {
+   color: $green;
+   }
+}
+
+&:hover {
+   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+   transform: translateY(-4px);
+}
+}
+
+
+.center {
+text-align: right;
+margin-top: 3rem;
+
+.btn-primary {
+background-color: transparent;
+border: 2px solid $green;
+color: $green;
+padding: 0.75rem 2rem;
+border-radius: 0.5rem;
+text-transform: uppercase;
+font-weight: 600;
+font-size: 0.9rem;
+letter-spacing: 0.05em;
+transition: all 0.3s ease;
+text-decoration: none;
+
+&:hover {
+background-color: $green;
+color: white;
+}
+}
+}
+
+.review {
+.stars {
+color: #f5c518;
+font-size: 1.25rem;
+}
 }

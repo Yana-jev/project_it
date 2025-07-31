@@ -1,73 +1,78 @@
-<div class="container mx-auto mt-10 px-4">
+<div class="container">
 
 <!-- HERO -->
-<section class="relative">
-   <img src="assets/img/principal.jpg" alt="Vista de Alella" class="w-full h-96 object-cover rounded-xl shadow-xl">
-   <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex flex-col justify-center items-center">
-      <h1 class="text-5xl font-extrabold text-white mb-4">Bienvenidos a la DO Alella</h1>
-      <p class="text-xl text-gray-200">Descubre los mejores vinos y bodegas de la región</p>
+<section class="hero">
+   <div class="hero-image-wrapper">
+      <img src="assets/img/principal.jpg" alt="Vista de Alella" class="hero-image">
+      <div class="hero-overlay"></div>
+      <div class="hero-text">
+         <h1>Bienvenidos a la DO Alella</h1>
+         <p>Descubre los mejores vinos y bodegas de la región</p>
+      </div>
    </div>
 </section>
-
 
 <!-- EVENTOS -->
-<section class="py-16 section-textured">
-   <h2 class="text-4xl font-extrabold mb-12 text-center text-[#6dab00]">Próximos Eventos</h2>
-
-   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-      <div *ngFor="let event of limitedEvents" class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition hover:-translate-y-1">
-         <img [src]="'http://localhost:3000/' + event.image_url" alt="{{ event.event_name }}" class="w-full h-44 object-cover rounded-lg mb-4">
-         <h3 class="text-2xl font-semibold text-gray-800 mb-2">{{ event.event_name }}</h3>
-         <p class="text-gray-600 mb-4">{{ event.description }}</p>
-         <a (click)="goToEventDetail(event.id_event)" class="text-[#b1795d] font-semibold hover:text-[#6dab00] transition">Más información &rarr;</a>
-      </div>
+<section class="section eventos">
+<div class="section-title">
+   <h2>Próximos Eventos</h2>
+   <div class="section-line"></div>
+</div>
+   <div class="grid">
+   <div *ngFor="let event of limitedEvents" class="card" (click)="goToEventDetail(event.id_event)">
+      <img [src]="'http://localhost:3000/' + event.image_url" alt="{{ event.event_name }}">
+      <h3>{{ event.event_name }}</h3>
+      <p>{{ event.description }}</p>
+      <a (click)="goToEventDetail(event.id_event)">Más información →</a>
    </div>
-
-   <div class="text-center mt-12">
-      <a href="/events" class="bg-[#6dab00] text-white px-8 py-3 rounded-md hover:bg-[#5c9000] transition shadow-md">Mostrar todos los eventos</a>
+   </div>
+   <div class="center">
+   <a href="/events" class="btn-primary">Mostrar todos los eventos</a>
    </div>
 </section>
-
 
 <!-- BODEGAS -->
-<section class="py-16 bg-white">
-   <h2 class="text-4xl font-extrabold mb-12 text-center text-[#6dab00]">Nuestras Bodegas</h2>
-
-   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-      <div *ngFor="let bodega of limitedBodegas" class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition hover:-translate-y-1">
-         <img [src]="'http://localhost:3000/' + bodega.image_url" alt="{{ bodega.bodega_name }}" class="w-full h-44 object-cover rounded-lg mb-4">
-         <h3 class="text-2xl font-semibold text-gray-800 mb-2">{{ bodega.bodega_name }}</h3>
-         <p class="text-gray-600 mb-4">{{ bodega.bodega_description }}</p>
-         <a (click)="goToBodegaDetail(bodega.id_bodega)" class="text-[#b1795d] font-semibold hover:text-[#6dab00] transition">Más información &rarr;</a>
-      </div>
+<section class="section bodegas">
+<div class="section-title">
+   <h2>Nuestras Bodegas</h2>
+   <div class="section-line"></div>
+</div>
+   <div class="grid">
+   <div *ngFor="let bodega of limitedBodegas" class="card" (click)="goToBodegaDetail(bodega.id_bodega)">
+      <img [src]="'http://localhost:3000/' + bodega.image_url" alt="{{ bodega.bodega_name }}">
+      <h3>{{ bodega.bodega_name }}</h3>
+      <p>{{ bodega.bodega_description }}</p>
+      <a (click)="goToBodegaDetail(bodega.id_bodega)">Más información →</a>
    </div>
-
-   <div class="text-center mt-12">
-      <a href="/bodegas" class="bg-[#6dab00] text-white px-8 py-3 rounded-md hover:bg-[#5c9000] transition shadow-md">Mostrar todas las bodegas</a>
+   </div>
+   <div class="center">
+   <a href="/bodegas" class="btn-primary">Mostrar todas las bodegas</a>
    </div>
 </section>
-
 
 <!-- REVIEWS -->
-<section class="py-16 section-textured">
-   <h2 class="text-4xl font-extrabold mb-12 text-center text-[#6dab00]">Opiniones de Nuestros Clientes</h2>
-
-   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
-         <h3 class="text-xl font-semibold mb-3 text-gray-800">Ana Gómez</h3>
-         <p class="text-gray-700 mb-4">"La experiencia en la bodega Alta Alella fue inolvidable. Los vinos son extraordinarios y el personal muy amable."</p>
-         <div class="text-yellow-400 text-xl">★★★★★</div>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
-         <h3 class="text-xl font-semibold mb-3 text-gray-800">Carlos Fernández</h3>
-         <p class="text-gray-700 mb-4">"Quim Batlle es una bodega increíble con vinos únicos. Definitivamente regresaré."</p>
-         <div class="text-yellow-400 text-xl">★★★★☆</div>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
-         <h3 class="text-xl font-semibold mb-3 text-gray-800">Lucía Martínez</h3>
-         <p class="text-gray-700 mb-4">"Disfrutamos mucho el tour de cata en Alella Vinícola. Los paisajes y vinos son espectaculares."</p>
-         <div class="text-yellow-400 text-xl">★★★★★</div>
-      </div>
+<section class="section reviews">
+<div class="section-title">
+   <h2>Opiniones de Nuestros Clientes</h2>
+   <div class="section-line"></div>
+</div>
+   <div class="grid">
+   <div class="card review">
+      <h3>Ana Gómez</h3>
+      <p>"La experiencia en la bodega Alta Alella fue inolvidable. Los vinos son extraordinarios y el personal muy amable."</p>
+      <div class="stars">★★★★★</div>
+   </div>
+   <div class="card review">
+      <h3>Carlos Fernández</h3>
+      <p>"Quim Batlle es una bodega increíble con vinos únicos. Definitivamente regresaré."</p>
+      <div class="stars">★★★★☆</div>
+   </div>
+   <div class="card review">
+      <h3>Lucía Martínez</h3>
+      <p>"Disfrutamos mucho el tour de cata en Alella Vinícola. Los paisajes y vinos son espectaculares."</p>
+      <div class="stars">★★★★★</div>
+   </div>
    </div>
 </section>
+
 </div>

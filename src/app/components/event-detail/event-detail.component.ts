@@ -5,12 +5,13 @@ import { iEvent } from '../../data/services/interfaces/ievents';
 import mapboxgl from 'mapbox-gl';
 import { CommonModule } from '@angular/common';
 import { iBodega } from '../../data/services/interfaces/ibodega';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'event-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DatePipe],
   templateUrl: './event-detail.component.html',
   styleUrl: './event-detail.component.scss'
 })

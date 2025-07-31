@@ -1,24 +1,41 @@
+<div *ngIf="event" class="container mx-auto mt-10 px-4 mb-4 font-sans">
 
-<div *ngIf="event" class="container mx-auto mt-10 px-4 mb-4"> 
-   <div class="flex flex-col lg:flex-row bg-white shadow-lg rounded-lg mb-6 overflow-hidden">
+<div
+   class="flex flex-col lg:flex-row bg-white shadow-md rounded-xl mb-6 overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+>
 
-      <div class="w-full lg:w-1/3 h-80 bg-cover bg-center">
-         <img [src]="'http://localhost:3000/' + event.image_url" alt="{{ event.event_name }}" class="w-full h-full object-cover">
-      </div>
-
-      <div class="w-full lg:w-2/3 p-6 flex flex-col justify-between">
-         <div class="flex flex-col mb-4">
-
-         <h2 class="text-3xl font-bold text-gray-800 mb-2">{{ event.event_name }}</h2>
-
-         <p class="text-lg text-gray-600 mb-4">{{ event.description }}</p>
-   
-
-         <div class="flex flex-col space-y-2">
-            <p class="text-xl font-semibold text-gray-700">{{ event.bodega_name }}</p>
-            <p class="text-md text-gray-600">Fecha: {{ event.date.split('T')[0] }}</p>
-         </div>
-         </div>
-      </div>
+   <!-- Картинка с фиксированным соотношением сторон 4:3 для адаптивности -->
+   <div class="w-full lg:w-1/3 aspect-[4/3] overflow-hidden rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none">
+   <img
+      [src]="'http://localhost:3000/' + event.image_url"
+      alt="{{ event.event_name }}"
+      class="w-full h-full object-cover"
+   />
    </div>
 
+   <!-- Контент -->
+   <div class="w-full lg:w-2/3 p-6 flex flex-col justify-between rounded-b-xl lg:rounded-r-xl lg:rounded-bl-none">
+   <div class="flex flex-col mb-4">
+      <!-- Заголовок -->
+      <h2 class="text-3xl font-semibold mb-3" style="color: #6dab00;">
+         {{ event.event_name }}
+      </h2>
+
+      <!-- Описание -->
+      <p class="text-base text-gray-800 mb-5 leading-relaxed">
+         {{ event.description }}
+      </p>
+
+      <!-- Информация -->
+      <div class="flex flex-col space-y-1">
+         <p class="text-lg font-medium text-gray-800">
+         {{ event.bodega_name }}
+         </p>
+         <p class="text-sm text-gray-500 italic">
+         Fecha: {{ event.date.split('T')[0] | date}}
+         </p>
+      </div>
+   </div>
+   </div>
+</div>
+</div>

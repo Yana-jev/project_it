@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
 
     this.router.navigate([`/bodega-detail/${bodegaId}`]);  
   }
+  
   goToEventDetail(eventId: number) {
 
     this.router.navigate([`/event-detail/${eventId}`]);  

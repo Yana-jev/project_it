@@ -2,7 +2,7 @@
 <nav class="bg-white  dark:bg-gray-900 py-2">
   <div class="container flex flex-wrap items-center justify-between mx-auto mt-10 px-4">
     <div class="logo cursor-pointer" [routerLink]="['/home']">
-        <img src="assets/img/logoA.png" class="h-36 w-auto" alt="logo"/>
+        <img src="assets/img/logologo.png" class="h-10 w-auto" alt="logo"/>
     </div>
     
     <button
@@ -28,24 +28,23 @@
         
 
         <li class="flex">
-          <a href="#" class="font-semibold block py-2 px-3 text-gray-900 rounded hover:text-[#6dab00] md:hover:text-[#6dab00] md:p-0 dark:text-white md:dark:hover:text-[#6dab00] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">Home</a>
+          <a [routerLink]="['/home']">Home</a>
         </li>
         <li class="flex">
-          <a [routerLink]='["/events"]' class="font-semibold block py-2 px-3 text-gray-900 rounded hover:text-[#6dab00] md:hover:text-[#6dab00] md:p-0 dark:text-white md:dark:hover:text-[#6dab00] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Eventos</a>
+          <a [routerLink]='["/events"]' >Eventos</a>
         </li>
         <li class="flex">
-          <a [routerLink]='["/bodegas"]' class="font-semibold block py-2 px-3 text-gray-900 rounded hover:text-[#6dab00] md:hover:text-[#6dab00] md:p-0 dark:text-white md:dark:hover:text-[#6dab00] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Bodegas</a>
+          <a [routerLink]='["/bodegas"]'>Bodegas</a>
         </li>
         <li class="flex">
-          <a [routerLink]='["/tienda"]' class="font-semibold block py-2 px-3 text-gray-900 rounded hover:text-[#6dab00] md:hover:text-[#6dab00] md:p-0 dark:text-white md:dark:hover:text-[#6dab00] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Tienda</a>
+          <a [routerLink]='["/tienda"]'>Tienda</a>
         </li>
         
 
         <li class="flex">
           <a 
           [routerLink]='["/quiiz"]' 
-            class="font-semibold block py-2 px-4 text-[#6dab00] border border-[#6dab00] rounded-lg transition-all duration-300 hover:text-white hover:bg-[#6dab00] focus:ring-2 focus:ring-[#6dab00] focus:outline-none"
-            aria-current="page">
+            class="wine-btn">
             Encuentra tu vino ideal
           </a>
         </li>
