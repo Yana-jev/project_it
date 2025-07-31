@@ -1,24 +1,24 @@
 <div class="container">
-<section class="hero-section">
-   <img src="assets/img/v4.jpg" alt="Vista de Alella" class="hero-image" />
-   <div class="hero-overlay">
-   <p class="hero-text">Descubre las bodegas de DO Alella</p>
+<section class="bodega-hero">
+<div class="bodega-wrapper">
+   <img src="assets/img/v4.jpg" alt="Vista de Alella" class="bodega-image" />
+   <div class="bodega-overlay"></div>
+   <div class="bodega-text">
+   <p>Descubre las bodegas de DO Alella</p>
    </div>
+</div>
 </section>
 
+
+
 <div class="grid">
-   <div
-   *ngFor="let bodega of bodegas; let i = index"
-   class="card"
-   (click)="goToBodegaDetail(bodega.id_bodega)"
-   tabindex="0"
-   >
-   <img
-      [src]="'http://localhost:3000/' + bodega.image_url"
-      alt="{{ bodega.bodega_name }}"
-   />
-   <h3>{{ bodega.bodega_name }}</h3>
-   <p>{{ bodega.bodega_name }}</p>
-   </div>
+<app-card-design
+*ngFor="let bodega of bodegas"
+[imageUrl]="'http://localhost:3000/' + bodega.image_url"
+[title]="bodega.bodega_name"
+[subtitle]="bodega.direction"
+(clicked)="goToBodegaDetail(bodega.id_bodega)">
+</app-card-design>
+
 </div>
 </div>

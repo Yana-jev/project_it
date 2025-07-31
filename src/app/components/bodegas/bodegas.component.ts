@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { iBodega } from '../../data/services/interfaces/ibodega';
 import { BodegaService } from '../../data/services/bodega.service';
 import { CommonModule } from '@angular/common';
+import { CardDesignComponent } from '../card-design/card-design.component';
 
 @Component({
   selector: 'bodegas',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardDesignComponent],
   templateUrl: './bodegas.component.html',
   styleUrl: './bodegas.component.scss'
 })
@@ -29,7 +30,7 @@ export class BodegasComponent {
   }
 
   goToBodegaDetail(bodegaId: number) {
-
+console.log('Navigating to bodega:', bodegaId);
     this.router.navigate([`/bodega-detail/${bodegaId}`]);  
   }
 }

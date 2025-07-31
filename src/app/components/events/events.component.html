@@ -1,11 +1,13 @@
 <div class="container mx-auto mt-10 px-4  flex flex-col items-center">
-<section class="relative w-full h-80 bg-cover bg-center rounded-lg mb-6 overflow-hidden">
-   <img src="assets/img/hero1.jpg" alt="Vista de Alella" class="w-full h-full object-cover rounded-lg shadow-lg">
-   <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center">
-      <p class="text-xl text-gray-200">Únete a nosotros para disfrutar de experiencias únicas</p>
-   </div>
+<section class="hero-section">
+  <img src="assets/img/hero1.jpg" alt="Vista de Alella" class="hero-image" />
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1>Únete a nosotros</h1>
+      <p>Disfruta de experiencias únicas entre viñedos, eventos y buena compañía.</p>
+    </div>
+  </div>
 </section>
-
 
 <div class="flex items-center space-x-3 mb-6">
    <label for="start-date" class="text-lg font-semibold text-gray-700">Filtrar por fechas:</label>
@@ -22,26 +24,16 @@
       [(ngModel)]="endDate" (change)="filterEvents()">
 </div>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-   <div *ngFor="let event of filteredEvents; let i = index" 
-         class="bg-white shadow-lg rounded-lg p-5 flex flex-col items-stretch h-[400px] cursor-pointer" 
-         (click)="goToEventDetail(event.id_event)">
-      <img 
-         [src]="'http://localhost:3000/' + event.image_url" 
-         alt="{{ event.event_name }}" 
-         class="w-full h-48 object-cover rounded-md shadow-md mb-4"
-      >
-
-      <div class="flex flex-col flex-1 space-y-2">
-         <h3 class="text-2xl font-bold text-gray-800" style="min-height: 3rem; line-height: 1.5rem;">
-            {{ event.event_name }}
-         </h3>
-         <p class="text-gray-600 mt-2">{{ event.bodega_name }}</p>
-         <p class="text-gray-600 mt-4">fecha: {{ event.date.split('T')[0] }}</p>
-      </div>
-      <div class="flex items-end mt-auto">
-      </div>
-   </div>
+<div class="grid">
+<app-card-design
+   *ngFor="let event of filteredEvents"
+   [imageUrl]="'http://localhost:3000/' + event.image_url"
+   [title]="event.event_name"
+   [subtitle]="event.bodega_name"
+   [extraInfo]="'fecha: ' + (event.date | date:'dd-MM-yyyy')"
+   (clicked)="goToEventDetail(event.id_event)">
+</app-card-design>
 </div>
+
 </div>
 

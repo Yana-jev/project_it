@@ -4,12 +4,13 @@ import { CommonModule} from '@angular/common';
 import { iEvent } from '../../data/services/interfaces/ievents';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CardDesignComponent } from "../card-design/card-design.component";
 
 
 @Component({
   selector: 'events',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CardDesignComponent],
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss',
 
