@@ -4,7 +4,10 @@
    "VINOS": "Вино",
    "EVENTOS": "События",
    "BODEGAS": "Винодельни",
-   "TIENDAS": "Магазины",
-   "ENCUENTRA TU VINO IDEAL": "Подберите идеальное вино"
+   "TIENDA": "Магазин",
+   "ENCUENTRA TU VINO IDEAL": "Подберите идеальное вино",
+   "LOGIN": "Войти",
+   "REGISTER": "Зарегестрироваться",
+   "LOGOUT": "Выйти"
 }
 }

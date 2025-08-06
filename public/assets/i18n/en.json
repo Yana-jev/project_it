@@ -4,7 +4,10 @@
    "VINOS": "Wines",
    "EVENTOS": "Events",
    "BODEGAS": "Wineries",
-   "TIENDAS": "Our Stores",
-   "ENCUENTRA TU VINO IDEAL": "Find your perfect wine"
+   "TIENDA": "Our Store",
+   "ENCUENTRA TU VINO IDEAL": "Choose your perfect wine",
+   "LOGIN": "Login",
+   "REGISTER": "Sign Up",
+   "LOGOUT": "Logout"
 }
 }

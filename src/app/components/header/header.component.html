@@ -28,16 +28,16 @@
         
 
         <li class="flex">
-          <a [routerLink]="['/home']">Home</a>
+          <a [routerLink]="['/home']">{{ 'NAV.INICIO' | translate}}</a>
         </li>
         <li class="flex">
-          <a [routerLink]='["/events"]' >Eventos</a>
+          <a [routerLink]='["/events"]' >{{ 'NAV.EVENTOS' | translate}}</a>
         </li>
         <li class="flex">
-          <a [routerLink]='["/bodegas"]'>Bodegas</a>
+          <a [routerLink]='["/bodegas"]'>{{ 'NAV.BODEGAS' | translate}}</a>
         </li>
         <li class="flex">
-          <a [routerLink]='["/tienda"]'>Tienda</a>
+          <a [routerLink]='["/tienda"]'>{{ 'NAV.TIENDA' | translate}}</a>
         </li>
         
 
@@ -47,6 +47,13 @@
             class="wine-btn">
             Encuentra tu vino ideal
           </a>
+        </li>
+        <li>
+          <select (change)="changeLanguage($event)" [value]="currentLang">
+      <option value="en">En</option>
+      <option value="es">Es</option>
+      <option value="ru">Ru</option>
+    </select>
         </li>
         <li *ngIf="!authService.isAuthenticated()" class="flex">
           <div class="flex">
