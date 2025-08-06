@@ -3,8 +3,8 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../data/services/auth.service';
 import { CartService } from '../../data/services/cart.service';
 import { CommonModule } from '@angular/common';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslateService } from '../../data/services/translate.service'; 
 
 @Component({
   selector: 'header',
@@ -18,20 +18,19 @@ export class HeaderComponent {
   router = inject(Router);
   itemCount = signal(0);
   isMenuOpen = false;
-  translate = inject(TranslateService)
-  currentLang = this.translate.currentLang || 'es';
+  translate = inject(TranslateService);
+  currentLang = signal(this.translate.currentLang);
 
   constructor(private cartService: CartService) {
     this.updateItemCount();
-
     this.cartService.cartUpdates$.subscribe(() => {
       this.updateItemCount(); 
     });
-    this.translate.addLangs(['es', 'en', 'ru']);
-    this.translate.setDefaultLang('es');
-    this.translate.use(this.currentLang);
-  }
 
+    this.translate.lang$.subscribe(lang => {
+      this.currentLang.set(lang);
+    });
+  }
 
   private updateItemCount(): void {
     this.cartService.getTotalItems().subscribe((totalItems) => {
@@ -39,6 +38,9 @@ export class HeaderComponent {
     });
   }
 
+  changeLanguage(lang: string) {
+    this.translate.setLang(lang);
+  }
 
   onLogout() {
     this.authService.logout().subscribe(
@@ -48,16 +50,8 @@ export class HeaderComponent {
       },
       (error) => {
         console.error('Logout failed', error);
-        alert('Logout failed: ' + error.error.message || 'Unknown error');
+        alert('Logout failed: ' + (error.error?.message || 'Unknown error'));
       }
     );
   }
-
-changeLanguage(event: Event) {
-  const select = event.target as HTMLSelectElement; 
-  const lang = select.value;
-  this.currentLang = lang;
-  this.translate.use(lang);
 }
-}
-

@@ -45,11 +45,11 @@
           <a 
           [routerLink]='["/quiiz"]' 
             class="wine-btn">
-            Encuentra tu vino ideal
+            {{ 'NAV.ENCUENTRA TU VINO IDEAL' | translate}}
           </a>
         </li>
         <li>
-          <select (change)="changeLanguage($event)" [value]="currentLang">
+          <select (change)="changeLanguage($any($event.target).value)" [value]="currentLang()" class="language-select">
       <option value="en">En</option>
       <option value="es">Es</option>
       <option value="ru">Ru</option>
@@ -57,12 +57,12 @@
         </li>
         <li *ngIf="!authService.isAuthenticated()" class="flex">
           <div class="flex">
-            <a href="/login" class="font-semibold text-gray-900 rounded hover:text-[#6dab00] md:hover:text-[#6dab00] px-3 dark:text-white md:dark:hover:text-[#6dab00] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Login</a>
-            <a href="/register" class="font-semibold text-gray-900 rounded hover:text-[#6dab00] md:hover:text-[#6dab00] px-3 dark:text-white md:dark:hover:text-[#6dab00] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Sign Up</a>
+            <a href="/login" class="font-semibold text-gray-900 rounded hover:text-[#6dab00] md:hover:text-[#6dab00] px-3 dark:text-white md:dark:hover:text-[#6dab00] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"> {{ 'NAV.LOGIN' | translate}} </a>
+            <a href="/register" class="font-semibold text-gray-900 rounded hover:text-[#6dab00] md:hover:text-[#6dab00] px-3 dark:text-white md:dark:hover:text-[#6dab00] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"> {{ 'NAV.REGISTER' | translate }} </a>
           </div>
         </li>
         <li *ngIf="authService.isAuthenticated()" class="flex">
-          <a (click)="onLogout()" class="font-semibold block py-1 px-1 text-gray-900 rounded hover:text-[#6dab00] md:hover:text-[#6dab00] md:p-0 dark:text-white md:dark:hover:text-[#6dab00] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 cursor-pointer">Logout</a>
+          <a (click)="onLogout()" class="font-semibold block py-1 px-1 text-gray-900 rounded hover:text-[#6dab00] md:hover:text-[#6dab00] md:p-0 dark:text-white md:dark:hover:text-[#6dab00] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 cursor-pointer">{{'NAV.LOGOUT' | translate}}  </a>
         </li>
         <li>
           <a [routerLink]='["/cart"]' class="flex py-2 px-3 text-gray-900 hover:text-[#6dab00]">
