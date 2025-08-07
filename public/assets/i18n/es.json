@@ -9,5 +9,58 @@
    "LOGIN": "Login",
    "REGISTER": "Sign Up",
    "LOGOUT": "Logout"
+},
+
+"HOME": {
+   "HERO_TITLE": "Bienvenidos a la DO Alella",
+   "HERO_DESC": "Descubre los mejores vinos y bodegas de la región",
+   "EVENTS_TITLE": "Próximos Eventos",
+   "MORE_INFO": "Más información",
+   "SHOW_ALL_EVENTS": "Mostrar todos los eventos",
+   "WINERIES_TITLE": "Nuestras Bodegas",
+   "SHOW_ALL_WINERIES": "Mostrar todas las bodegas",
+   "REVIEWS_TITLE": "Opiniones de Nuestros Clientes",
+   "REVIEW_1": "La experiencia en la bodega Alta Alella fue inolvidable. Los vinos son extraordinarios y el personal muy amable.",
+   "REVIEW_2": "Quim Batlle es una bodega increíble con vinos únicos. Definitivamente regresaré.",
+   "REVIEW_3": "Disfrutamos mucho el tour de cata en Alella Vinícola. Los paisajes y vinos son espectaculares."
+},
+"EVENTS":{
+   "HERO_TITLE": "Únete a nosotros",
+   "HERO_DESC": "Disfruta de experiencias únicas entre viñedos, eventos y buena compañía."
+},
+"BODEGAS":{
+   "HERO_TITLE": "Descubre nuestras bodegas"
+},
+"FOO":{
+   "CONTACTOS": "Contactos",
+   "SW": "Síguenos",
+   "LINKS": "Enlaces útiles",
+   "DIRECTION": "Dirección: Calle Mayor, 123, Alella, España",
+   "DERECHOS": "© 2024 Alella D.O. Todos los derechos reservados"
+},
+
+"SHOP": {
+   "FILTERS": "Filtros",
+   "SEARCH_BY_NAME": "Buscar por nombre:",
+   "SEARCH_PLACEHOLDER": "Escriba el nombre...",
+   "PRODUCER": "Productor:",
+   "COLOR": "Color:",
+   "ALL": "Todos",
+   "RED": "Tinto",
+   "WHITE": "Blanco",
+   "ROSE": "Rosado",
+   "TYPE": "Tipo:",
+   "SPARKLING": "Espumoso",
+   "STILL": "Tranquilo",
+   "PRICE_TO": "Precio hasta:",
+   "SORT_BY_PRICE": "Ordenar por precio:",
+   "NO_ORDER": "Sin orden",
+   "LOW_TO_HIGH": "De menor a mayor",
+   "HIGH_TO_LOW": "De mayor a menor",
+   "ADD_TO_CART": "Añadir al carrito"
 }
 }
+
+
+
+

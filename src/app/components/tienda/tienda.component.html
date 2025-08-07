@@ -104,78 +104,91 @@
 
  -->
 
- <div class="container">
+<div class="container">
   <div class="layout">
     <aside class="sidebar">
-      <h3 class="sidebar-title">Filtros</h3>
-
-      <div class="form-group"></div>
+      <h3 class="sidebar-title">{{ 'SHOP.FILTERS' | translate }}</h3>
 
       <div class="form-group">
-        <label for="search">Buscar por nombre:</label>
-        <input type="text" id="search" [(ngModel)]="searchTerm" (input)="applyFilters()" placeholder="Escriba el nombre..." />
+        <label for="search">{{ 'SHOP.SEARCH_BY_NAME' | translate }}</label>
+        <input
+          type="text"
+          id="search"
+          [(ngModel)]="searchTerm"
+          (input)="applyFilters()"
+          [placeholder]="'SHOP.SEARCH_PLACEHOLDER' | translate"
+        />
       </div>
 
       <div class="form-group">
-        <label for="productor">Productor:</label>
+        <label for="productor">{{ 'SHOP.PRODUCER' | translate }}</label>
         <select id="productor" [(ngModel)]="selectedProductor" (change)="applyFilters()">
-          <option value="">Todos</option>
-          <option *ngFor="let productor of uniqueProductors" [value]="productor">{{ productor }}</option>
+          <option value="">{{ 'SHOP.ALL' | translate }}</option>
+          <option *ngFor="let productor of uniqueProductors" [value]="productor">
+            {{ productor }}
+          </option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="color">Color:</label>
+        <label for="color">{{ 'SHOP.COLOR' | translate }}</label>
         <select id="color" [(ngModel)]="selectedColor" (change)="applyFilters()">
-          <option value="">Todos</option>
-          <option value="Tinto">Tinto</option>
-          <option value="Blanco">Blanco</option>
-          <option value="Rosado">Rosado</option>
+          <option value="">{{ 'SHOP.ALL' | translate }}</option>
+          <option value="Tinto">{{ 'SHOP.RED' | translate }}</option>
+          <option value="Blanco">{{ 'SHOP.WHITE' | translate }}</option>
+          <option value="Rosado">{{ 'SHOP.ROSE' | translate }}</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="type">Tipo:</label>
+        <label for="type">{{ 'SHOP.TYPE' | translate }}</label>
         <select id="type" [(ngModel)]="selectedType" (change)="applyFilters()">
-          <option value="">Todos</option>
-          <option value="Espumoso">Espumoso</option>
-          <option value="Tranquilo">Tranquilo</option>
+          <option value="">{{ 'SHOP.ALL' | translate }}</option>
+          <option value="Espumoso">{{ 'SHOP.SPARKLING' | translate }}</option>
+          <option value="Tranquilo">{{ 'SHOP.STILL' | translate }}</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="price">Precio hasta:</label>
-        <input type="range" id="price" min="0" max="200" [(ngModel)]="selectedPrice" (change)="applyFilters()" />
-        <span>{{ selectedPrice | currency:'EUR' }}</span>
+        <label for="price">{{ 'SHOP.PRICE_TO' | translate }}</label>
+        <input
+          type="range"
+          id="price"
+          min="0"
+          max="200"
+          [(ngModel)]="selectedPrice"
+          (change)="applyFilters()"
+        />
+        <span>{{ selectedPrice | currency: 'EUR' }}</span>
       </div>
 
       <div class="form-group">
-        <label for="sortPrice">Ordenar por precio:</label>
+        <label for="sortPrice">{{ 'SHOP.SORT_BY_PRICE' | translate }}</label>
         <select id="sortPrice" [(ngModel)]="priceSortOrder" (change)="applyFilters()">
-          <option value="">Sin orden</option>
-          <option value="asc">De menor a mayor</option>
-          <option value="desc">De mayor a menor</option>
+          <option value="">{{ 'SHOP.NO_ORDER' | translate }}</option>
+          <option value="asc">{{ 'SHOP.LOW_TO_HIGH' | translate }}</option>
+          <option value="desc">{{ 'SHOP.HIGH_TO_LOW' | translate }}</option>
         </select>
       </div>
     </aside>
 
     <section class="products">
       <div class="product-grid">
-        @for(wine of filteredWines; track $index){
+        @for (wine of filteredWines; track $index) {
           <div class="product-card">
             <div class="product-box">
               <div class="product-image">
-                <img 
-                  [src]="'http://localhost:3000/' + wine.image_url" 
-                  [alt]="wine.wine_name" 
+                <img
+                  [src]="'http://localhost:3000/' + wine.image_url"
+                  [alt]="wine.wine_name"
                   (click)="goToWineDetail(wine.id_wine)"
                 />
               </div>
               <div class="product-info">
                 <h4 class="wine-name">{{ wine.wine_name }}</h4>
                 <span>{{ wine.bodega_name }}</span>
-                <p class="wine-price">{{ wine.price | currency:'EUR' }}</p>
-                <button (click)="addToCart(wine, 1)">Añadir al carrito</button>
+                <p class="wine-price">{{ wine.price | currency: 'EUR' }}</p>
+                <button (click)="addToCart(wine, 1)">{{ 'SHOP.ADD_TO_CART' | translate }}</button>
               </div>
             </div>
           </div>
@@ -188,3 +201,4 @@
 <div *ngIf="showPopup" class="popup">
   {{ popupMessage }}
 </div>
+

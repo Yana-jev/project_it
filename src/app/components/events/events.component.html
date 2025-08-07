@@ -3,21 +3,21 @@
   <img src="assets/img/hero1.jpg" alt="Vista de Alella" class="hero-image" />
   <div class="hero-overlay">
     <div class="hero-content">
-      <h1>Únete a nosotros</h1>
-      <p>Disfruta de experiencias únicas entre viñedos, eventos y buena compañía.</p>
+      <h1> {{ "EVENTS.HERO_TITLE" | translate }} </h1>
+      <p>{{ "EVENTS.HERO_DESC" | translate }}</p>
     </div>
   </div>
 </section>
 
 <div class="flex items-center space-x-3 mb-6">
-   <label for="start-date" class="text-lg font-semibold text-gray-700">Filtrar por fechas:</label>
-   <input 
+    <label for="start-date" class="text-lg font-semibold text-gray-700">Filtrar por fechas:</label>
+    <input 
       id="start-date"
       type="date" 
       class="border border-gray-300 rounded-lg p-2 text-gray-600 focus:ring-2 focus:ring-[#A67B7B] focus:outline-none"
       [(ngModel)]="startDate" (change)="filterEvents()"> 
 
-   <input 
+    <input 
       id="end-date"
       type="date" 
       class="border border-gray-300 rounded-lg p-2 text-gray-600 focus:ring-2 focus:ring-[#A67B7B] focus:outline-none"
@@ -27,11 +27,11 @@
 <div class="grid">
 <app-card-design
    *ngFor="let event of filteredEvents"
-   [imageUrl]="'http://localhost:3000/' + event.image_url"
-   [title]="event.event_name"
-   [subtitle]="event.bodega_name"
-   [extraInfo]="'fecha: ' + (event.date | date:'dd-MM-yyyy')"
-   (clicked)="goToEventDetail(event.id_event)">
+    [imageUrl]="'http://localhost:3000/' + event.image_url"
+    [title]="event.event_name"
+    [subtitle]="event.bodega_name"
+    [extraInfo]="'fecha: ' + (event.date | date:'dd-MM-yyyy')"
+    (clicked)="goToEventDetail(event.id_event)">
 </app-card-design>
 </div>
 

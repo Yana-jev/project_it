@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { EventService } from '../../data/services/event.service';
 import { iEvent } from '../../data/services/interfaces/ievents';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { iBodega } from '../../data/services/interfaces/ibodega';
 import { BodegaService } from '../../data/services/bodega.service';
+import { TranslateService } from '../../data/services/translate.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -19,6 +21,7 @@ export class HomeComponent implements OnInit {
   limitedEvents: iEvent[] = []
   bodegas: iBodega[]=[]
   limitedBodegas: iBodega[]=[]
+  translate = inject(TranslateService)
 
   constructor(private eventService: EventService, private router: Router, private bodegaService: BodegaService) {
 

@@ -5,12 +5,14 @@ import { iEvent } from '../../data/services/interfaces/ievents';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CardDesignComponent } from "../card-design/card-design.component";
+import { TranslateService } from '../../data/services/translate.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'events',
   standalone: true,
-  imports: [CommonModule, FormsModule, CardDesignComponent],
+  imports: [CommonModule, FormsModule, CardDesignComponent, TranslateModule],
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss',
 
@@ -22,7 +24,7 @@ export class EventsComponent {
   filteredEvents: iEvent[] = []; 
   startDate: string = ''; 
   endDate: string = ''; 
-  
+  translate = inject(TranslateService)
 
   constructor(private router: Router) {
 

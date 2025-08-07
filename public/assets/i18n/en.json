@@ -9,5 +9,52 @@
    "LOGIN": "Login",
    "REGISTER": "Sign Up",
    "LOGOUT": "Logout"
+},
+"HOME": {
+   "HERO_TITLE": "Welcome to DO Alella",
+   "HERO_DESC": "Discover the best wines and wineries of the region",
+   "EVENTS_TITLE": "Upcoming Events",
+   "MORE_INFO": "More info",
+   "SHOW_ALL_EVENTS": "Show all events",
+   "WINERIES_TITLE": "Our Wineries",
+   "SHOW_ALL_WINERIES": "Show all wineries",
+   "REVIEWS_TITLE": "Customer Reviews",
+   "REVIEW_1": "The experience at Alta Alella was unforgettable. Excellent wines and very friendly staff.",
+   "REVIEW_2": "Quim Batlle is an amazing winery with unique wines. I will definitely return.",
+   "REVIEW_3": "We enjoyed the wine tour at Alella Vinícola. Beautiful landscapes and spectacular wines."
+},
+"EVENTS":{
+   "HERO_TITLE": "Join us!",
+   "HERO_DESC": "Enjoy unique experiences among vineyards, events, and great company."
+},
+"BODEGAS":{
+   "HERO_TITLE": "Explore the wineries of DO Alella"
+},
+"FOO":{
+   "CONTACTOS": "Contacts",
+   "SW": "Follow us",
+   "LINKS": "Links",
+   "DIRECTION": "Direction: Calle Mayor, 123, Alella, España",
+   "DERECHOS": "© 2024 Alella D.O. All rights reserved"
+},
+"SHOP": {
+   "FILTERS": "Filter",
+   "SEARCH_BY_NAME": "Search by name:",
+   "SEARCH_PLACEHOLDER": "Enter a name...",
+   "PRODUCER": "Producer:",
+   "ALL": "All",
+   "COLOR": "Color:",
+   "RED": "Red",
+   "WHITE": "White",
+   "ROSE": "Rosé",
+   "TYPE": "Type:",
+   "SPARKLING": "Sparkling",
+   "STILL": "Still",
+   "PRICE_TO": "Price to:",
+   "SORT_BY_PRICE": "Sort by price:",
+   "NO_ORDER": "No order",
+   "LOW_TO_HIGH": "Low to high",
+   "HIGH_TO_LOW": "High to low",
+   "ADD_TO_CART": "Add to cart"
 }
 }

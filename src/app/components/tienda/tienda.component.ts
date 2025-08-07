@@ -5,12 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { WineService } from '../../data/services/wine.service';
 import { CartService } from '../../data/services/cart.service';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'tienda',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './tienda.component.html',
   styleUrl: './tienda.component.scss'
 })

@@ -8,7 +8,7 @@ private langSubject = new BehaviorSubject<string>('es');
 lang$ = this.langSubject.asObservable();
 
 constructor(private ngxTranslate: NgxTranslateService) {
-   // Добавляем языки
+
    this.ngxTranslate.addLangs(['es', 'en', 'ru']);
 
 

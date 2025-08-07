@@ -4,11 +4,12 @@ import { iBodega } from '../../data/services/interfaces/ibodega';
 import { BodegaService } from '../../data/services/bodega.service';
 import { CommonModule } from '@angular/common';
 import { CardDesignComponent } from '../card-design/card-design.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'bodegas',
   standalone: true,
-  imports: [CommonModule, CardDesignComponent],
+  imports: [CommonModule, CardDesignComponent, TranslateModule],
   templateUrl: './bodegas.component.html',
   styleUrl: './bodegas.component.scss'
 })
