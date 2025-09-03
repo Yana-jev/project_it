@@ -79,13 +79,13 @@ import { CartItem } from '../../data/services/interfaces/icartitem';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-  cartItems = signal<CartItem[]>([]);
 
+cartItems = this.cartService.cartItems;
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.loadCart();
-    // Подписка на обновления корзины
+
     this.cartService.cartUpdates$.subscribe(() => this.loadCart());
   }
 
@@ -94,7 +94,7 @@ export class CartComponent implements OnInit {
   }
 
   private isLoggedIn(): boolean {
-    return !!localStorage.getItem('token'); // Проверка авторизации
+    return !!localStorage.getItem('token');
   }
 
   loadCart(): void {

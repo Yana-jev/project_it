@@ -72,6 +72,8 @@ import { tap } from 'rxjs/operators';
 import { CartItem } from './interfaces/icartitem';
 import { Wine } from './interfaces/wine'; 
 import { map } from 'rxjs/operators';
+import { signal } from '@angular/core';
+
 @Injectable({
 providedIn: 'root',
 })
@@ -81,20 +83,33 @@ private apiUrl = 'http://localhost:3000/carts';
 private cartUpdateSubject = new BehaviorSubject<void>(undefined);
 cartUpdates$ = this.cartUpdateSubject.asObservable();
 
-
+cartItems = signal<CartItem[]>([]);
 private guestCart: CartItem[] = [];
 private guestCartTimeout: any;
 
-constructor(private http: HttpClient) {}
-
-// --- Получение корзины ---
-getCart(loggedIn: boolean): Observable<CartItem[]> {
-   if (loggedIn) {
-   return this.http.get<CartItem[]>(this.apiUrl, { withCredentials: true });
-   } else {
-   return of(this.guestCart);
-   }
+constructor(private http: HttpClient) {
+   this.loadGuestCartFromStorage();
 }
+
+
+private saveGuestCartToStorage(): void {
+   localStorage.setItem('guestCart', JSON.stringify(this.guestCart));
+   }
+   private loadGuestCartFromStorage(): void {
+   const data = localStorage.getItem('guestCart');
+   this.guestCart = data ? JSON.parse(data) : [];
+   this.cartUpdateSubject.next();
+   }
+
+   getCart(loggedIn: boolean): Observable<CartItem[]> {
+   if (loggedIn) {
+      return this.http.get<CartItem[]>(this.apiUrl, { withCredentials: true }).pipe(
+         tap(items => this.cartItems.set(items))
+      );
+   } else {
+      return of(this.guestCart);
+   }
+   }
 
 
 getTotalItems(loggedIn: boolean): Observable<number> {
@@ -133,7 +148,7 @@ addItemToCart(wine: Wine, quantity: number, loggedIn: boolean): Observable<CartI
          imageUrl: wine.image_url
       });
    }
-
+   this.saveGuestCartToStorage(); 
    this.cartUpdateSubject.next();
 
 
@@ -193,22 +208,21 @@ clearCart(loggedIn: boolean): void {
    }
 }
 
-
 mergeGuestCartWithServer(): Observable<CartItem[]> {
    if (!this.guestCart.length) return of([]);
 
    return this.http.post<CartItem[]>(
       `${this.apiUrl}/merge`,
-      { items: this.guestCart.map(item => ({ wineId: item.wineId, quantity: item.quantity })) },
+      { items: this.guestCart.map(i => ({ wineId: i.wineId, quantity: i.quantity })) },
       { withCredentials: true }
    ).pipe(
-      tap(() => {
-         this.clearGuestCart();
-         this.cartUpdateSubject.next();
+      tap((mergedItems) => {
+         this.cartItems.set(mergedItems);   // обновляем сигнал
+         this.guestCart = [];               // очищаем локальный массив
+         localStorage.removeItem('guestCart'); // очищаем localStorage
+         this.cartUpdateSubject.next();     // уведомляем подписчиков
       })
    );
-}
-
-
+   }
 
 }

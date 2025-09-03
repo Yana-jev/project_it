@@ -29,32 +29,32 @@ export class LoginComponent {
     this.passwordVisible = !this.passwordVisible;
   }
 
-onSubmit() {
-  if (this.form.valid) {
-    this.authService.login(this.form.value).subscribe({
-      next: () => {
-        console.log('Login successful');
+  onSubmit() {
+  if (!this.form.valid) return;
 
-        // Переносим корзину гостя → в серверную и ждём завершения
-        this.cartService.mergeGuestCartWithServer().subscribe({
-          next: () => {
-            console.log('Guest cart merged to server');
-            this.router.navigate(['/home']);
-          },
-          error: (mergeError) => {
-            console.error('Error merging guest cart:', mergeError);
-            // даже если ошибка — всё равно идём на /home
-            this.router.navigate(['/home']);
-          }
-        });
-      },
-      error: (err) => {
-        console.error('Login failed', err);
-        alert('Login failed: ' + (err.error?.message || 'Unknown error'));
-      },
-    });
-  }
+  this.authService.login(this.form.value).subscribe({
+    next: () => {
+      console.log('Login successful');
+
+      // Переносим гостевую корзину на сервер
+      this.cartService.mergeGuestCartWithServer().subscribe({
+        next: () => {
+          console.log('Guest cart merged to server');
+          this.router.navigate(['/home']); // переход только после merge
+        },
+        error: (mergeError) => {
+          console.error('Error merging guest cart:', mergeError);
+          this.router.navigate(['/home']); // даже если merge не удался
+        }
+      });
+    },
+    error: (err) => {
+      console.error('Login failed', err);
+      alert('Login failed: ' + (err.error?.message || 'Unknown error'));
+    }
+  });
+}
+
 }
 
 
-}

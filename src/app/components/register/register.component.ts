@@ -28,44 +28,39 @@ export class RegisterComponent {
     this.passwordVisible = !this.passwordVisible;
   }
   
-  onSubmit() {
-  if (this.form.valid) {
+onSubmit() {
+    if (!this.form.valid) return;
+
     const { email, password } = this.form.value;
 
     this.authService.signUp({ email, password }).subscribe({
-      next: (response: any) => {
-        console.log('Registration successful', response);
+      next: () => {
+        console.log('Registration successful');
 
         this.authService.login({ email, password }).subscribe({
-          next: (loginResponse: any) => {
-            console.log('Login successful', loginResponse);
+          next: () => {
+            console.log('Login successful');
 
-            // Переносим корзину гостя → серверную и ждём завершения
+            // Сливаем корзину гостя → сервер и обновляем сигнал cartItems
             this.cartService.mergeGuestCartWithServer().subscribe({
-              next: () => {
+              next: (mergedItems) => {
                 console.log('Guest cart merged to server');
+                this.cartService.cartItems.set(mergedItems);
                 this.router.navigate(['/home']);
               },
               error: (mergeError) => {
                 console.error('Error merging guest cart:', mergeError);
-                // даже если ошибка — всё равно идём на /home
                 this.router.navigate(['/home']);
               }
             });
-
           },
-          error: (loginError: any) => {
-            console.log('Login failed', loginError);
-          }
+          error: (loginError) => console.error('Login failed', loginError)
         });
-
       },
-      error: (registrationError: any) => {
-        console.log('Registration failed', registrationError);
-      }
+      error: (registrationError) => console.error('Registration failed', registrationError)
     });
   }
-}
+
 
 
 
