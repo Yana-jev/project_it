@@ -42,7 +42,7 @@
    <div *ngFor="let bodega of limitedBodegas" class="card" (click)="goToBodegaDetail(bodega.id_bodega)">
       <img [src]="'http://localhost:3000/' + bodega.image_url" alt="{{ bodega.bodega_name }}">
       <h3>{{ bodega.bodega_name }}</h3>
-      <p>{{ bodega.bodega_description }}</p>
+      <p>{{ bodega.description }}</p>
       <a (click)="goToBodegaDetail(bodega.id_bodega)">{{ 'HOME.MORE_INFO' | translate}} →</a>
    </div>
    </div>

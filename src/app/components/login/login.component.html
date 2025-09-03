@@ -1,7 +1,7 @@
 
 <div class="flex items-center justify-center min-h-screen">
 <form class="login-form max-w-sm w-full" [formGroup]="form" (ngSubmit)="onSubmit()">
-   <img src="assets/img/logo.svg" alt="logo" class="mx-auto mb-5" width="100" />
+   <div [routerLink]='["/home"]'><img src="assets/img/logo.svg" alt="logo" class="mx-auto mb-5" width="100" /></div>
    <h1 class="text-center text-3xl font-bold text-wine mb-5">Iniciar sesión en la bodega</h1>
 
    <div class="mb-5">

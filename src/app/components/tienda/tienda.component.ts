@@ -25,7 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
     selectedColor: string = '';
     selectedType: string = '';
     selectedProductor: string = '';
-    selectedPrice: number = 200; 
+    selectedPrice: number = 100; 
     searchTerm: string = '';
     priceSortOrder: string = '';
     wineService = inject(WineService);
@@ -75,17 +75,32 @@ import { TranslateModule } from '@ngx-translate/core';
     }
 
 
-    addToCart(wine: Wine, quantity: number = 1): void {
-      this.cartService.addItemToCart(wine.id_wine, quantity).subscribe({
-        next: (response) => {
-          console.log('Added to cart:', response);
-          this.showSuccessPopup('Producto agregado exitosamente');
-        },
-        error: (err) => {
-          console.error('Error of adding to cart:', err);
-        }
-      });
+    // addToCart(wine: Wine, quantity: number = 1): void {
+    //   this.cartService.addItemToCart(wine.id_wine, quantity).subscribe({
+    //     next: (response) => {
+    //       console.log('Added to cart:', response);
+    //       this.showSuccessPopup('Producto agregado exitosamente');
+    //     },
+    //     error: (err) => {
+    //       console.error('Error of adding to cart:', err);
+    //     }
+    //   });
+    // }
+addToCart(wine: Wine, quantity: number = 1): void {
+  const loggedIn = !!localStorage.getItem('token'); // проверка авторизации
+
+  this.cartService.addItemToCart(wine, quantity, loggedIn).subscribe({
+    next: (response) => {
+      console.log('Added to cart:', response);
+      this.showSuccessPopup('Producto agregado exitosamente');
+    },
+    error: (err) => {
+      console.error('Error adding to cart:', err);
     }
+  });
+}
+
+
     goToWineDetail(wineId: number){
       this.router.navigate([`/wine/${wineId}`]);  
     }

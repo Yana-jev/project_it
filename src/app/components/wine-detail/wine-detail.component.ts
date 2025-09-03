@@ -4,6 +4,7 @@ import { WineService } from '../../data/services/wine.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../data/services/cart.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -11,7 +12,7 @@ import { CartService } from '../../data/services/cart.service';
 @Component({
   selector: 'wine-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './wine-detail.component.html',
   styleUrl: './wine-detail.component.scss'
 })
@@ -42,16 +43,32 @@ export class WineDetailComponent {
       });
     }
   }
-  addToCart(wine: Wine, quantity: number = 1): void {
-    this.cartService.addItemToCart(wine.id_wine, quantity).subscribe({
-      next: (response) => {
-        console.log('Added to cart:', response);
-      },
-      error: (err) => {
-        console.error('Error of adding to cart:', err);
-      }
-    });
-  }
+  // addToCart(wine: Wine, quantity: number = 1): void {
+  //   this.cartService.addItemToCart(wine.id_wine, quantity).subscribe({
+  //     next: (response) => {
+  //       console.log('Added to cart:', response);
+  //     },
+  //     error: (err) => {
+  //       console.error('Error of adding to cart:', err);
+  //     }
+  //   });
+  // }
+
+addToCart(wine: Wine, quantity: number = 1): void {
+  const loggedIn = !!localStorage.getItem('token'); // проверяем, авторизован ли пользователь
+
+  this.cartService.addItemToCart(wine, quantity, loggedIn).subscribe({
+    next: (response) => {
+      console.log('Added to cart:', response);
+    },
+    error: (err) => {
+      console.error('Error adding to cart:', err);
+    }
+  });
+}
+
+
+
   goToWineDetail(wineId: number){
     this.router.navigate([`/wine/${wineId}`]);  
   }

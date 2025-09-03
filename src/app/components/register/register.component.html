@@ -1,7 +1,7 @@
 
 <div class="flex items-center justify-center min-h-screen">
    <form class="login-form max-w-sm w-full" [formGroup]="form" (ngSubmit)="onSubmit()">
-      <img src="assets/img/logo.svg" alt="logo" class="mx-auto mb-5" width="100" />
+      <div routerLink="['/home']"><img src="assets/img/logo.svg" alt="logo" class="mx-auto mb-5" width="100" /></div>
       <h1 class="text-center text-3xl font-bold text-wine mb-5">Registración</h1>
    
       <div class="mb-5">
@@ -16,18 +16,6 @@
          }
       </div>
    
-      <!-- <div class="mb-5">
-         <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
-         <input formControlName="password" type="password" id="password" placeholder="Ingrese su contraseña"
-         class="bg-white border border-wine-light text-gray-900 text-sm rounded-lg focus:ring-wine focus:border-wine block w-full p-2.5" />
-   
-         @if(form.get('password')?.touched && form.get('email')?.invalid){
-            
-            <div class="text-red-500 text-sm mt-1">
-            La contraseña es obligatoria.
-            </div>
-         }
-   </div> -->
 
    <div class="mb-5 relative">
       <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>

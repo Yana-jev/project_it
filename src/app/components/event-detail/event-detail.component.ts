@@ -1,78 +1,49 @@
-import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { EventService } from '../../data/services/event.service';
 import { ActivatedRoute } from '@angular/router';
 import { iEvent } from '../../data/services/interfaces/ievents';
-import mapboxgl from 'mapbox-gl';
-import { CommonModule } from '@angular/common';
-import { iBodega } from '../../data/services/interfaces/ibodega';
-import { DatePipe } from '@angular/common';
-
+import { CommonModule, DatePipe } from '@angular/common';
+import { TranslateService } from '../../data/services/translate.service';
+import { Subscription } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'event-detail',
   standalone: true,
-  imports: [CommonModule, DatePipe],
+  imports: [CommonModule, DatePipe, TranslateModule],
   templateUrl: './event-detail.component.html',
   styleUrl: './event-detail.component.scss'
 })
-
-export class EventDetailComponent implements AfterViewChecked, OnDestroy {
-  bodegaId: number | null = null;
-  bodega: iBodega | undefined;
-  @ViewChild('mapDiv') mapDivElement!: ElementRef;
-
-  private map: mapboxgl.Map | undefined;
-  private mapInitialized = false;
+export class EventDetailComponent {
   event: iEvent | undefined;
-
+  description: string = '';
+  eventId: number | null = null;
+  private langSub!: Subscription;
 
   constructor(
     private eventService: EventService,
-    private route: ActivatedRoute
-  ) {const eventId = Number(this.route.snapshot.paramMap.get('id')); 
+    private route: ActivatedRoute,
+    private translateService: TranslateService
+  ) {
+    this.eventId = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.langSub = this.translateService.lang$.subscribe(lang => {
+      this.loadEvent(lang);
+  })
+  }
+
+  loadEvent(lang: string) {
+    if (!this.eventId) return;
+
     this.eventService.getTestEvent().subscribe(events => {
-      this.event = events.find(e => e.id_event === eventId);
+      const found = events.find(e => e.id_event === this.eventId);
+      if (found) {
+        this.event = found;
 
-    });}
-    ngAfterViewChecked(): void {
-      if (this.bodega && !this.mapInitialized && this.mapDivElement) {
-        this.initializeMap();
-        this.mapInitialized = true; 
+        // @ts-ignore
+        const localizedDesc = found[`description_${lang}`];
+        this.description = localizedDesc || found.description;
       }
-    }
-  
-    private initializeMap(): void {
-      if (!this.mapDivElement) {
-        console.error('Map container is not available.');
-        return;
-      }
-    
-      mapboxgl.accessToken = 'pk.eyJ1IjoieWFuYS1qcyIsImEiOiJjbTQ2eGducjUxNjgzMnFyNHJ4Y3Vxd29mIn0.sKUheGxgdU-PXpQ5392pyw';
-    
-      const latitude = parseFloat(this.bodega?.latitud || '0'); 
-      const longitude = parseFloat(this.bodega?.longitud || '0'); 
-    
-      this.map = new mapboxgl.Map({
-        container: this.mapDivElement.nativeElement, 
-        style: 'mapbox://styles/mapbox/streets-v12', 
-        center: [longitude, latitude], 
-        zoom: 10, 
-      });
-    
-
-      new mapboxgl.Marker()
-        .setLngLat([longitude, latitude]) 
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 }) 
-            .setText(this.bodega?.bodega_name || 'No name provided')
-        )
-        .addTo(this.map);
-    }
-  
-    ngOnDestroy(): void {
-      if (this.map) {
-        this.map.remove();
-      }
-    }
-
+    });
+  }
 }

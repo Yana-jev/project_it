@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthService } from '../../data/services/auth.service';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
+import { CartService } from '../../data/services/cart.service';
 
 @Component({
   selector: 'login',
@@ -12,7 +13,8 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  authService = inject(AuthService)
+  authService = inject(AuthService);
+  cartService = inject(CartService); 
   router = inject(Router); 
   
   form: FormGroup = new FormGroup({
@@ -27,20 +29,32 @@ export class LoginComponent {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  onSubmit() {
-    if (this.form.valid) {
-      console.log(this.form.value);
+onSubmit() {
+  if (this.form.valid) {
+    this.authService.login(this.form.value).subscribe({
+      next: () => {
+        console.log('Login successful');
 
-      this.authService.login(this.form.value).subscribe(
-        (response) => {
-          console.log('Login successful', response);
-          this.router.navigate(['/home']); 
-        },
-        (error) => {
-          console.error('Login failed', error);
-          alert('Login failed: ' + error.error.message || 'Unknown error');
-        }
-      );
-    }
+        // Переносим корзину гостя → в серверную и ждём завершения
+        this.cartService.mergeGuestCartWithServer().subscribe({
+          next: () => {
+            console.log('Guest cart merged to server');
+            this.router.navigate(['/home']);
+          },
+          error: (mergeError) => {
+            console.error('Error merging guest cart:', mergeError);
+            // даже если ошибка — всё равно идём на /home
+            this.router.navigate(['/home']);
+          }
+        });
+      },
+      error: (err) => {
+        console.error('Login failed', err);
+        alert('Login failed: ' + (err.error?.message || 'Unknown error'));
+      },
+    });
   }
+}
+
+
 }

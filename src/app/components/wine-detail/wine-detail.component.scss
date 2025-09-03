@@ -1,0 +1,105 @@
+.wine-detail-container {
+max-width: 1200px;
+margin: 2rem auto;
+padding: 2rem;
+background: #f9f9f9;
+border: 1px solid #ddd;
+border-radius: 12px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.wine-detail-layout {
+display: flex;
+flex-direction: row;
+gap: 2rem;
+
+@media (max-width: 768px) {
+   flex-direction: column;
+}
+}
+
+.wine-image {
+flex: 0 0 40%;
+display: flex;
+justify-content: center;
+align-items: center;
+
+img {
+   max-width: 100%;
+   max-height: 400px;
+   border-radius: 8px;
+   object-fit: cover;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+}
+
+.wine-content {
+flex: 1;
+display: flex;
+flex-direction: column;
+}
+
+.wine-name {
+font-size: 2rem;
+font-weight: bold;
+margin-bottom: 1rem;
+color: #333;
+}
+
+.wine-bodega {
+font-size: 1.2rem;
+color: #666;
+margin-bottom: 1rem;
+}
+
+.wine-description {
+font-size: 1rem;
+color: #444;
+margin-bottom: 1.5rem;
+line-height: 1.6;
+}
+
+.wine-attributes {
+margin-bottom: 1.5rem;
+
+.wine-info-line {
+   display: flex;
+   margin-bottom: 0.4rem;
+
+   .label {
+   font-weight: bold;
+   color: #222;
+   min-width: 150px;
+   }
+
+   .value {
+   font-weight: bold;
+   color: #666;
+   }
+}
+}
+
+.wine-price {
+font-size: 1.2rem;
+font-weight: 600;
+color: #1a7a1f;
+margin-bottom: 1.5rem;
+}
+
+.wine-actions {
+button {
+   background-color: #a67b7b;
+   color: #fff;
+   font-weight: 600;
+   padding: 0.6rem 1.2rem;
+   border: none;
+   border-radius: 6px;
+   width: fit-content;
+   cursor: pointer;
+   transition: background-color 0.2s;
+
+   &:hover {
+   background-color: #b88989;
+   }
+}
+}

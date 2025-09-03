@@ -25,7 +25,10 @@
 },
 "EVENTS":{
    "HERO_TITLE": "Join us!",
-   "HERO_DESC": "Enjoy unique experiences among vineyards, events, and great company."
+   "HERO_DESC": "Enjoy unique experiences among vineyards, events, and great company.",
+   "FECHA": "Date",
+   "FILTRAR": "Filter by dates:"
+
 },
 "BODEGAS":{
    "HERO_TITLE": "Explore the wineries of DO Alella"
@@ -56,5 +59,15 @@
    "LOW_TO_HIGH": "Low to high",
    "HIGH_TO_LOW": "High to low",
    "ADD_TO_CART": "Add to cart"
+},
+"WINE": {
+   "BODEGA": "Winery",
+   "MARIDAJE": "Pairing",
+   "Año": "Vintage",
+   "AZUCAR": "Sweetness",
+   "UVA": "Grape Variety",
+   "VOLUMEN": "Volume",
+   "PRECIO": "Price"
 }
+
 }

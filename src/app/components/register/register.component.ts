@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AuthService } from '../../data/services/auth.service';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { CartService } from '../../data/services/cart.service';
 
 @Component({
   selector: 'register',
@@ -13,6 +14,7 @@ import { Router, RouterLink } from '@angular/router';
 export class RegisterComponent {
   
   authService = inject(AuthService);
+  cartService = inject(CartService)
   router = inject(Router); 
   
   form: FormGroup = new FormGroup({
@@ -25,34 +27,46 @@ export class RegisterComponent {
   togglePasswordVisibility(): void {
     this.passwordVisible = !this.passwordVisible;
   }
+  
   onSubmit() {
-    if (this.form.valid) {
-      const { email, password } = this.form.value;
-      
+  if (this.form.valid) {
+    const { email, password } = this.form.value;
 
-      this.authService.signUp({ email, password }).subscribe({
-        next: (response: any) => {
-          console.log('Registration successful', response);
+    this.authService.signUp({ email, password }).subscribe({
+      next: (response: any) => {
+        console.log('Registration successful', response);
 
+        this.authService.login({ email, password }).subscribe({
+          next: (loginResponse: any) => {
+            console.log('Login successful', loginResponse);
 
-          this.authService.login({ email, password }).subscribe({
-            next: (loginResponse: any) => {
-              console.log('Login successful', loginResponse);
+            // Переносим корзину гостя → серверную и ждём завершения
+            this.cartService.mergeGuestCartWithServer().subscribe({
+              next: () => {
+                console.log('Guest cart merged to server');
+                this.router.navigate(['/home']);
+              },
+              error: (mergeError) => {
+                console.error('Error merging guest cart:', mergeError);
+                // даже если ошибка — всё равно идём на /home
+                this.router.navigate(['/home']);
+              }
+            });
 
-              this.router.navigate(['/home']);
-            },
-            error: (loginError: any) => {
-              console.log('Login failed', loginError);
-            }
-          });
+          },
+          error: (loginError: any) => {
+            console.log('Login failed', loginError);
+          }
+        });
 
-        },
-        error: (registrationError: any) => {
-          console.log('Registration failed', registrationError);
-        }
-      });
-    }
+      },
+      error: (registrationError: any) => {
+        console.log('Registration failed', registrationError);
+      }
+    });
   }
+}
+
 
 
   passwordsMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {

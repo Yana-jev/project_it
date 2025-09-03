@@ -119,16 +119,31 @@ export class QuiizComponent {
     );
   }
   
-  addToCart(wine: Wine, quantity: number = 1): void {
-    this.cartService.addItemToCart(wine.id_wine, quantity).subscribe({
-      next: (response) => {
-        console.log('Added to cart:', response);
-      },
-      error: (err) => {
-        console.error('Error of adding to cart:', err);
-      }
-    });
-  }
+  // addToCart(wine: Wine, quantity: number = 1): void {
+  //   this.cartService.addItemToCart(wine.id_wine, quantity).subscribe({
+  //     next: (response) => {
+  //       console.log('Added to cart:', response);
+  //     },
+  //     error: (err) => {
+  //       console.error('Error of adding to cart:', err);
+  //     }
+  //   });
+  // }
+
+addToCart(wine: Wine, quantity: number = 1): void {
+  const loggedIn = !!localStorage.getItem('token'); // проверяем авторизацию
+
+  this.cartService.addItemToCart(wine, quantity, loggedIn).subscribe({
+    next: (response) => {
+      console.log('Added to cart:', response);
+    },
+    error: (err) => {
+      console.error('Error adding to cart:', err);
+    }
+  });
+}
+
+
   goToWineDetail(wineId: number){
     this.router.navigate([`/wine/${wineId}`]);  
   }

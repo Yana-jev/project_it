@@ -12,7 +12,7 @@ export class CardDesignComponent {
  @Input() imageUrl!: string;
   @Input() title!: string;
   @Input() subtitle?: string;
-  @Input() extraInfo?: string;
+  @Input() extraInfo?: any;
 
   @Output() clicked = new EventEmitter<void>();
 

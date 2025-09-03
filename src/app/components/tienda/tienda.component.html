@@ -148,19 +148,20 @@
           <option value="Tranquilo">{{ 'SHOP.STILL' | translate }}</option>
         </select>
       </div>
+<div class="form-group">
+  <label for="price">{{ 'SHOP.PRICE_TO' | translate }}</label>
+  <input
+    type="range"
+    id="price"
+    min="0"
+    max="100"
+    [(ngModel)]="selectedPrice"
+    (change)="applyFilters()"
+    class="wine-range"
+  />
+  <span>{{ selectedPrice | currency: 'EUR' }}</span>
+</div>
 
-      <div class="form-group">
-        <label for="price">{{ 'SHOP.PRICE_TO' | translate }}</label>
-        <input
-          type="range"
-          id="price"
-          min="0"
-          max="200"
-          [(ngModel)]="selectedPrice"
-          (change)="applyFilters()"
-        />
-        <span>{{ selectedPrice | currency: 'EUR' }}</span>
-      </div>
 
       <div class="form-group">
         <label for="sortPrice">{{ 'SHOP.SORT_BY_PRICE' | translate }}</label>

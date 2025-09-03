@@ -10,7 +10,7 @@
 </section>
 
 <div class="flex items-center space-x-3 mb-6">
-    <label for="start-date" class="text-lg font-semibold text-gray-700">Filtrar por fechas:</label>
+    <label for="start-date" class="text-lg font-semibold text-gray-700"> {{ "EVENTS.FILTRAR" | translate}} </label>
     <input 
       id="start-date"
       type="date" 
@@ -30,7 +30,7 @@
     [imageUrl]="'http://localhost:3000/' + event.image_url"
     [title]="event.event_name"
     [subtitle]="event.bodega_name"
-    [extraInfo]="'fecha: ' + (event.date | date:'dd-MM-yyyy')"
+    [extraInfo]=" (event.date | date:'dd-MM-yyyy')"
     (clicked)="goToEventDetail(event.id_event)">
 </app-card-design>
 </div>

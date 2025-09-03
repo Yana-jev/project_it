@@ -33,7 +33,6 @@ export class AgePopupComponent implements AfterViewInit {
     }
   }
 
- 
   acceptCookies() {
     localStorage.setItem('cookiesAccepted', 'true');
     this.closeCookiePopup();

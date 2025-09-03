@@ -26,7 +26,10 @@
 },
 "EVENTS":{
    "HERO_TITLE": "Únete a nosotros",
-   "HERO_DESC": "Disfruta de experiencias únicas entre viñedos, eventos y buena compañía."
+   "HERO_DESC": "Disfruta de experiencias únicas entre viñedos, eventos y buena compañía.",
+   "FECHA": "Date",
+   "FILTRAR": "Filtrar por fechas:"
+
 },
 "BODEGAS":{
    "HERO_TITLE": "Descubre nuestras bodegas"
@@ -58,6 +61,15 @@
    "LOW_TO_HIGH": "De menor a mayor",
    "HIGH_TO_LOW": "De mayor a menor",
    "ADD_TO_CART": "Añadir al carrito"
+},
+"WINE":{
+   "BODEGA": "Bodega",
+   "MARIDAJE": "Maridaje",
+   "YEAR": "Año",
+   "AZUCAR": "Contenido de azúcar",
+   "UVA": "Tipo de uva",
+   "VOLUMEN": "Volumen",
+   "PRECIO": "Precio"
 }
 }
 

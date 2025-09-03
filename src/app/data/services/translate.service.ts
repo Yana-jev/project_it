@@ -1,28 +1,33 @@
+// import { Injectable } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { TranslateService as NgxTranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class TranslateService {
-private langSubject = new BehaviorSubject<string>('es');
-lang$ = this.langSubject.asObservable();
+  private langSubject = new BehaviorSubject<string>('es');
+  lang$ = this.langSubject.asObservable();
 
-constructor(private ngxTranslate: NgxTranslateService) {
+  constructor(private ngxTranslate: NgxTranslateService) {
+    this.ngxTranslate.addLangs(['es', 'en', 'ru']);
 
-   this.ngxTranslate.addLangs(['es', 'en', 'ru']);
+    const savedLang = localStorage.getItem('lang') || 'es';
+    this.setLang(savedLang);
+  }
 
+  /** Теперь всегда отдаёт актуальное значение языка из BehaviorSubject */
+  get currentLang(): string {
+    return this.langSubject.value;
+  }
 
-   const savedLang = localStorage.getItem('lang') || 'es';
-   this.setLang(savedLang);
-}
+  setLang(lang: string) {
+    // 1. Сначала обновляем локальное состояние
+    this.langSubject.next(lang);
 
-get currentLang() {
-   return this.ngxTranslate.currentLang || 'es';
-}
+    // 2. Передаём в ngx-translate для перевода интерфейса
+    this.ngxTranslate.use(lang);
 
-setLang(lang: string) {
-   this.ngxTranslate.use(lang);
-   localStorage.setItem('lang', lang);
-   this.langSubject.next(lang);
-}
+    // 3. Сохраняем в localStorage
+    localStorage.setItem('lang', lang);
+  }
 }
