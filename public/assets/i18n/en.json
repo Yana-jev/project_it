@@ -58,16 +58,64 @@
    "NO_ORDER": "No order",
    "LOW_TO_HIGH": "Low to high",
    "HIGH_TO_LOW": "High to low",
-   "ADD_TO_CART": "Add to cart"
+   "ADD_TO_CART": "Add to cart",
+   "CESTA": "Shopping cart",
+   "TOTAL": "Total",
+   "VACIO": "Your cart is empty."
 },
 "WINE": {
    "BODEGA": "Winery",
    "MARIDAJE": "Pairing",
-   "Año": "Vintage",
+   "YEAR": "Vintage",
    "AZUCAR": "Sweetness",
    "UVA": "Grape Variety",
    "VOLUMEN": "Volume",
    "PRECIO": "Price"
+},
+"QUIZ": {
+"Q1": {
+   "QUESTION": "What type of wine do you prefer?",
+   "OPTIONS": {
+   "RED": "Red",
+   "WHITE": "White",
+   "SPARKLING": "Sparkling"
+   }
+},
+"Q2": {
+   "QUESTION": "Which dish will you pair the wine with?",
+   "OPTIONS": {
+   "MEAT": "Meat",
+   "PASTA": "Pasta",
+   "APPETIZER": "Appetizer",
+   "FISH_SEAFOOD": "Fish & Seafood"
+   }
+},
+"Q3": {
+   "QUESTION": "Which aromas do you like?",
+   "OPTIONS": {
+   "WOOD": "Wood",
+   "SPICES": "Spices",
+   "RIPE_FRUITS": "Ripe Fruits",
+   "FRUIT": "Fruit",
+   "FLORAL": "Floral",
+   "HERBS": "Herbs",
+   "PASTRY": "Pastry"
+   }
+},
+"Q4": {
+   "QUESTION": "What price range are you looking for?",
+   "OPTIONS": {
+   "UNDER_15": "under 15€",
+   "FROM_15_TO_20": "15-20€",
+   "ABOVE_20": "more than 20€"
+   }
+},
+"BACK": "← Back",
+"RESULTS_TITLE": "Results",
+"ADD_TO_CART": "Add to cart",
+"START_OVER": "Start over",
+"NO_RESULTS": "Your ideal wine is not available yet. Please try again later."
 }
+
 
 }

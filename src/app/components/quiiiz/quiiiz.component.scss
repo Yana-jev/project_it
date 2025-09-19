@@ -1,28 +1,188 @@
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+$green: #6dab00;
+$violet: #553c9a;
+$lightgreen: #95af68;
+
+button{
+  border-radius: 0.8rem;
+}
+.quiz-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  max-width: 1000px;
+  min-height: 500px;
+  margin: 2rem auto;
 }
 
-.options {
+.quiz-image img {
+  width: 100%;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.quiz-content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1.5rem;
 }
 
-.option-btn {
-  padding: 10px 20px;
-  font-size: 1rem;
+.quiz-question {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  line-height: 1.3;
+  max-height: 8rem;
+
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quiz-option {
+  background: #fff;          // белый фон
+  color: #2c2c2c;            // тёмный текст
+  border: 2px solid $violet; // светло-зелёная обводка
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+  transition: all 0.2s ease;
   cursor: pointer;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  transition: background-color 0.2s;
+
+  &:hover {
+    transform: translateY(-3px);       // лёгкое подпрыгивание
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: #f9fef4;               // чуть светлее фон при наведении
+  }
 }
 
-.option-btn:hover {
-  background-color: #e0e0e0;
+
+.quiz-back {
+  align-self: flex-start;
+  font-weight: 500;
+  background: none;
+  color: $violet;
+  border: 1px solid #ddd;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  &:hover {
+    background: rgba(85, 60, 154, 0.1);
+  }
 }
 
-.results {
-  margin-top: 20px;
+/* Результаты */
+.quiz-results {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+.quiz-no-results {
+  font-weight: 400;
+}
+
+.quiz-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.quiz-results-title {
+  font-size: 2rem;
+  font-weight: 400;
+  color: #2c2c2c;
+}
+
+.quiz-restart {
+  color: $violet;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid $violet;
+  border-radius: 0.9rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: $violet;
+    color: #fff;
+  }
+}
+
+.quiz-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.quiz-wine-card {
+  background: #fff;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.8rem;
+  max-height: none; // убираем ограничения
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.quiz-wine-image {
+  width: 100%;
+  max-height: 250px; // ограничиваем высоту картинки
+  overflow: hidden;
+}
+
+.quiz-wine-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; // показываем всю бутылку полностью
+  display: block;
+  background: #fafafa;
+}
+
+.quiz-wine-info {
+  padding: 1rem;
+  text-align: left;
+
+  h4 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  span {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .quiz-wine-price {
+    font-weight: 700;
+    margin: 0.5rem 0;
+  }
+
+  .quiz-add-cart {
+    background: $violet;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: darken($violet, 10%);
+    }
+  }
 }

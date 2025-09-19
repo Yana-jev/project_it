@@ -1,4 +1,4 @@
-<div *ngIf="currentQuestionIndex < questions.length; else resultsTemplate" class="flex flex-col items-center justify-center  bg-gray-100 p-4">
+<!-- <div *ngIf="currentQuestionIndex < questions.length; else resultsTemplate" class="flex flex-col items-center justify-center  bg-gray-100 p-4">
 
   <button
   *ngIf="currentQuestionIndex > 0"
@@ -79,4 +79,66 @@ Empezar de nuevo
     </p>
   </ng-template>
 </div>
-</ng-template>
+</ng-template> -->
+
+@if (currentQuestionIndex < questions.length) {
+  <div class="quiz-container">
+    <!-- Левая колонка: картинка -->
+    <div class="quiz-image">
+      <img [src]="questions[currentQuestionIndex].imageUrl" alt="quiz-image" />
+    </div>
+
+    <!-- Правая колонка: вопрос и ответы -->
+    <div class="quiz-content">
+      <h2 class="quiz-question">
+        {{ questions[currentQuestionIndex].questionKey | translate }}
+      </h2>
+
+      <div class="quiz-options">
+        @for (option of questions[currentQuestionIndex].optionsKey; track option.key) {
+          <button class="quiz-option" (click)="handleOptionSelect(option.key)">
+            {{ option.translateKey | translate }}
+          </button>
+        }
+      </div>
+
+      @if (currentQuestionIndex > 0) {
+        <button class="quiz-back" (click)="goBack()">
+          {{ 'QUIZ.BACK' | translate }}
+        </button>
+      }
+    </div>
+  </div>
+} @else {
+  <div class="quiz-results">
+    <!-- Заголовок и кнопка начать заново на одной линии -->
+    <div class="quiz-results-header">
+      <h2 class="quiz-results-title">{{ 'QUIZ.RESULTS_TITLE' | translate }}</h2>
+      <a href="/quiiz" class="quiz-restart">{{ 'QUIZ.START_OVER' | translate }}</a>
+    </div>
+
+    @if (recommendations && recommendations.length > 0) {
+      <div class="quiz-results-grid">
+        @for (wine of recommendations; track wine.id_wine) {
+          <div class="quiz-wine-card">
+            <div class="quiz-wine-image" (click)="goToWineDetail(wine.id_wine)">
+              <img [src]="'http://localhost:3000/' + wine.image_url" [alt]="wine.wine_name" />
+            </div>
+            <div class="quiz-wine-info">
+              <h4>{{ wine.wine_name }}</h4>
+              <span>{{ wine.bodega_name }}</span>
+              <p class="quiz-wine-price">{{ wine.price | currency:'EUR' }}</p>
+              <button class="quiz-add-cart" (click)="addToCart(wine, 1)">
+                {{ 'QUIZ.ADD_TO_CART' | translate }}
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <p class="quiz-no-results">
+        {{ 'QUIZ.NO_RESULTS' | translate }}
+      </p>
+    }
+  </div>
+}

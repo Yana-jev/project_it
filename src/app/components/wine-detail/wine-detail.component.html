@@ -16,10 +16,6 @@
       <p class="wine-description"><strong>{{ wine.description }}</strong></p>
 
       <div class="wine-attributes">
-        <div class="wine-info-line" *ngIf="wine.maridaje">
-          <span class="label">{{ "WINE.MARIDAJE" | translate }}:</span>
-          <span class="value">{{ wine.maridaje }}</span>
-        </div>
         <div class="wine-info-line" *ngIf="wine.year">
           <span class="label">{{ "WINE.YEAR" | translate }}:</span>
           <span class="value">{{ wine.year }}</span>

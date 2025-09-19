@@ -13,6 +13,8 @@ export interface  Wine {
    sugar: string;
    image_url: string;
    description: string,
+   wine_des_en?: string; 
+   wine_des_ru?: string; 
    volumen?: string,
 
 }

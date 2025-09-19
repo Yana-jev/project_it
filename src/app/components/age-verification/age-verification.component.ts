@@ -60,6 +60,10 @@ export class AgePopupComponent implements AfterViewInit {
     this.closeAgePopup();
   }
 
+  notVerifyAge() {
+    localStorage.setItem('ageVerified', 'false');
+    window.location.href = "https://www.google.com";
+  }
 
   closeAgePopup() {
     if (this.agePopup) {

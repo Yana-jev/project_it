@@ -4,7 +4,8 @@ import { WineService } from '../../data/services/wine.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../data/services/cart.service';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 
 
@@ -24,8 +25,14 @@ export class WineDetailComponent {
   bgPosition = 'center'; 
   bgSize = 'cover'; 
   cartService = inject(CartService);
+  private langSub: Subscription;
+  translateService = inject(TranslateService);
+
   constructor(private router: Router) {
     this.loadWine();
+        this.langSub = this.translateService.onLangChange.subscribe(() => {
+      this.loadWine(); // перезапрашиваем данные с новым lang
+    });
   }
 
 
@@ -71,6 +78,11 @@ addToCart(wine: Wine, quantity: number = 1): void {
 
   goToWineDetail(wineId: number){
     this.router.navigate([`/wine/${wineId}`]);  
+  }
+    ngOnDestroy(): void {
+    if (this.langSub) {
+      this.langSub.unsubscribe();
+    }
   }
   
 }

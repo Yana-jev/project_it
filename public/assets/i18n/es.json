@@ -60,7 +60,10 @@
    "NO_ORDER": "Sin orden",
    "LOW_TO_HIGH": "De menor a mayor",
    "HIGH_TO_LOW": "De mayor a menor",
-   "ADD_TO_CART": "Añadir al carrito"
+   "ADD_TO_CART": "Añadir al carrito",
+   "CESTA": "Cesta",
+   "TOTAL": "Total",
+   "VACIO": "Tu carrito está vacío"
 },
 "WINE":{
    "BODEGA": "Bodega",
@@ -70,7 +73,52 @@
    "UVA": "Tipo de uva",
    "VOLUMEN": "Volumen",
    "PRECIO": "Precio"
+},
+"QUIZ": {
+"Q1": {
+   "QUESTION": "¿Qué tipo de vino prefieres?",
+   "OPTIONS": {
+   "RED": "Tinto",
+   "WHITE": "Blanco",
+   "SPARKLING": "Espumoso"
+   }
+},
+"Q2": {
+   "QUESTION": "¿Con qué plato vas a acompañar el vino?",
+   "OPTIONS": {
+   "MEAT": "Carne",
+   "PASTA": "Pasta",
+   "APPETIZER": "Aperitivo",
+   "FISH_SEAFOOD": "Pescados y mariscos"
+   }
+},
+"Q3": {
+   "QUESTION": "¿Qué aromas te gustan?",
+   "OPTIONS": {
+   "WOOD": "Madera",
+   "SPICES": "Especias",
+   "RIPE_FRUITS": "Frutos maduros",
+   "FRUIT": "Frutas",
+   "FLORAL": "Floral",
+   "HERBS": "Hierbas",
+   "PASTRY": "Bollería"
+   }
+},
+"Q4": {
+   "QUESTION": "¿En qué rango de precio estás buscando el vino?",
+   "OPTIONS": {
+   "UNDER_15": "menos de 15€",
+   "FROM_15_TO_20": "15-20€",
+   "ABOVE_20": "más de 20€"
+   }
+},
+"BACK": "← Atrás",
+"RESULTS_TITLE": "Resultados",
+"ADD_TO_CART": "Añadir al carrito",
+"START_OVER": "Empezar de nuevo",
+"NO_RESULTS": "Tu vino ideal aún no está disponible. Por favor, inténtalo más tarde."
 }
+
 }
 
 

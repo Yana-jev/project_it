@@ -6,22 +6,25 @@
       <img src="assets/img/cookie.png" alt="Cookie Icon" class="h-8 w-8">
     </div>
     <p class="text-sm">
-      Este sitio web usa cookies para mejorar su experiencia. Al continuar navegando, acepta nuestra <a href="/privacy" class="text-blue-500">Política de Cookies</a>.
+      This website uses cookies to improve your experience. By continuing to browse, you agree to our <a href="/privacy" class="text-blue-500">Cookie Policy.
+</a>.
     </p>
     <button class="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition"
-            (click)="acceptCookies()">Aceptar</button>
+            (click)="acceptCookies()">Accept</button>
   </div>
 </div>
 
 <div #agePopup id="age-popup" class="age-popup fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50 ">
   <div class="popup-content bg-white p-8 rounded-lg max-w-md w-full text-center">
-    <h2 class="text-2xl font-bold mb-4">Confirmación de edad</h2>
+    <h2 class="text-2xl font-bold mb-4">Age Confirmation</h2>
     <p class="text-lg mb-6">
-      Al ingresar a este sitio, confirmo que tengo la edad legal para consumir alcohol según la legislación de mi país.
+      By entering this site, I confirm that I am of legal drinking age according to the laws of my country.
     </p>
     <div class="flex justify-center gap-4">
       <button class="px-6 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition"
-              (click)="verifyAge()">Sí, tengo la edad legal</button>
+              (click)="verifyAge()">Yes, I am of legal drinking age.</button>
+              <button class="px-6 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition"
+              (click)="notVerifyAge()">No, I am not of legal drinking age..</button>
     </div>
   </div>
 </div>
