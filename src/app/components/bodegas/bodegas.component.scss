@@ -1,7 +1,6 @@
 .container {
-
-margin: 2.5rem auto 0; /* mt-10 */
-padding-left: 1rem;   /* px-4 */
+margin: 2.5rem auto 0;
+padding-left: 1rem;   
 padding-right: 1rem;
 display: flex;
 flex-direction: column;
@@ -12,7 +11,7 @@ align-items: center;
 width: 100%;
 height: 50vh;
 margin-bottom: 2rem;
-border-radius: 1rem;
+border-radius: 0.8rem;
 overflow: hidden;
 position: relative;
 
@@ -27,7 +26,7 @@ position: relative;
    }
 
    &:hover .bodega-overlay {
-   background: rgba(0, 0, 0, 0.5); // усиление затемнения
+   background: rgba(0, 0, 0, 0.5); 
    }
 }
 
@@ -43,7 +42,7 @@ position: relative;
 .bodega-overlay {
    position: absolute;
    inset: 0;
-   background: rgba(0, 0, 0, 0.3); // начальное затемнение
+   background: rgba(0, 0, 0, 0.3); 
    z-index: 1;
    transition: background 0.3s ease;
 }

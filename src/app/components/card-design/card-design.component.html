@@ -1,6 +1,11 @@
 <div class="card" (click)="onCardClick()" tabindex="0">
     <img [src]="imageUrl" [alt]="title" />
     <h3>{{ title }}</h3>
-  <p *ngIf="subtitle">{{ subtitle }}</p>
-  <p *ngIf="extraInfo">{{ extraInfo }}</p>
+  @if(subtitle){
+    <p>{{ subtitle }}</p>
+  }
+    @if(extraInfo){
+    <p>{{ extraInfo }}</p>
+  }
+
 </div>

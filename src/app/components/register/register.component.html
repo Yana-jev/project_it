@@ -1,31 +1,30 @@
-
 <div class="flex items-center justify-center min-h-screen">
    <form class="login-form max-w-sm w-full" [formGroup]="form" (ngSubmit)="onSubmit()">
       <div routerLink="['/home']"><img src="assets/img/logo.svg" alt="logo" class="mx-auto mb-5" width="100" /></div>
-      <h1 class="text-center text-3xl font-bold text-wine mb-5">Registración</h1>
+      <h1 class="text-center text-3xl font-bold text-wine mb-5">Registration</h1>
    
       <div class="mb-5">
-         <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Correo electrónico</label>
-         <input formControlName="email" type="email" id="email" placeholder="Ingrese su correo"
+         <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+         <input formControlName="email" type="email" id="email" placeholder="Enter your email"
          class="bg-white border border-wine-light text-gray-900 text-sm rounded-lg focus:ring-wine focus:border-wine block w-full p-2.5" />
          @if(form.get('email')?.touched && form.get('email')?.invalid){
             <div class="text-red-500 text-sm mt-1">
-            El correo es obligatorio.
+            Email is required.
             </div>
-   
          }
+
       </div>
    
 
    <div class="mb-5 relative">
-      <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
       
    <div class="relative">
       <input 
          formControlName="password" 
          [type]="passwordVisible ? 'text' : 'password'" 
          id="password" 
-         placeholder="Ingrese su contraseña"
+         placeholder="Enter your password"
          class="bg-white border border-wine-light text-gray-900 text-sm rounded-lg focus:ring-wine focus:border-wine block w-full p-2.5 pr-10" />
       
    
@@ -41,32 +40,39 @@
    </div>
    
    @if(form.get('password')?.touched && form.get('email')?.invalid){
-         
       <div class="text-red-500 text-sm mt-1">
-      La contraseña es obligatoria.
+      Password is required.
       </div>
    }
    </div>
+
    <div class="mb-5">
-      <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Repite la contraseña</label>
-      <input formControlName="confirmPassword" id="confirmPassword" type="password"  placeholder="Ingrese su contraseña"
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Confirm Password</label>
+      <input formControlName="confirmPassword" id="confirmPassword" type="password" placeholder="Enter your password"
       class="bg-white border border-wine-light text-gray-900 text-sm rounded-lg focus:ring-wine focus:border-wine block w-full p-2.5" />
 
       @if(form.get('password')?.touched && form.get('email')?.invalid){
-         
          <div class="text-red-500 text-sm mt-1">
-         La contraseña es obligatoria.
+         Password is required.
          </div>
       }
 </div>
+
       <button type="submit"
          class="text-white bg-wine hover:bg-wine-dark focus:ring-4 focus:outline-none focus:ring-wine-light font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">
-         Registrar
+         Register
       </button>
    
       <div class="mt-5 text-center">
-         <span class="text-sm">¿Ya tienes una cuenta? </span>
+         <span class="text-sm">Already have an account? </span>
          <a routerLink="/login" class="text-wine font-bold hover:underline login-link">Login</a>
       </div>
    </form>
+</div>
+@if(emailExistsError){
+
+   <div class="fixed top-5 right-5 bg-red-500 text-white px-4 py-2 rounded shadow-lg z-50">
+     This email is already registered.
+     <button (click)="emailExistsError = false" class="ml-2 font-bold">×</button>
    </div>
+}

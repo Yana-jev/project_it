@@ -1,61 +1,42 @@
-
-<div class="flex items-center justify-center min-h-screen">
-<form class="login-form max-w-sm w-full" [formGroup]="form" (ngSubmit)="onSubmit()">
-   <div [routerLink]='["/home"]'><img src="assets/img/logo.svg" alt="logo" class="mx-auto mb-5" width="100" /></div>
-   <h1 class="text-center text-3xl font-bold text-wine mb-5">Iniciar sesión en la bodega</h1>
-
-   <div class="mb-5">
-      <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Correo electrónico</label>
-      <input formControlName="email" type="email" id="email" placeholder="Ingrese su correo"
-      class="bg-white border border-wine-light text-gray-900 text-sm rounded-lg focus:ring-wine focus:border-wine block w-full p-2.5" />
-      @if(form.get('email')?.touched && form.get('email')?.invalid){
-         <div class="text-red-500 text-sm mt-1">
-         El correo es obligatorio.
-         </div>
-
-      }
+<div class="login-wrapper">
+<form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+   <div [routerLink]='["/home"]'>
+   <img class="logo" src="assets/img/logo.svg" alt="logo" />
    </div>
 
+   <h1>Log in to the Winery</h1>
 
-<div class="mb-5 relative">
-   <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
-   
-<div class="relative">
-   <input 
-      formControlName="password" 
-      [type]="passwordVisible ? 'text' : 'password'" 
-      id="password" 
-      placeholder="Ingrese su contraseña"
-      class="bg-white border border-wine-light text-gray-900 text-sm rounded-lg focus:ring-wine focus:border-wine block w-full p-2.5 pr-10" />
-   
+   <div class="form-group">
+   <label for="email">Email</label>
+   <input formControlName="email" type="email" id="email" placeholder="Enter your email" />
+   @if(form.get('email')?.touched && form.get('email')?.invalid){
+      <div class="error">Email is required.</div>
+   }
+   </div>
 
-   <button 
-      type="button" 
-      (click)="togglePasswordVisibility()" 
-      class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 focus:outline-none">
-      <img 
-      [src]="passwordVisible ? 'assets/img/open-eye.png' : 'assets/img/eye.png'" 
-      alt="Toggle visibility" 
-      class="w-5 h-5" />
-   </button>
+<div class="form-group password-wrapper">
+<label for="password">Password</label>
+<div class="password-container">
+  <input 
+    formControlName="password"
+    [type]="passwordVisible ? 'text' : 'password'" 
+    id="password" 
+    placeholder="Enter your password" 
+  />
+  <button type="button" (click)="togglePasswordVisibility()" class="toggle-btn">
+    <img [src]="passwordVisible ? 'assets/img/open-eye.png' : 'assets/img/eye.png'" alt="Toggle visibility"/>
+  </button>
 </div>
-
-@if(form.get('password')?.touched && form.get('email')?.invalid){
-      
-   <div class="text-red-500 text-sm mt-1">
-   La contraseña es obligatoria.
-   </div>
+@if(form.get('password')?.touched && form.get('password')?.invalid){
+   <div class="error">Password is required.</div>
 }
 </div>
 
-   <button type="submit"
-      class="text-white bg-wine hover:bg-wine-dark focus:ring-4 focus:outline-none focus:ring-wine-light font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">
-      Iniciar sesión
-   </button>
+   <button type="submit">Log In</button>
 
-   <div class="mt-5 text-center">
-      <span class="text-sm">¿No tienes una cuenta? </span>
-      <a routerLink="/register" class="text-wine font-bold hover:underline login-link">Crear una cuenta</a>
+   <div class="register-link">
+   <span>Don't have an account? </span>
+   <a routerLink="/register">Create an account</a>
    </div>
 </form>
 </div>

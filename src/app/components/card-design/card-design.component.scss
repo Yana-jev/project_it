@@ -47,3 +47,44 @@ p {
    transform: translateY(-4px);
 }
 }
+@media (max-width: 768px) {
+.card {
+   height: 300px;
+
+   img {
+   height: 10rem;
+   }
+
+   h3 {
+   font-size: 1.25rem;
+   min-height: 2.5rem;
+   margin: 0.75rem 0 0.25rem;
+   }
+
+   p {
+   font-size: 0.95rem;
+   margin: 0 0 0.5rem;
+
+   }
+}
+}
+
+@media (max-width: 480px) {
+.card {
+   height: auto;
+   img {
+   height: 9rem;
+   }
+
+   h3 {
+   font-size: 1.1rem;
+   min-height: auto;
+   margin: 0.5rem 0;
+   }
+
+   p {
+   font-size: 0.85rem;
+   margin: 0 0 0.5rem;
+   }
+}
+}

@@ -1,63 +1,133 @@
+$green: #6dab00;
 
-
-$greencolor: #A67B7B;
-$lightgreen: #A6B78B;
-
-
-
-html, body {
-height: 100%;
-margin: 0;
-}
-
-.min-h-screen {
-min-height: 100vh;
-}
-
-.flex {
+.login-wrapper {
 display: flex;
-}
-
-.items-center {
-align-items: center;
-}
-
-.justify-center {
 justify-content: center;
+align-items: center;
+min-height: 100vh;
+padding: 1rem;
+
+.login-form {
+   max-width: 400px;
+   width: 100%;
+   background: white;
+   padding: 2rem;
+   border-radius: 1rem;
+   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   .logo {
+   
+   margin-bottom: 1.5rem;
+   width: 100px;
+   }
+
+   h1 {
+   text-align: center;
+   font-size: 2rem;
+   font-weight: 800; 
+   color: $green;
+   margin-bottom: 1.5rem;
+   }
+
+   .form-group {
+   width: 100%;
+   margin-bottom: 1.25rem;
+
+   label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 600; 
+      color: #333;
+   }
+
+   input {
+      width: 100%;
+      padding: 0.625rem;
+      font-size: 0.95rem;
+      border: 1px solid lighten($green, 30%);
+      border-radius: 0.5rem;
+      outline: none;
+      transition: all 0.2s ease;
+
+      &:focus {
+         border-color: $green;
+         box-shadow: 0 0 0 2px rgba(109, 171, 0, 0.3);
+      }
+   }
+
+   .error {
+      margin-top: 0.25rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: red;
+   }
+   }
+
+.password-container {
+position: relative;
+display: inline-block;
+width: 100%;
 }
 
-
-.text-wine {
-color: $greencolor; 
+.password-container input {
+width: 100%;
+padding-right: 2.5rem; 
+box-sizing: border-box;
 }
 
-.bg-wine {
-background-color: $greencolor;
+.password-container .toggle-btn {
+position: absolute;
+right: 0.5rem;
+top: 50%;
+transform: translateY(-50%);
+border: none;
+background: transparent;
+cursor: pointer;
+padding: 0;
+display: flex;
+align-items: center;
+img {
+   width: 1.25rem;
+   height: 1.25rem;
+}
 }
 
-.bg-wine-dark {
-background-color: $greencolor;
-}
-
-.border-wine-light {
-border-color: $lightgreen; 
-}
-
-.focus\:ring-wine, .focus\:border-wine {
---tw-ring-color: $greencolor; 
-}
-
-.text-red-500 {
-color: red; 
-}
-
-.mt-1 {
-margin-top: 0.25rem;
-}
-
-.mb-5 {
-margin-bottom: 1.25rem;
-}
-.login-link {
+   button[type="submit"] {
+   width: 100%;
+   padding: 0.75rem;
+   font-size: 0.95rem;
+   font-weight: 700;
+   color: white;
+   background-color: $green;
+   border: none;
+   border-radius: 0.5rem;
    cursor: pointer;
+   margin-top: 0.5rem;
+   transition: background-color 0.3s ease;
+
+   &:hover {
+      background-color: darken($green, 10%);
+   }
+   }
+
+   .register-link {
+   margin-top: 1.25rem;
+   text-align: center;
+   font-size: 0.9rem;
+
+   a {
+      color: $green;
+      font-weight: 700;
+      text-decoration: none;
+
+      &:hover {
+         text-decoration: underline;
+      }
+   }
+   }
+}
 }

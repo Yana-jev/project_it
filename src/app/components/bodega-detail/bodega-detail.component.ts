@@ -140,7 +140,7 @@ export class BodegaDetailComponent implements AfterViewChecked, OnDestroy {
   private initializeMap(): void {
     if (!this.mapDivElement) return;
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoieWFuYS1qcyIsImEiOiJjbTQ2eGducjUxNjgzMnFyNHJ4Y3Vxd29mIn0.sKUheGxgdU-PXpQ5392pyw';
+    mapboxgl.accessToken = 'pk.eyJ1IjoieWFuYS1qcyIsImEiOiJjbWZxczVlOXUwMjQ3MmtzZXhyNGJ2d2Z1In0.rIrK4fP6mE_tB3WWiIhW-A';
 
     const latitude = parseFloat(this.bodega?.latitud || '0');
     const longitude = parseFloat(this.bodega?.longitud || '0');

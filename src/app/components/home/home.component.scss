@@ -4,10 +4,8 @@ $green: #6dab00;
 width: 100%;
 margin-left: auto;
 margin-right: auto;
-margin-top: 2.5rem; 
-padding: 1.5rem
-
-
+margin-top: 2.5rem;
+padding: 1.5rem;
 }
 
 .hero {
@@ -26,7 +24,6 @@ position: relative;
    filter: brightness(70%);
    transition: transform 0.5s ease;
    }
-
 
    @media (hover: hover) and (pointer: fine) {
    &:hover .hero-image {
@@ -81,69 +78,107 @@ position: relative;
 }
 }
 
+@media (max-width: 480px) {
+.hero-image-wrapper .hero-text {
+   bottom: 1rem;
+
+   h1 {
+   font-size: 1.4rem;
+   }
+
+   p {
+   font-size: 0.9rem;
+   }
+}
+}
+
 
 .section {
 padding: 2rem 0;
 
 .section-title {
-display: flex;
-align-items: center;
-gap: 1rem;
-margin-bottom: 3rem;
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+   margin-bottom: 3rem;
 
-h2 {
+   h2 {
    font-size: 2rem;
    font-weight: 800;
    color: $green;
    margin: 0;
-   white-space: nowrap; 
-}
+   white-space: nowrap;
+   }
 
-.section-line {
+   .section-line {
    flex-grow: 1;
    height: 2px;
    background-color: $green;
+   }
 }
 }
 
+
+@media (max-width: 768px) {
+.section {
+   padding: 1.5rem 0;
+
+   .section-title {
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 0.5rem;
+   margin-bottom: 2rem;
+
+   h2 {
+      font-size: 1.5rem;
+   }
+   }
 }
+}
+
 
 .grid {
 display: grid;
-gap: 2.5rem;
+gap: 2rem;
 
 @media (min-width: 768px) {
-grid-template-columns: repeat(2, 1fr);
+   grid-template-columns: repeat(2, 1fr);
 }
 
 @media (min-width: 1024px) {
-grid-template-columns: repeat(3, 1fr);
+   grid-template-columns: repeat(3, 1fr);
 }
 }
 
-//стили карточки
+
+@media (max-width: 480px) {
+.grid {
+   gap: 1.25rem;
+}
+}
+
+
 .card {
 cursor: pointer;
 background: white;
-padding: 0; 
+padding: 0;
 border-radius: 1rem;
 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 transition: box-shadow 0.3s ease, transform 0.3s ease;
-overflow: hidden; 
+overflow: hidden;
+display: flex;
+flex-direction: column;
 
 img {
    width: 100%;
    height: 11rem;
    object-fit: cover;
-   border-radius: 0; 
-   margin: 0; 
    display: block;
 }
-//внутренние отступы контейнера
+
 h3,
 p,
 a {
-   cursor: pointer;
    padding-left: 1.5rem;
    padding-right: 1.5rem;
 }
@@ -155,10 +190,19 @@ h3 {
    margin: 1rem 0 0.5rem;
 }
 
+/* Ограничиваем описание до 3-х строк */
 p {
-   color: #000000;
+   color: #000;
    margin-bottom: 1rem;
    font-weight: 350;
+
+   display: -webkit-box;         
+   -webkit-line-clamp: 3;       
+   -webkit-box-orient: vertical; 
+   overflow: hidden;
+   text-overflow: ellipsis;
+   line-clamp: 3;                
+   box-orient: vertical;   
 }
 
 a {
@@ -181,33 +225,53 @@ a {
 }
 
 
+@media (max-width: 480px) {
+.card {
+   h3 {
+   font-size: 1.2rem;
+   }
+
+   p {
+   font-size: 0.9rem;
+   }
+}
+}
+
 .center {
 text-align: right;
 margin-top: 3rem;
 
 .btn-primary {
-background-color: transparent;
-border: 2px solid $green;
-color: $green;
-padding: 0.75rem 2rem;
-border-radius: 0.5rem;
-text-transform: uppercase;
-font-weight: 600;
-font-size: 0.9rem;
-letter-spacing: 0.05em;
-transition: all 0.3s ease;
-text-decoration: none;
+   background-color: transparent;
+   border: 2px solid $green;
+   color: $green;
+   padding: 0.75rem 2rem;
+   border-radius: 0.5rem;
+   text-transform: uppercase;
+   font-weight: 600;
+   font-size: 0.9rem;
+   letter-spacing: 0.05em;
+   transition: all 0.3s ease;
+   text-decoration: none;
 
-&:hover {
-background-color: $green;
-color: white;
+   &:hover {
+   background-color: $green;
+   color: white;
+   }
 }
 }
+
+
+@media (max-width: 640px) {
+.center {
+   text-align: center;
 }
+}
+
 
 .review {
 .stars {
-color: #f5c518;
-font-size: 1.25rem;
+   color: #f5c518;
+   font-size: 1.25rem;
 }
 }

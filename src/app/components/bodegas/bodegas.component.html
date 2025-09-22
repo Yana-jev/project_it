@@ -12,13 +12,14 @@
 
 
 <div class="grid">
-<app-card-design
-*ngFor="let bodega of bodegas"
-[imageUrl]="'http://localhost:3000/' + bodega.image_url"
-[title]="bodega.bodega_name"
-[subtitle]="bodega.direction"
-(clicked)="goToBodegaDetail(bodega.id_bodega)">
-</app-card-design>
+   @for(bodega of bodegas; track $index){
+      <app-card-design
+      [imageUrl]="'http://localhost:3000/' + bodega.image_url"
+      [title]="bodega.bodega_name"
+      [subtitle]="bodega.direction"
+      (clicked)="goToBodegaDetail(bodega.id_bodega)">
+      </app-card-design>
+   }
 
 </div>
 </div>

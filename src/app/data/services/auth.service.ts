@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { User } from './interfaces/iuser';
 
 @Injectable({
@@ -43,6 +43,12 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return localStorage.getItem('isAuthenticated') === 'true';
+  }
+  
+  checkEmailExists(email: string) {
+    return this.http
+      .get<{ exists: boolean }>(`${this.baseApiUrl}check-email?email=${email}`)
+      .pipe(map(res => res.exists));
   }
 }
 
