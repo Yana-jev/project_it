@@ -1,112 +1,17 @@
-<!-- <div class="container mx-auto px-4 py-4">
-<div class="flex">
-
-<aside class="w-1/4 bg-gray-100 p-4 rounded-lg shadow-md">
-   <h3 class="text-lg font-semibold mb-4">Filtros</h3>
-
-<div class="mb-4">
-
-   </div>
-   <div class="mb-4">
-   <label for="search" class="block mb-1">Buscar por nombre:</label>
-   <input type="text" id="search" [(ngModel)]="searchTerm" (input)="applyFilters()" class="w-full p-2 border border-gray-300 rounded" placeholder="Escriba el nombre..." />
-   </div>
-
-
-   <div class="mb-4">
-   <label for="productor" class="block mb-1">Productor:</label>
-   <select id="productor" [(ngModel)]="selectedProductor" (change)="applyFilters()" class="w-full p-2 border border-gray-300 rounded">
-      <option value="">Todos</option>
-      <option *ngFor="let productor of uniqueProductors" [value]="productor">{{ productor }}</option>
-   </select>
-   </div>
-
-   <div class="mb-4">
-   <label for="color" class="block mb-1">Color:</label>
-   <select id="color" [(ngModel)]="selectedColor" (change)="applyFilters()" class="w-full p-2 border border-gray-300 rounded">
-      <option value="">Todos</option>
-      <option value="Tinto">Tinto</option>
-      <option value="Blanco">Blanco</option>
-      <option value="Rosado">Rosado</option>
-   </select>
-   </div>
-
-
-   <div class="mb-4">
-   <label for="type" class="block mb-1">Tipo:</label>
-   <select id="type" [(ngModel)]="selectedType" (change)="applyFilters()" class="w-full p-2 border border-gray-300 rounded">
-      <option value="">Todos</option>
-      <option value="Espumoso">Espumoso</option>
-      <option value="Tranquilo">Tranquilo</option>
-   </select>
-   </div>
-
-
-   <div class="mb-4">
-   <label for="price" class="block mb-1">Precio hasta:</label>
-   <input type="range" id="price" min="0" max="200" [(ngModel)]="selectedPrice" (change)="applyFilters()" class="w-full range-slider" />
-   <span class="block mt-1">{{ selectedPrice | currency:'EUR' }}</span>
-   </div>
-
-<div class="mb-4">
-   <label for="sortPrice" class="block mb-1">Ordenar por precio:</label>
-   <select id="sortPrice" [(ngModel)]="priceSortOrder" (change)="applyFilters()" class="w-full p-2 border border-gray-300 rounded">
-      <option value="">Sin orden</option>
-      <option value="asc">De menor a mayor</option>
-      <option value="desc">De mayor a menor</option>
-   </select>
-   </div>
-   
-
-</aside>
-
-
-<section class="w-3/4 ml-4">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-@for(wine of filteredWines; track $index){
-
-   <div class="product-card w-full max-w-30 cursor-pointer">
-      <div class="rounded-lg shadow-lg overflow-hidden" >
-         <div class="h-90 flex items-center justify-center" >
-            <img 
-            [src]="'http://localhost:3000/' + wine.image_url" 
-            [alt]="wine.wine_name" 
-            class="object-contain" 
-            (click)="goToWineDetail(wine.id_wine)"
-            />
-         </div>
-         <div class="p-4">
-            <h4 class="text-base md:text-sm font-bold mb-2 truncate">{{ wine.wine_name }}</h4>
-            <span>{{ wine.bodega_name }}</span>
-            <p class="text-lg text-green-600 mb-4">{{ wine.price | currency:'EUR' }}</p>
-            <button 
-               (click)="addToCart(wine, 1)" 
-               class="w-full bg-[#A67B7B] text-white font-semibold py-2 rounded hover:bg-[#B88989] transition duration-200"
-            >
-               Añadir al carrito
-            </button>
-         </div>
-      </div>
-      </div>
-}
-</div>
-</section>
-
-
-</div>
-</div>
-<div *ngIf="showPopup" class="fixed top-4 right-4 text-white px-4 py-2 rounded shadow-lg transition-opacity duration-300" style="background-color: #6dab00;">
-   {{ popupMessage }}
-</div>
-
-
-
-
- -->
-
 <div class="container">
+
+  <button class="mobile-filter-btn" (click)="toggleMobileFilters()">
+    <img src="/assets/img/filter.png" alt="Filtros" class="filter-icon" />
+  </button>
+
+
+
+
   <div class="layout">
-    <aside class="sidebar">
+    <aside class="sidebar" [class.show]="showMobileFilters">
+
+      <button class="close-btn" (click)="toggleMobileFilters()">✕</button>
+
       <h3 class="sidebar-title">{{ 'SHOP.FILTERS' | translate }}</h3>
 
       <div class="form-group">
@@ -148,20 +53,20 @@
           <option value="Tranquilo">{{ 'SHOP.STILL' | translate }}</option>
         </select>
       </div>
-<div class="form-group">
-  <label for="price">{{ 'SHOP.PRICE_TO' | translate }}</label>
-  <input
-    type="range"
-    id="price"
-    min="0"
-    max="100"
-    [(ngModel)]="selectedPrice"
-    (change)="applyFilters()"
-    class="wine-range"
-  />
-  <span>{{ selectedPrice | currency: 'EUR' }}</span>
-</div>
 
+      <div class="form-group">
+        <label for="price">{{ 'SHOP.PRICE_TO' | translate }}</label>
+        <input
+          type="range"
+          id="price"
+          min="0"
+          max="50"
+          [(ngModel)]="selectedPrice"
+          (change)="applyFilters()"
+          class="wine-range"
+        />
+        <span>{{ selectedPrice | currency: 'EUR' }}</span>
+      </div>
 
       <div class="form-group">
         <label for="sortPrice">{{ 'SHOP.SORT_BY_PRICE' | translate }}</label>
@@ -199,7 +104,8 @@
   </div>
 </div>
 
-<div *ngIf="showPopup" class="popup">
-  {{ popupMessage }}
-</div>
-
+@if(showPopup){
+  <div class="popup">
+    {{ popupMessage }}
+  </div>
+}

@@ -120,19 +120,20 @@ Empezar de nuevo
     @if (recommendations && recommendations.length > 0) {
       <div class="quiz-results-grid">
         @for (wine of recommendations; track wine.id_wine) {
-          <div class="quiz-wine-card">
-            <div class="quiz-wine-image" (click)="goToWineDetail(wine.id_wine)">
-              <img [src]="'http://localhost:3000/' + wine.image_url" [alt]="wine.wine_name" />
-            </div>
-            <div class="quiz-wine-info">
-              <h4>{{ wine.wine_name }}</h4>
-              <span>{{ wine.bodega_name }}</span>
-              <p class="quiz-wine-price">{{ wine.price | currency:'EUR' }}</p>
-              <button class="quiz-add-cart" (click)="addToCart(wine, 1)">
-                {{ 'QUIZ.ADD_TO_CART' | translate }}
-              </button>
-            </div>
-          </div>
+<div class="quiz-wine-card">
+  <div class="quiz-wine-image" (click)="goToWineDetail(wine.id_wine)">
+    <img [src]="'http://localhost:3000/' + wine.image_url" [alt]="wine.wine_name" />
+  </div>
+
+  <div class="quiz-wine-info">
+    <h4>{{ wine.wine_name }}</h4>
+    <span>{{ wine.bodega_name }}</span>
+    <p class="quiz-wine-price">{{ wine.price | currency:'EUR' }}</p>
+    <button class="quiz-add-cart" (click)="addToCart(wine, 1)">
+      {{ 'QUIZ.ADD_TO_CART' | translate }}
+    </button>
+  </div>
+</div>
         }
       </div>
     } @else {

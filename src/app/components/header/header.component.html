@@ -2,7 +2,7 @@
 <nav class="bg-white  dark:bg-gray-900 py-1">
   <div class="container flex flex-wrap items-center justify-between mx-auto mt-10 px-4">
     <div class="logo cursor-pointer" [routerLink]="['/home']">
-        <img src="assets/img/logologo.png" class="h-10 w-auto" alt="logo"/>
+        <img src="assets/img/logomain.png" class="h-10 w-auto" alt="logo"/>
     </div>
     
     <button
@@ -12,15 +12,9 @@
       aria-expanded="false"
       (click)="isMenuOpen = !isMenuOpen">
       <span class="sr-only">Open main menu</span>
-      <svg
-        class="w-6 h-6"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-      </svg>
+<button class="menu-btn">
+  <img src="assets/img/menu.png" alt="Меню" class="menu-icon" />
+</button>
     </button>
 
     <div [class.hidden]="!isMenuOpen" class="items-center justify-between w-full md:flex md:w-auto md:order-1" id="navbar-user">

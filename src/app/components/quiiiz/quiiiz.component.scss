@@ -2,20 +2,21 @@ $green: #6dab00;
 $violet: #553c9a;
 $lightgreen: #95af68;
 
-button{
+button {
   border-radius: 0.8rem;
 }
+
+/* Контейнер вопроса */
 .quiz-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  align-items: center;
-  padding: 2rem;
+  align-items: start;
+  padding: 1.5rem 2rem;
   background: #fff;
   border-radius: 0.5rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   max-width: 1000px;
-  min-height: 500px;
   margin: 2rem auto;
 }
 
@@ -29,7 +30,7 @@ button{
 .quiz-content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .quiz-question {
@@ -37,34 +38,33 @@ button{
   font-weight: 700;
   color: #2c2c2c;
   line-height: 1.3;
-  max-height: 8rem;
-
 }
 
 .quiz-options {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
 }
 
 .quiz-option {
-  background: #fff;          // белый фон
-  color: #2c2c2c;            // тёмный текст
-  border: 2px solid $violet; // светло-зелёная обводка
+  background: #fff;
+  color: #2c2c2c;
+  border: 2px solid $violet;
   padding: 1rem 1.5rem;
   font-size: 1.2rem;
   font-weight: 600;
-  text-align: left;
-  transition: all 0.2s ease;
+  text-align: center;
+  width: 100%;
   cursor: pointer;
+  transition: all 0.2s ease;
 
   &:hover {
-    transform: translateY(-3px);       // лёгкое подпрыгивание
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    background: #f9fef4;               // чуть светлее фон при наведении
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: #f9fef4;
   }
 }
-
 
 .quiz-back {
   align-self: flex-start;
@@ -85,8 +85,10 @@ button{
   margin: 2rem auto;
   padding: 2rem;
 }
+
 .quiz-no-results {
   font-weight: 400;
+  text-align: center;
 }
 
 .quiz-results-header {
@@ -124,65 +126,152 @@ button{
   gap: 1.5rem;
 }
 
+/* Карточка вина */
 .quiz-wine-card {
-  background: #fff;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  border-radius: 0.8rem;
-  max-height: none; // убираем ограничения
-  transition: transform 0.2s ease;
+  align-items: center;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   }
 }
 
 .quiz-wine-image {
   width: 100%;
-  max-height: 250px; // ограничиваем высоту картинки
-  overflow: hidden;
-}
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.quiz-wine-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; // показываем всю бутылку полностью
-  display: block;
-  background: #fafafa;
+  img {
+    max-height: 95%;
+    max-width: 80%;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 }
 
 .quiz-wine-info {
-  padding: 1rem;
-  text-align: left;
+  padding: 1rem 0;
+  text-align: center;
 
   h4 {
-    margin: 0;
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin: 0.5rem 0;
   }
 
   span {
-    font-size: 0.9rem;
-    color: #666;
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #2c2c2c;
+    margin-bottom: 0.3rem;
   }
 
   .quiz-wine-price {
+    font-size: 1.1rem;
     font-weight: 700;
-    margin: 0.5rem 0;
+    color:$green; 
+    margin-bottom: 0.8rem;
   }
 
   .quiz-add-cart {
     background: $violet;
     color: white;
+    font-weight: 600;
     border: none;
-    padding: 0.5rem 1rem;
+    border-radius: 0.6rem;
+    padding: 0.6rem 1.5rem;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, transform 0.1s ease;
 
     &:hover {
-      background: darken($violet, 10%);
+      background: lighten($violet, 5%);
+      transform: scale(1.03);
     }
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .quiz-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 1rem 1.5rem;
+  }
+
+  .quiz-content {
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .quiz-question {
+    font-size: 1.6rem;
+  }
+
+  .quiz-option {
+    font-size: 1.1rem;
+    padding: 0.9rem 1.2rem;
+  }
+
+  .quiz-results-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .quiz-container {
+    padding: 0.5rem 1rem;
+  }
+
+  .quiz-option {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .quiz-results-header {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .quiz-wine-image {
+    height: 320px;
+  }
+
+  .quiz-add-cart {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .quiz-question {
+    font-size: 1.2rem;
+  }
+
+  .quiz-option {
+    font-size: 0.95rem;
+  }
+
+  .quiz-wine-image {
+    height: 280px;
   }
 }

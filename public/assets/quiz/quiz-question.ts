@@ -1,6 +1,6 @@
 export interface QuizOption {
-  key: string;          // Испанское значение, которое отправляется на сервер
-  translateKey: string; // Ключ для ngx-translate
+  key: string;          
+  translateKey: string; 
 }
 
 export interface QuizQuestion {
@@ -25,13 +25,13 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     key: 'maridaje',
     questionKey: 'QUIZ.Q2.QUESTION',
-    optionsKey: [], // заполняется динамически после выбора первого вопроса
+    optionsKey: [],
     imageUrl: 'assets/img/v10.jpg'
   },
   {
     key: 'aroma',
     questionKey: 'QUIZ.Q3.QUESTION',
-    optionsKey: [], // заполняется динамически после выбора первого вопроса
+    optionsKey: [], 
     imageUrl: 'assets/img/v7.jpg'
   },
   {

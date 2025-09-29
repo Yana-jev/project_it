@@ -1,4 +1,7 @@
 $green: #6dab00;
+$lightgreen: #adc682;
+$violet: #553c9a;
+$lightviolet: #f3a9b9;
 $black: 0, 0, 0, 0.799;
 
 //button style
@@ -99,3 +102,15 @@ a:hover::after {
       box-shadow: 0 0 0 2px rgba(109, 171, 0, 0.2);
    }
    }
+
+.menu-btn {
+background: none;
+border: none;
+cursor: pointer;
+padding: 0;
+
+.menu-icon {
+   width: 1.5rem; 
+   height: 1.5rem;
+}
+}

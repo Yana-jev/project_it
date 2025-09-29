@@ -25,14 +25,14 @@ import { TranslateModule } from '@ngx-translate/core';
     selectedColor: string = '';
     selectedType: string = '';
     selectedProductor: string = '';
-    selectedPrice: number = 100; 
+    selectedPrice: number = 50; 
     searchTerm: string = '';
     priceSortOrder: string = '';
     wineService = inject(WineService);
     cartService = inject(CartService);
     showPopup: boolean = false;
     popupMessage: string = '';
-    
+    showMobileFilters = false;
 
     constructor(private router: Router) {
       this.wineService.getWine()
@@ -44,7 +44,10 @@ import { TranslateModule } from '@ngx-translate/core';
           this.applyFilters();
         });
     }
-  
+
+toggleMobileFilters() {
+  this.showMobileFilters = !this.showMobileFilters;
+}
     applyFilters() {
       this.filteredWines = this.wines
         .filter((wine: Wine) => {
@@ -75,17 +78,6 @@ import { TranslateModule } from '@ngx-translate/core';
     }
 
 
-    // addToCart(wine: Wine, quantity: number = 1): void {
-    //   this.cartService.addItemToCart(wine.id_wine, quantity).subscribe({
-    //     next: (response) => {
-    //       console.log('Added to cart:', response);
-    //       this.showSuccessPopup('Producto agregado exitosamente');
-    //     },
-    //     error: (err) => {
-    //       console.error('Error of adding to cart:', err);
-    //     }
-    //   });
-    // }
 addToCart(wine: Wine, quantity: number = 1): void {
   const loggedIn = !!localStorage.getItem('token'); // проверка авторизации
 
@@ -109,11 +101,10 @@ addToCart(wine: Wine, quantity: number = 1): void {
     showSuccessPopup(message: string): void {
       this.popupMessage = message;
       this.showPopup = true;
-
-  
       setTimeout(() => {
           this.showPopup = false;
-      }, 2000);
+          this.popupMessage = '';
+      }, 1000);
   }
 }
 
