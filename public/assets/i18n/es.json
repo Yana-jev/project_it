@@ -63,7 +63,8 @@
    "ADD_TO_CART": "Añadir al carrito",
    "CESTA": "Cesta",
    "TOTAL": "Total",
-   "VACIO": "Tu carrito está vacío"
+   "VACIO": "Tu carrito está vacío",
+   "POPUP": "Producto agregado exitosamente."
 },
 "WINE":{
    "BODEGA": "Bodega",

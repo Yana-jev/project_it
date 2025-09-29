@@ -61,7 +61,8 @@
    "ADD_TO_CART": "Add to cart",
    "CESTA": "Shopping cart",
    "TOTAL": "Total",
-   "VACIO": "Your cart is empty."
+   "VACIO": "Your cart is empty.",
+   "POPUP": "Product added successfully."
 },
 "WINE": {
    "BODEGA": "Winery",

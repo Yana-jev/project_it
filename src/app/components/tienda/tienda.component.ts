@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { WineService } from '../../data/services/wine.service';
 import { CartService } from '../../data/services/cart.service';
 import { Router } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -34,7 +34,7 @@ import { TranslateModule } from '@ngx-translate/core';
     popupMessage: string = '';
     showMobileFilters = false;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private translate: TranslateService) {
       this.wineService.getWine()
         .subscribe(val => {
           console.log('Received wines:', val);
@@ -84,13 +84,15 @@ addToCart(wine: Wine, quantity: number = 1): void {
   this.cartService.addItemToCart(wine, quantity, loggedIn).subscribe({
     next: (response) => {
       console.log('Added to cart:', response);
-      this.showSuccessPopup('Producto agregado exitosamente');
+      const message = this.translate.instant('SHOP.POPUP');
+      this.showSuccessPopup(message);
     },
     error: (err) => {
       console.error('Error adding to cart:', err);
     }
   });
 }
+
 
 
     goToWineDetail(wineId: number){
