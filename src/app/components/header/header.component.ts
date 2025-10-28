@@ -32,17 +32,22 @@ export class HeaderComponent {
     });
   }
 
-  // private updateItemCount(): void {
-  //   this.cartService.getTotalItems().subscribe((totalItems) => {
-  //     this.itemCount.set(totalItems);
-  //   });
-  // }
 private updateItemCount(): void {
   const loggedIn = !!localStorage.getItem('token'); // проверка авторизации
   this.cartService.getTotalItems(loggedIn).subscribe((totalItems) => {
     this.itemCount.set(totalItems);
   });
 }
+
+    goToWineDetail(wineId: number) {
+    this.router.navigate([`/wine/${wineId}`]);
+  }
+// private updateItemCount(): void {
+//   const loggedIn = !!localStorage.getItem('token'); // проверка авторизации
+//   this.cartService.getTotalItems(loggedIn).subscribe((totalItems) => {
+//     this.itemCount.set(totalItems);
+//   });
+// }
 
   changeLanguage(lang: string) {
     this.translate.setLang(lang);
@@ -60,4 +65,9 @@ private updateItemCount(): void {
       }
     );
   }
+  
+  closeMenu() {
+  this.isMenuOpen = false;
+}
+
 }

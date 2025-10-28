@@ -1,6 +1,6 @@
 
 
-$greencolor: #A67B7B;
+$violet: #553c9a;;
 $lightgreen: #A6B78B;
 
 
@@ -28,15 +28,15 @@ justify-content: center;
 
 
 .text-wine {
-color: $greencolor; 
+color: $violet; 
 }
 
 .bg-wine {
-background-color: $greencolor;
+background-color: $violet;
 }
 
 .bg-wine-dark {
-background-color: $greencolor;
+background-color: $violet;
 }
 
 .border-wine-light {
@@ -44,7 +44,7 @@ border-color: $lightgreen;
 }
 
 .focus\:ring-wine, .focus\:border-wine {
---tw-ring-color: $greencolor; 
+--tw-ring-color: $violet; 
 }
 
 .text-red-500 {

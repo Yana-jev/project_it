@@ -32,7 +32,7 @@
   <div class="grid">
     @for (event of filteredEvents; track event.id_event) {
       <app-card-design
-        [imageUrl]="'http://localhost:3000/' + event.image_url"
+        [imageUrl]="event.image_url"
         [title]="event.event_name"
         [subtitle]="event.bodega_name"
         [extraInfo]="(event.date | date:'dd-MM-yyyy')"

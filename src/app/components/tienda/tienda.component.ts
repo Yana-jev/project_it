@@ -68,7 +68,17 @@ toggleMobileFilters() {
           return 0; 
         });
     }
-    
+
+resetFilters() {
+  this.searchTerm = '';
+  this.selectedProductor = '';
+  this.selectedColor = '';
+  this.selectedType = '';
+  this.selectedPrice = 50; 
+  this.priceSortOrder = '';
+  this.applyFilters(); 
+}
+
   
     getUniqueProductors(): string[] {
       return Array.from(new Set(this.wines
@@ -92,8 +102,6 @@ addToCart(wine: Wine, quantity: number = 1): void {
     }
   });
 }
-
-
 
     goToWineDetail(wineId: number){
       this.router.navigate([`/wine/${wineId}`]);  

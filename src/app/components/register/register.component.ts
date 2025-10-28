@@ -19,8 +19,8 @@ export class RegisterComponent {
   router = inject(Router); 
   emailExistsError = false;
   form: FormGroup = new FormGroup({
-    email: new FormControl(null, [Validators.required, Validators.email], [emailExistsValidator(this.authService)]),
-    password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+    email: new FormControl(null, [Validators.required, Validators.email]),
+    password: new FormControl(null, [Validators.required]),
     confirmPassword: new FormControl(null, Validators.required)
   }, { validators: this.passwordsMatchValidator });
   passwordVisible = false;
@@ -28,82 +28,48 @@ export class RegisterComponent {
   togglePasswordVisibility(): void {
     this.passwordVisible = !this.passwordVisible;
   }
-  
-// onSubmit() {
-//   if (!this.form.valid) return;
-
-//   const { email, password } = this.form.value;
-
-//   this.authService.signUp({ email, password }).subscribe({
-//     next: () => {
-//       console.log('Registration successful');
-
-//       // Сразу логинимся
-//       this.authService.login({ email, password }).subscribe({
-//         next: () => {
-//           console.log('Login successful');
-
-//           // Мержим гостевую корзину
-//           this.cartService.mergeGuestCartWithServer().subscribe({
-//             next: (mergedItems) => {
-//               console.log('Guest cart merged to server');
-//               this.cartService.cartItems.set(mergedItems);
-//               this.router.navigate(['/home']);
-//             },
-//             error: (mergeError) => {
-//               console.error('Error merging guest cart:', mergeError);
-//               this.router.navigate(['/home']);
-//             }
-//           });
-//         },
-//         error: (loginError) => console.error('Login failed', loginError)
-//       });
-//     },
-//     error: (registrationError) => {
-//       console.error('Registration failed', registrationError);
-
-//       // Проверяем, есть ли ошибка "email уже существует"
-//       if (
-//         registrationError.status === 400 &&
-//         registrationError.error?.message.includes('Ya existe')
-//       ) {
-//         // Добавляем ошибку в контрол email
-//         this.emailExistsError = true;
-//       }
-//     }
-//   });
-// }
-
-
 
 
 onSubmit() {
   if (!this.form.valid) return;
 
   const { email, password } = this.form.value;
-  this.emailExistsError = false; // сброс флага перед отправкой
+  this.emailExistsError = false;
 
   this.authService.signUp({ email, password }).pipe(
-    switchMap(() => this.authService.login({ email, password })), // логин после успешной регистрации
-    switchMap(() => this.cartService.mergeGuestCartWithServer()), // мердж корзины
+    switchMap(() => this.authService.login({ email, password })),
+    switchMap(() => this.cartService.mergeGuestCartWithServer()),
     catchError((err) => {
-      console.error('Error during registration/login/cart merge:', err);
+      const errorMessage = err?.error?.message ?? '';
 
-      if (err.status === 400 && err.error?.message.includes('Ya existe')) {
-        // email уже зарегистрирован
+      if (err.status === 400 && errorMessage.includes('Ya existe')) {
         this.emailExistsError = true;
+        return of(null);
       }
 
-      // чтобы поток завершился без ошибок
+
+      if (err.status === 400 && Array.isArray(err.error?.errors)) {
+        const firstError = err.error.errors[0];
+        this.form.setErrors({ server: firstError.msg });
+        return of(null);
+      }
+
       return of(null);
     })
   ).subscribe((mergedItems) => {
+    if (this.emailExistsError || this.form.errors?.['server']) {
+      return;
+    }
+
     if (mergedItems) {
       this.cartService.cartItems.set(mergedItems);
     }
+
     this.router.navigate(['/home']);
   });
 }
+
+
 
 
 

@@ -9,7 +9,8 @@ import { TranslateService } from './translate.service';
 })
 export class BodegaService {
 
-  baseApiUrl = 'http://localhost:3000/bodegas'
+  // baseApiUrl = 'http://localhost:3000/bodegas'
+    baseApiUrl = '/api/bodegas/'
 
   http: HttpClient = inject(HttpClient);
   private translateService: TranslateService = inject(TranslateService);

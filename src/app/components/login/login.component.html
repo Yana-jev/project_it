@@ -1,5 +1,5 @@
 <div class="login-wrapper">
-<form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+<form class="login-form font-medium" [formGroup]="form" (ngSubmit)="onSubmit()">
    <div [routerLink]='["/home"]'>
    <img class="logo" src="assets/img/logo.svg" alt="logo" />
    </div>
@@ -17,15 +17,15 @@
 <div class="form-group password-wrapper">
 <label for="password">Password</label>
 <div class="password-container">
-  <input 
-    formControlName="password"
-    [type]="passwordVisible ? 'text' : 'password'" 
-    id="password" 
-    placeholder="Enter your password" 
-  />
-  <button type="button" (click)="togglePasswordVisibility()" class="toggle-btn">
-    <img [src]="passwordVisible ? 'assets/img/open-eye.png' : 'assets/img/eye.png'" alt="Toggle visibility"/>
-  </button>
+<input 
+   formControlName="password"
+   [type]="passwordVisible ? 'text' : 'password'" 
+   id="password" 
+   placeholder="Enter your password" 
+/>
+<button type="button" (click)="togglePasswordVisibility()" class="toggle-btn">
+   <img [src]="passwordVisible ? 'assets/img/open-eye.png' : 'assets/img/eye.png'" alt="Toggle visibility"/>
+</button>
 </div>
 @if(form.get('password')?.touched && form.get('password')?.invalid){
    <div class="error">Password is required.</div>

@@ -76,6 +76,13 @@
           <option value="desc">{{ 'SHOP.HIGH_TO_LOW' | translate }}</option>
         </select>
       </div>
+      <button class="reset-filters-btn" (click)="resetFilters()">
+        {{ 'SHOP.RESET_FILTERS' | translate }}
+      </button>
+      <div class="form-group">
+        
+</div>
+
     </aside>
 
     <section class="products">
@@ -85,7 +92,7 @@
             <div class="product-box">
               <div class="product-image">
                 <img
-                  [src]="'http://localhost:3000/' + wine.image_url"
+                  [src]="wine.image_url"
                   [alt]="wine.wine_name"
                   (click)="goToWineDetail(wine.id_wine)"
                 />

@@ -137,7 +137,15 @@ $lightviolet: #f3a9b9;
     }
   }
 }
-
+.reset-filters-btn{
+        width: 100%;
+        background-color: $lightviolet;
+        color: white;
+        font-weight: 600;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 0.375rem;
+}
 .popup {
   position: fixed;
   top: 1rem;

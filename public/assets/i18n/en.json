@@ -62,7 +62,8 @@
    "CESTA": "Shopping cart",
    "TOTAL": "Total",
    "VACIO": "Your cart is empty.",
-   "POPUP": "Product added successfully."
+   "POPUP": "Product added successfully.",
+   "RESET_FILTERS": "Reset filters"
 },
 "WINE": {
    "BODEGA": "Winery",

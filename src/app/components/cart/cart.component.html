@@ -1,42 +1,46 @@
-<div class="cart-container container mx-auto mt-10 px-4 flex flex-col items-center justify-center p-4">
-   <h2 class="text-2xl font-bold mb-4"> {{ "SHOP.CESTA" | translate }} </h2>
+<div class="cart-container">
+<h2 class="cart-title">{{ "SHOP.CESTA" | translate }}</h2>
 
-   <div *ngIf="cartItemsValue.length > 0" class="w-full">
-      <div class="grid gap-4">
-         <div *ngFor="let item of cartItemsValue" class="flex items-center p-4 border border-gray-300 rounded-lg shadow-md space-x-6">
-
-            <div class="flex flex-col items-center w-1/4">
-               <img [src]="'http://localhost:3000/' + item.imageUrl" alt="{{ item.wineName }}" class="w-32 h-32 object-cover rounded-md mb-2" />
-               <h3 class="text-lg font-semibold text-center">{{ item.wineName }}</h3>
-               <p class="font">{{ item.price | currency:'EUR' }}</p>
-            </div>
-
-            <div class="flex items-center justify-center w-1/4 space-x-2">
-               <button (click)="updateQuantity(item, item.quantity - 1)" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-xl rounded-full hover:bg-gray-300">
-                  <i class="fa fa-minus"></i> 
-               </button>
-               <span class="text-lg">{{ item.quantity }}</span>
-               <button (click)="updateQuantity(item, item.quantity + 1)" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-xl rounded-full hover:bg-gray-300">
-                  <i class="fa fa-plus"></i> 
-               </button>
-            </div>
-
-
-            <div class="flex items-center justify-center w-1/4">
-               <p class="font-bold">{{ calculateTotalPrice(item) | currency:'EUR' }}</p>
-            </div>
-
-            <div class="flex items-center justify-center w-1/4">
-               <button (click)="removeItemFromCart(item)" class="w-10 h-10 flex items-center justify-center rounded-full bg-red-500 text-white hover:bg-red-600">
-                  <i class="fa fa-times"></i> 
-               </button>
-            </div>
-         </div>
-      </div>
-      <h2 class="text-2xl font-bold mt-2"> {{ "SHOP.TOTAL" | translate }} : {{ calculateTotalCost() | currency:'EUR' }}</h2>
+<div *ngIf="cartItemsValue.length > 0" class="cart-list">
+   <div *ngFor="let item of cartItemsValue" class="cart-item">
+   <div class="cart-item-info">
+      <img [src]="item.imageUrl" alt="{{ item.wineName }}"
+            (click)="goToWineDetail(item.wineId)" />
+      
+      <h3>{{ item.wineName }}</h3>
+      <p class="item-price">{{ item.price | currency:'EUR' }}</p>
    </div>
 
-   <div *ngIf="cartItemsValue.length === 0" class="empty-cart text-center p-4">
-      <p class="text-lg font-semibold text-gray-600"> {{"SHOP.VACIO"  | translate}} </p>
+
+   <div class="cart-item-quantity">
+      <button (click)="updateQuantity(item, item.quantity - 1)" class="quantity-btn">
+         <i class="fa fa-minus"></i>
+      </button>
+      <span>{{ item.quantity }}</span>
+      <button (click)="updateQuantity(item, item.quantity + 1)" class="quantity-btn">
+         <i class="fa fa-plus"></i>
+      </button>
    </div>
+
+
+   <div class="cart-item-total">
+      <p>{{ calculateTotalPrice(item) | currency:'EUR' }}</p>
+   </div>
+
+
+   <div class="cart-item-remove">
+      <button (click)="removeItemFromCart(item)" class="remove-btn">
+         <i class="fa fa-times"></i>
+      </button>
+   </div>
+   </div>
+
+   <h2 class="cart-total">{{ "SHOP.TOTAL" | translate }} : {{ calculateTotalCost() | currency:'EUR' }}</h2>
+</div>
+
+<app-checkout [total]="calculateTotalCost()"></app-checkout>
+
+<div *ngIf="cartItemsValue.length === 0" class="empty-cart">
+   <p>{{ "SHOP.VACIO" | translate }}</p>
+</div>
 </div>

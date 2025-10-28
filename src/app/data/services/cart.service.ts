@@ -78,8 +78,8 @@ import { signal } from '@angular/core';
 providedIn: 'root',
 })
 export class CartService {
-private apiUrl = 'http://localhost:3000/carts';
-
+// private apiUrl = 'http://localhost:3000/carts';
+private apiUrl = '/api/carts/';
 private cartUpdateSubject = new BehaviorSubject<void>(undefined);
 cartUpdates$ = this.cartUpdateSubject.asObservable();
 
@@ -178,6 +178,7 @@ updateCartItemQuantity(wineId: number, quantity: number, loggedIn: boolean): voi
    if (item) {
       item.quantity = quantity;
       item.totalPrice = item.price * quantity;
+      this.saveGuestCartToStorage();
       this.cartUpdateSubject.next();
    }
    }
@@ -192,6 +193,7 @@ removeItemFromCart(wineId: number, loggedIn: boolean): void {
    });
    } else {
    this.guestCart = this.guestCart.filter(i => i.wineId !== wineId);
+   this.saveGuestCartToStorage();
    this.cartUpdateSubject.next();
    }
 }

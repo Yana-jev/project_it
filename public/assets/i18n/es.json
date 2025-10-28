@@ -64,7 +64,8 @@
    "CESTA": "Cesta",
    "TOTAL": "Total",
    "VACIO": "Tu carrito está vacío",
-   "POPUP": "Producto agregado exitosamente."
+   "POPUP": "Producto agregado exitosamente.",
+   "RESET_FILTERS": "Restablecer filtros"
 },
 "WINE":{
    "BODEGA": "Bodega",

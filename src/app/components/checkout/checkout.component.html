@@ -1,0 +1,12 @@
+<div id="paypal-button-container"></div>
+
+@if(showSuccessPopup){
+
+<div class="success-popup">
+   <div class="popup-content">
+      <h3>Payment completed successfully</h3>
+      <p>Thank you, {{ payerName }} 🎉</p>
+      <button (click)="showSuccessPopup = false">Close</button>
+   </div>
+</div>
+}

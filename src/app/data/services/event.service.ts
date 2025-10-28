@@ -10,8 +10,8 @@ import { TranslateService } from './translate.service';
 })
 export class EventService {
 
-  baseApiUrl = 'http://localhost:3000/events'
-
+  // baseApiUrl = 'http://localhost:3000/events'
+  baseApiUrl = '/api/events/'
   http: HttpClient = inject(HttpClient);
 
 

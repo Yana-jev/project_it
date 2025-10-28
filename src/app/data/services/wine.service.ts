@@ -10,8 +10,8 @@ providedIn: 'root'
 })
 export class WineService {
 
-baseApiUrl = 'http://localhost:3000/wine'
-
+// baseApiUrl = 'http://localhost:3000/wine'
+baseApiUrl = '/api/wine/'
 http: HttpClient = inject(HttpClient);
 private translateService: TranslateService = inject(TranslateService);
 

@@ -14,7 +14,7 @@
 <div class="grid">
    @for(bodega of bodegas; track $index){
       <app-card-design
-      [imageUrl]="'http://localhost:3000/' + bodega.image_url"
+      [imageUrl]="'/' + bodega.image_url"
       [title]="bodega.bodega_name"
       [subtitle]="bodega.direction"
       (clicked)="goToBodegaDetail(bodega.id_bodega)">

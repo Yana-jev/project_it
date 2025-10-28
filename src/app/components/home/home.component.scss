@@ -4,7 +4,6 @@ $green: #6dab00;
 width: 100%;
 margin-left: auto;
 margin-right: auto;
-margin-top: 2.5rem;
 padding: 1.5rem;
 }
 
@@ -65,7 +64,7 @@ position: relative;
 
 
 @media (max-width: 768px) {
-.hero-image-wrapper .hero-text {
+.hero .hero-image-wrapper .hero-text {
    bottom: 1.5rem;
 
    h1 {
@@ -79,7 +78,7 @@ position: relative;
 }
 
 @media (max-width: 480px) {
-.hero-image-wrapper .hero-text {
+.hero .hero-image-wrapper .hero-text {
    bottom: 1rem;
 
    h1 {
@@ -225,6 +224,7 @@ a {
 }
 
 
+
 @media (max-width: 480px) {
 .card {
    h3 {
@@ -242,6 +242,13 @@ text-align: right;
 margin-top: 3rem;
 
 .btn-primary {
+   display: inline-block;
+   font-size: clamp(0.65rem, 2.5vw, 0.9rem);
+   padding: clamp(0.3rem, 1.5vw, 0.75rem) clamp(0.6rem, 5vw, 2rem);
+   white-space: nowrap;  
+   max-width: 100%;       
+   text-overflow: ellipsis;
+   overflow: hidden;
    background-color: transparent;
    border: 2px solid $green;
    color: $green;
@@ -267,6 +274,7 @@ margin-top: 3rem;
    text-align: center;
 }
 }
+
 
 
 .review {

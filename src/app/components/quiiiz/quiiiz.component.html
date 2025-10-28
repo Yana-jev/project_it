@@ -1,94 +1,11 @@
-<!-- <div *ngIf="currentQuestionIndex < questions.length; else resultsTemplate" class="flex flex-col items-center justify-center  bg-gray-100 p-4">
-
-  <button
-  *ngIf="currentQuestionIndex > 0"
-  (click)="goBack()"
-  class="bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded hover:bg-gray-300 transition duration-200"
-  >
-  ← Atrás
-  </button>
-<h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
-  {{ questions[currentQuestionIndex].question }}
-</h2>
-<div class="mb-6">
-  <img [src]="questions[currentQuestionIndex].imageUrl" alt="Ilustración de pregunta"
-        class="w-auto max-w-2xl object-cover rounded-lg shadow-md" />
-</div>
-
-
-<div class="flex space-x-4">
-  <button
-  *ngFor="let option of questions[currentQuestionIndex].options"
-  (click)="handleOptionSelect(option)"
-  class="bg-[#A67B7B] text-white font-semibold py-2 px-4 rounded hover:bg-[#B88989] transition duration-200"
-  >
-  {{ option }}
-
-</button>
-
-</div>
-</div>
-
-
-<ng-template #resultsTemplate>
-<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-  <h2 class="text-2xl font-bold text-gray-800 mb-6">Resultados</h2>
-
-  <div *ngIf="recommendations && recommendations.length > 0; else noResults" 
-        class="flex flex-wrap justify-center gap-4">
-    <div *ngFor="let wine of recommendations" class="bg-white p-4 rounded-lg">
-      <div class="product-card cursor-pointer">
-        
-          <div class="h-80 bg-gray-100 flex items-center justify-center">
-            <img
-              [src]="'http://localhost:3000/' + wine.image_url"
-              [alt]="wine.wine_name"
-              class="object-contain w-full h-full"
-              (click)="goToWineDetail(wine.id_wine)"
-            />
-          </div>
-          <div class="container">
-            <h4 class="text-lg font-bold mb-2">{{ wine.wine_name }}</h4>
-            <span>{{ wine.bodega_name }}</span>
-            <p class="text-md text-green-600 mb-4">{{ wine.price | currency:'EUR' }}</p>
-            <button
-              (click)="addToCart(wine, 1)"
-              class="w-full pb-3 bg-[#A67B7B] text-white font-semibold py-2 rounded hover:bg-[#B88989] transition duration-200"
-            >
-              Añadir al carrito
-            </button>
-          
-          
-      </div>
-    </div>
-    
-  </div>
-
-</div>
-<a 
-href="/quiiz" 
-class="font-semibold text-center  block mt-4 py-2 px-4 text-[#A43535] border border-[#A43535] rounded-lg transition-all duration-300 hover:text-white hover:bg-[#A67B7B] focus:ring-2 focus:ring-[#A67B7B] focus:outline-none"
-aria-current="page">
-Empezar de nuevo
-</a>
-
-
-  <ng-template #noResults>
-    <p class="text-lg text-gray-600 text-center mt-4 pb-3">
-      Tu vino ideal aún no ha llegado a nuestra tienda. Por favor, inténtalo más tarde.
-    </p>
-  </ng-template>
-</div>
-</ng-template> -->
 
 @if (currentQuestionIndex < questions.length) {
   <div class="quiz-container">
-    <!-- Левая колонка: картинка -->
     <div class="quiz-image">
       <img [src]="questions[currentQuestionIndex].imageUrl" alt="quiz-image" />
     </div>
 
-    <!-- Правая колонка: вопрос и ответы -->
+
     <div class="quiz-content">
       <h2 class="quiz-question">
         {{ questions[currentQuestionIndex].questionKey | translate }}
@@ -111,7 +28,6 @@ Empezar de nuevo
   </div>
 } @else {
   <div class="quiz-results">
-    <!-- Заголовок и кнопка начать заново на одной линии -->
     <div class="quiz-results-header">
       <h2 class="quiz-results-title">{{ 'QUIZ.RESULTS_TITLE' | translate }}</h2>
       <a href="/quiiz" class="quiz-restart">{{ 'QUIZ.START_OVER' | translate }}</a>
@@ -122,7 +38,7 @@ Empezar de nuevo
         @for (wine of recommendations; track wine.id_wine) {
 <div class="quiz-wine-card">
   <div class="quiz-wine-image" (click)="goToWineDetail(wine.id_wine)">
-    <img [src]="'http://localhost:3000/' + wine.image_url" [alt]="wine.wine_name" />
+    <img [src]="wine.image_url" [alt]="wine.wine_name" />
   </div>
 
   <div class="quiz-wine-info">

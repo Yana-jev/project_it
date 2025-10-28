@@ -7,7 +7,8 @@ import { User } from './interfaces/iuser';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseApiUrl = 'http://localhost:3000/auth/';
+  // private baseApiUrl = 'http://localhost:3000/auth/';
+    private baseApiUrl = '/api/auth/';
   private currentUser: User | null = null;
 
   constructor(private http: HttpClient) {}
