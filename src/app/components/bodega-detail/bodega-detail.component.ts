@@ -8,7 +8,8 @@ import { Map } from 'mapbox-gl';
 import mapboxgl from 'mapbox-gl';
 import { TranslateService } from '../../data/services/translate.service';
 import { Subscription } from 'rxjs';
-import { environment } from '../../../enviroments/enviroment';
+import { enviroment } from '../../../enviroments/enviroment';
+
 @Component({
   selector: 'bodega-detail',
   standalone: true,
@@ -65,7 +66,9 @@ export class BodegaDetailComponent implements AfterViewChecked, OnDestroy {
   private initializeMap(): void {
     if (!this.mapDivElement) return;
 
-    mapboxgl.accessToken = environment.mapboxToken;
+
+    mapboxgl.accessToken = enviroment.mapboxToken
+
 
     const latitude = parseFloat(this.bodega?.latitud || '0');
     const longitude = parseFloat(this.bodega?.longitud || '0');
