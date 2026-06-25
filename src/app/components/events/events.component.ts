@@ -37,6 +37,7 @@ export class EventsComponent {
   }
 
 
+
   filterEvents() {
     if (this.startDate && this.endDate) {
 
@@ -57,6 +58,12 @@ export class EventsComponent {
   goToEventDetail(eventId: number) {
 
     this.router.navigate([`/event-detail/${eventId}`]);  
+  }
+
+  resetDates(){
+    this.startDate = "",
+    this.endDate = "",
+    this.filterEvents()
   }
 }
 

@@ -56,7 +56,7 @@ toggleMobileFilters() {
           const matchesProductor = this.selectedProductor ? wine.bodega_name === this.selectedProductor : true;
           const matchesPrice = wine.price <= this.selectedPrice;
           const matchesSearchTerm = wine.wine_name.toLowerCase().includes(this.searchTerm.toLowerCase());
-    
+
           return matchesColor && matchesType && matchesProductor && matchesPrice && matchesSearchTerm;
         })
         .sort((a: Wine, b: Wine) => {

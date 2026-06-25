@@ -28,7 +28,8 @@
    "HERO_TITLE": "Únete a nosotros",
    "HERO_DESC": "Disfruta de experiencias únicas entre viñedos, eventos y buena compañía.",
    "FECHA": "Fecha",
-   "FILTRAR": "Filtrar por fechas:"
+   "FILTRAR": "Filtrar por fechas:",
+   "RESET_FILTERS": "Restablecer filtros"
 
 },
 "BODEGAS":{

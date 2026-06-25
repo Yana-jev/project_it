@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from '../../data/services/cart.service';
 import { QUIZ_QUESTIONS, QuizQuestion } from '../../../../public/assets/quiz/quiz-question';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-quiz',
@@ -21,8 +21,10 @@ export class QuiizComponent implements OnInit {
   userAnswers: any = {};
   recommendations: Wine[] | null = null;
   cartService = inject(CartService);
+  popupMessage: string = '';
+  showPopup: boolean = false;
 
-  constructor(private quizService: WineService, private router: Router) {}
+  constructor(private quizService: WineService, private router: Router,  private translate: TranslateService) {}
 
   ngOnInit() {
     this.questions = JSON.parse(JSON.stringify(QUIZ_QUESTIONS));
@@ -126,6 +128,8 @@ handleOptionSelect(optionKey: string) {
     this.cartService.addItemToCart(wine, quantity, loggedIn).subscribe({
       next: (response) => {
         console.log('Added to cart:', response);
+        const message = this.translate.instant('SHOP.POPUP');
+        this.showSuccessPopup(message)
       },
       error: (err) => {
         console.error('Error adding to cart:', err);
@@ -146,4 +150,12 @@ handleOptionSelect(optionKey: string) {
       }
     }
   }
-}
+
+  showSuccessPopup(message: string): void{
+    this.popupMessage = message;
+    this.showPopup = true;
+    setTimeout( ()=>{
+      this.showPopup = false;
+      this.popupMessage = '';
+    }, 1000 );
+  }}

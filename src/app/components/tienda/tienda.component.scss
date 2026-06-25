@@ -1,7 +1,7 @@
 $green: #6dab00;
 $lightgreen: #adc682;
 $violet: #553c9a;
-$lightviolet: #f3a9b9;
+$lightviolet: #ff91aeca;
 
 .container {
   margin: 0 auto;
@@ -162,19 +162,19 @@ $lightviolet: #f3a9b9;
   width: 100%;
   height: 6px;
   border-radius: 5px;
-  background: #f3a9b9;
+  background: $lightviolet;
   outline: none;
   appearance: none;
 
   &::-webkit-slider-runnable-track {
     height: 6px;
-    background: #f8c5d0;
+    background: $lightviolet;
     border-radius: 5px;
   }
 
   &::-moz-range-track {
     height: 6px;
-    background: #f8c5d0;
+    background: $lightviolet;
     border-radius: 5px;
   }
 
@@ -238,7 +238,6 @@ $lightviolet: #f3a9b9;
     top: 0;
     left: 0;
     height: 100%;
-    background: #f9fafb;
     z-index: 1000;
     padding: 1rem;
     overflow-y: auto;

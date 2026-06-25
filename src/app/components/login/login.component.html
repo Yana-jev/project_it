@@ -1,7 +1,7 @@
 <div class="login-wrapper">
 <form class="login-form font-medium" [formGroup]="form" (ngSubmit)="onSubmit()">
    <div [routerLink]='["/home"]'>
-   <img class="logo" src="assets/img/logo.svg" alt="logo" />
+   <img class="logo" src="assets/img/logo2.png" alt="logo" />
    </div>
 
    <h1>Log in to the Winery</h1>
@@ -34,9 +34,9 @@
 
    <button type="submit">Log In</button>
 
-   <div class="register-link">
+   <div class="mt-5 text-center">
    <span>Don't have an account? </span>
-   <a routerLink="/register">Create an account</a>
+   <a routerLink="/register" class="text-wine font-bold underline login-link">Create an account</a>
    </div>
 </form>
 </div>

@@ -6,7 +6,7 @@
    <div class="cart-item-info">
       <img [src]="item.imageUrl" alt="{{ item.wineName }}"
             (click)="goToWineDetail(item.wineId)" />
-      
+            
       <h3>{{ item.wineName }}</h3>
       <p class="item-price">{{ item.price | currency:'EUR' }}</p>
    </div>
@@ -44,3 +44,5 @@
    <p>{{ "SHOP.VACIO" | translate }}</p>
 </div>
 </div>
+
+

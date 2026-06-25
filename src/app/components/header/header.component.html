@@ -1,7 +1,7 @@
 <nav class="navbar">
 <div class="container">
   <div [routerLink]="['/home']">
-    <img src="assets/img/logomain.png" class="logo" alt="logo" />
+    <img src="assets/img/logo_header.png" class="logo" alt="logo" />
   </div>
 
   <!-- гамбургер -->
@@ -22,8 +22,8 @@
       <li><a [routerLink]="['/bodegas']" class="links" (click)="closeMenu()">{{ 'NAV.BODEGAS' | translate}}</a></li>
       <li><a [routerLink]="['/tienda']" class="links" (click)="closeMenu()">{{ 'NAV.TIENDA' | translate}}</a></li>
       <li><a [routerLink]="['/quiiz']" class="wine-btn" (click)="closeMenu()">{{ 'NAV.ENCUENTRA TU VINO IDEAL' | translate}}</a></li>
-        <li> <select (change)="changeLanguage($any($event.target).value)" [value]="currentLang()" class="language-select">
-          <option value="en">En</option>
+        <li> <select (change)="changeLanguage($any($event.target).value)" [value]="currentLang() " class="language-select">
+          <option value="en" >En</option>
           <option value="es">Es</option>
           <option value="ru">Ru</option>
         </select>
@@ -38,7 +38,7 @@
         <a (click)="onLogout()" class="logout-link">{{ 'NAV.LOGOUT' | translate}}</a>
       </li>
       <li>
-        <a [routerLink]="['/cart']" class="cart-link">
+        <a [routerLink]="['/cart'] " (click)="closeMenu()" class="cart-link">
           <i class="fas fa-shopping-cart"></i>
           <span *ngIf="itemCount() > 0" class="cart-count">{{ itemCount() }}</span>
         </a>

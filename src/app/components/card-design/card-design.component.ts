@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './card-design.component.scss'
 })
 export class CardDesignComponent {
- @Input() imageUrl!: string;
+  @Input() imageUrl!: string;
   @Input() title!: string;
   @Input() subtitle?: string;
   @Input() extraInfo?: any;

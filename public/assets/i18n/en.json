@@ -27,8 +27,8 @@
    "HERO_TITLE": "Join us!",
    "HERO_DESC": "Enjoy unique experiences among vineyards, events, and great company.",
    "FECHA": "Date",
-   "FILTRAR": "Filter by dates:"
-
+   "FILTRAR": "Filter by dates:",
+   "RESET_FILTERS": "Reset filter"
 },
 "BODEGAS":{
    "HERO_TITLE": "Explore the wineries of DO Alella"

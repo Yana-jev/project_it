@@ -9,25 +9,34 @@
     </div>
   </section>
 
-  <div class="filters">
+<div class="filters">
+  <div class="filters-header">
     <label for="start-date" class="filter-label">
       {{ "EVENTS.FILTRAR" | translate }}
     </label>
-
-    <input 
-      id="start-date"
-      type="date" 
-      class="filter-input"
-      [(ngModel)]="startDate" 
-      (change)="filterEvents()">
-
-    <input 
-      id="end-date"
-      type="date" 
-      class="filter-input"
-      [(ngModel)]="endDate" 
-      (change)="filterEvents()">
+    <button class="reset-date-btn" (click)="resetDates()">
+      {{ 'EVENTS.RESET_FILTERS' | translate }}
+    </button>
   </div>
+
+  <div class="date-inputs">
+    <input
+      id="start-date"
+      type="date"
+      class="filter-input"
+      [(ngModel)]="startDate"
+      (change)="filterEvents()"
+    />
+    <input
+      id="end-date"
+      type="date"
+      class="filter-input"
+      [(ngModel)]="endDate"
+      (change)="filterEvents()"
+    />
+  </div>
+</div>
+
 
   <div class="grid">
     @for (event of filteredEvents; track event.id_event) {
