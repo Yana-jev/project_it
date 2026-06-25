@@ -15,11 +15,10 @@ export class BodegaService {
   http: HttpClient = inject(HttpClient);
   private translateService: TranslateService = inject(TranslateService);
 
-  // Получение списка bodegas с учётом языка из TranslateService
+
   getBodega(): Observable<iBodega[]> {
     const lang = this.translateService.currentLang;
-    const params = new HttpParams({ fromObject: { lang } }); // Альтернативный способ создания HttpParams
-
+    const params = new HttpParams({ fromObject: { lang } }); 
     return this.http.get<iBodega[]>(this.baseApiUrl, { params, withCredentials: true });
   }
 
@@ -34,12 +33,6 @@ export class BodegaService {
   addBodega(bodegaData: FormData): Observable<iBodega> {
     return this.http.post<iBodega>(this.baseApiUrl, bodegaData, { withCredentials: true });
   }
-
-
-  // getBodegaById(id: number): Observable<iBodega> {
-  //   return this.http.get<iBodega>(`${this.baseApiUrl}/${id}`, { withCredentials: true });
-  // }
-
 
   updateBodega(id: number, bodegaData: FormData): Observable<iBodega> {
     return this.http.put<iBodega>(`${this.baseApiUrl}/${id}`, bodegaData, { withCredentials: true });
